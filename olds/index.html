@@ -1,0 +1,128 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Vue.js CRUD application</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.2.1/vue-router.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.3/axios.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<style>
+.logo {
+  width: 50px;
+  float: left;
+  margin-right: 15px;
+}
+
+.form-group {
+  max-width: 500px;
+}
+
+.actions {
+  padding: 10px 0;
+}
+
+.glyphicon-euro {
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header class="page-header">
+    <div class="branding">
+      <img src="https://vuejs.org/images/logo.png" alt="Logo" title="Home page" class="logo"/>
+      <h1>Vue.js CRUD application</h1>
+    </div>
+  </header>
+  <main id="app">
+    <router-view></router-view>
+  </main>
+</div>
+
+<template id="page-Home">
+  <div>
+    <h2>Home</h2>
+  </div>
+</template>
+
+<template id="page-LogIn">
+  <div>
+    <h2>LogIn</h2>
+  </div>
+</template>
+
+<script>
+var apiMV = axios.create({
+	baseURL: '/api/api.php/records'
+});
+
+var LogIn = Vue.extend({
+	template: '#page-LogIn',
+	data: function () {
+		return {
+			
+		};
+	},
+	created: function () {
+		var self = this;
+	},
+	computed: {
+	}
+});
+
+var Home = Vue.extend({
+	template: '#page-Home',
+	data: function () {
+		return {
+			
+		};
+	},
+	created: function () {
+		var self = this;
+		/*
+		api.get('/contacts').then(function (response) {
+			posts = self.posts = response.data.records;
+		}).catch(function (error) {
+			console.log(error);
+		});
+		*/
+	},
+	computed: {
+		/*
+		filteredposts: function () {
+			return this.posts.filter(function (post) {
+				return this.searchKey=='' || post.content.indexOf(this.searchKey) !== -1;
+			},this);
+		}*/
+	}
+});
+
+var router = new VueRouter({routes:[
+	{ path: '/', component: Home, name: 'Home'},
+	{ path: '/LogIn', component: LogIn, name: 'LogIn'},
+]});
+app = new Vue({
+	data: function () {
+		return {
+			status: 'not_connect'
+		};
+	},
+	router:router,
+	created: function () {
+		var self = this;
+		
+		console.log(self.status);
+		if(self.status == 'not_connect'){
+			router.push('/LogIn');
+		}
+	},
+}).$mount('#app')
+</script>
+
+</body>
+</html>
