@@ -43,8 +43,7 @@
 							</div>
 							<div id="navbar" class="navbar-collapse collapse">
 								<ul class="nav navbar-nav navbar-right" v-if="status === 'connect'">
-									<li><a href="#">Dashboard</a></li>
-									
+									<li><a href="#"><i class="fa fa-home"></i></a></li>
 									
 									<li class="nav-item dropdown">
 									  <a href="#" class="nav-link dropdown-toggle animated rubberBand" data-toggle="dropdown">
@@ -68,21 +67,20 @@
 									  <ul class="dropdown-menu two question-pending-navbar">
 										  <li class="dropdown-header">Listas</li>
 										  <li><a href="#/ARL">ARL</a></li>
-										  <li><a href="#">Categorias de Vehiculos</a></li>
-										  <!-- <li><a href="#">EPS</a></li> -->
-										  <!-- <li><a href="#">Cajas de compensacion</a></li> -->
-										  <!-- <li><a href="#">Fondos de Pension</a></li> -->
-										  <!-- <li><a href="#">Fondos de Cesantias</a></li> -->
-										  <!-- <li><a href="#">Ciudades</a></li> -->
-										  <!-- <li><a href="#">Departamentos (Ciudad)</a></li> -->
-										  <!-- <li><a href="#">Estados de Empleados</a></li> -->
-										  <!-- <li><a href="#">Estados de Registro</a></li> -->
-										  <!-- <li><a href="#">Estados de Servicios</a></li> -->
-										  <!-- <li><a href="#">Estados de Vehiculos</a></li> -->
-										  <!-- <li><a href="#">Tipos de Sangre</a></li> -->
-										  <!-- <li><a href="#">Tipos de RH</a></li> -->
-										  <!-- <li><a href="#">Tipos de Cliente</a></li> -->
-										  <!-- <li><a href="#">Tipos de Contacto</a></li> -->
+										  <li><a href="#/Vehicles/Categories">Categorias de Vehiculos</a></li>
+										  <li><a href="#/EPS">EPS</a></li>
+										  <li><a href="#/Funds/Compensations">Cajas de compensacion</a></li>
+										  <li><a href="#/Funds/Pension">Cajas de Pension</a></li>
+										  <li><a href="#/Funds/Severances">Cajas de Cesantias</a></li>
+										  <li><a href="#/GEO/Departments">Departamentos (Ciudad)</a></li>
+										  <li><a href="#/GEO/Citys">Ciudades</a></li>
+										  <li><a href="#/Status/Employees">Estados de Empleados</a></li>
+										  <li><a href="#/Status/Services">Estados de Servicios</a></li>
+										  <li><a href="#/Status/Vehicles">Estados de Vehiculos</a></li>
+										  <li><a href="#/Types/Bloods">Tipos de Sangre</a></li>
+										  <li><a href="#/Types/BloodsRH">Tipos de RH</a></li>
+										  <li><a href="#/Types/Clients">Tipos de Cliente</a></li>
+										  <li><a href="#/Types/Contacts">Tipos de Contacto</a></li>
 										  <!-- <li><a href="#">Tipos de Combustibles</a></li> -->
 										  <!-- <li><a href="#">Tipos de Identificaciones</a></li> -->
 										  <!-- <li><a href="#">Tipos de Mediciones</a></li> -->
@@ -212,6 +210,7 @@
 			</div>
 		</template>
 
+		<!-- // ------------ ARL INICIO -------------------------------------  -->
 		<template id="page-ARL">
 			<div>
 				<header class="page-header">
@@ -334,10 +333,1694 @@
 				</form>
 			</div>
 		</template>
+		<!-- // ------------ ARL FIN -------------------------------------  -->
+		
+		<!-- // ------------ CATEGORIAS DE VEHICULOS INICIO -------------------------------------  -->
+		<template id="page-VH-Cats">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>VH-Cats</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'VH-Categories-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'VH-Categories-View', params: { cat_vh_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'VH-Categories-View', params: { cat_vh_id: post.id }}">{{ post.name }}</router-link></td>
+							<td>
+								<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'VH-Categories-Edit', params: { cat_vh_id: post.id }}">Modificar</router-link>
+								<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'VH-Categories-Delete', params: { cat_vh_id: post.id }}">Eliminar</router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-VH-Cats">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>VH-Cats - {{ post.name }}</h1>
+					</div>
+				</header>
+				<table class="table">
+					<tr>
+						<td>ID INTERNO</td>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<td>NOMBRE</td>
+						<td>{{ post.name }}</td>
+					</tr>
+				</table>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'VH-Categories-List' }">Volver a la lista de mensajes</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-VH-Cats">
+			<div>
+				<h2>VH-Cats - Crear</h2>
+				<form v-on:submit="createCatVH">
+					<div class="form-group">
+						<label for="add-content">NOMBRE</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'ARL-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-VH-Cats">
+			<div>
+				<h2>VH-Cats - Modificar</h2>
+				<form v-on:submit="updateCatVH">
+					<div class="form-group">
+						<label for="edit-content">Nombre</label>
+						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'VH-Categories-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-VH-Cats">
+			<div>
+				<h2>VH-Cats - Eliminar</h2>
+				<form v-on:submit="deleteCatVH">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'VH-Categories-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ CATEGORIAS DE VEHICULOS FIN -------------------------------------  -->
+		
+		<!-- // ------------ EPS INICIO -------------------------------------  -->
+		<template id="page-EPS">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>EPS</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'EPS-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Codigo</th>
+							<th>Nombre</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'EPS-View', params: { eps_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'EPS-View', params: { eps_id: post.id }}">{{ post.code }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'EPS-View', params: { eps_id: post.id }}">{{ post.name }}</router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'EPS-Edit', params: { eps_id: post.id }}">Modificar</router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'EPS-Delete', params: { eps_id: post.id }}">Eliminar</router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-EPS">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>EPS - {{ post.name }}</h1>
+					</div>
+				</header>
+				<table class="table">
+					<tr>
+						<td>ID INTERNO</td>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<td>CODIGO</td>
+						<td>{{ post.code }}</td>
+					</tr>
+					<tr>
+						<td>NOMBRE</td>
+						<td>{{ post.name }}</td>
+					</tr>
+				</table>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'EPS-List' }">Volver a la lista de mensajes</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-EPS">
+			<div>
+				<h2>EPS - Crear</h2>
+				<form v-on:submit="createEPS">
+					<div class="form-group">
+						<label for="add-content">Codigo</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.code" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">Nombre</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'EPS-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-EPS">
+			<div>
+				<h2>EPS - Modificar</h2>
+				<form v-on:submit="updateEPS">
+					<div class="form-group">
+						<label for="edit-content">Codigo</label>
+						<input class="form-control" id="edit-content" v-model="post.code" />
+					</div>
+					<div class="form-group">
+						<label for="edit-content">Nombre</label>
+						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'EPS-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-EPS">
+			<div>
+				<h2>EPS - Eliminar</h2>
+				<form v-on:submit="deleteEPS">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'EPS-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ EPS FIN -------------------------------------  -->
+		
+		<!-- // ------------ CAJAS DE COMPENSACION INICIO -------------------------------------  -->
+		<template id="page-FundsCompensation">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>FundsCompensation</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'FundsCompensation-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Codigo</th>
+							<th>Nombre</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'FundsCompensation-View', params: { fund_compensation_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'FundsCompensation-View', params: { fund_compensation_id: post.id }}">{{ post.code }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'FundsCompensation-View', params: { fund_compensation_id: post.id }}">{{ post.name }}</router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'FundsCompensation-Edit', params: { fund_compensation_id: post.id }}">Modificar</router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'FundsCompensation-Delete', params: { fund_compensation_id: post.id }}">Eliminar</router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-FundsCompensation">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>FundsCompensation - {{ post.name }}</h1>
+					</div>
+				</header>
+				<table class="table">
+					<tr>
+						<td>ID INTERNO</td>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<td>CODIGO</td>
+						<td>{{ post.code }}</td>
+					</tr>
+					<tr>
+						<td>NOMBRE</td>
+						<td>{{ post.name }}</td>
+					</tr>
+				</table>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'FundsCompensation-List' }">Volver a la lista de mensajes</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-FundsCompensation">
+			<div>
+				<h2>FundsCompensation - Crear</h2>
+				<form v-on:submit="createFundCompensation">
+					<div class="form-group">
+						<label for="add-content">Codigo</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.code" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">Nombre</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'FundsCompensation-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-FundsCompensation">
+			<div>
+				<h2>FundsCompensation - Modificar</h2>
+				<form v-on:submit="updateFundCompensation">
+					<div class="form-group">
+						<label for="edit-content">Codigo</label>
+						<input class="form-control" id="edit-content" v-model="post.code" />
+					</div>
+					<div class="form-group">
+						<label for="edit-content">Nombre</label>
+						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'FundsCompensation-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-FundsCompensation">
+			<div>
+				<h2>FundsCompensation - Eliminar</h2>
+				<form v-on:submit="deleteFundCompensation">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'FundsCompensation-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ CAJAS DE COMPENSACION FIN -------------------------------------  -->
+		
+		
+		<!-- // ------------ CAJAS DE PENSION INICIO -------------------------------------  -->
+		<template id="page-FundsPension">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>FundsPension</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'FundsPension-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Codigo</th>
+							<th>Nombre</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'FundsPension-View', params: { fund_pension_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'FundsPension-View', params: { fund_pension_id: post.id }}">{{ post.code }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'FundsPension-View', params: { fund_pension_id: post.id }}">{{ post.name }}</router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'FundsPension-Edit', params: { fund_pension_id: post.id }}">Modificar</router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'FundsPension-Delete', params: { fund_pension_id: post.id }}">Eliminar</router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-FundsPension">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>FundsPension - {{ post.name }}</h1>
+					</div>
+				</header>
+				<table class="table">
+					<tr>
+						<td>ID INTERNO</td>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<td>CODIGO</td>
+						<td>{{ post.code }}</td>
+					</tr>
+					<tr>
+						<td>NOMBRE</td>
+						<td>{{ post.name }}</td>
+					</tr>
+				</table>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'FundsPension-List' }">Volver a la lista de mensajes</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-FundsPension">
+			<div>
+				<h2>FundsPension - Crear</h2>
+				<form v-on:submit="createFundPension">
+					<div class="form-group">
+						<label for="add-content">Codigo</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.code" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">Nombre</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'FundsPension-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-FundsPension">
+			<div>
+				<h2>FundsPension - Modificar</h2>
+				<form v-on:submit="updateFundPension">
+					<div class="form-group">
+						<label for="edit-content">Codigo</label>
+						<input class="form-control" id="edit-content" v-model="post.code" />
+					</div>
+					<div class="form-group">
+						<label for="edit-content">Nombre</label>
+						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'FundsPension-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-FundsPension">
+			<div>
+				<h2>FundsPension - Eliminar</h2>
+				<form v-on:submit="deleteFundPension">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'FundsPension-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ CAJAS DE PENSION FIN -------------------------------------  -->
+		
+		<!-- // ------------ CAJAS DE PENSION INICIO -------------------------------------  -->
+		<template id="page-FundSeverances">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>FundSeverances</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'FundSeverances-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Codigo</th>
+							<th>Nombre</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'FundSeverances-View', params: { fund_severances_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'FundSeverances-View', params: { fund_severances_id: post.id }}">{{ post.code }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'FundSeverances-View', params: { fund_severances_id: post.id }}">{{ post.name }}</router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'FundSeverances-Edit', params: { fund_severances_id: post.id }}">Modificar</router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'FundSeverances-Delete', params: { fund_severances_id: post.id }}">Eliminar</router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-FundSeverances">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>FundSeverances - {{ post.name }}</h1>
+					</div>
+				</header>
+				<table class="table">
+					<tr>
+						<td>ID INTERNO</td>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<td>CODIGO</td>
+						<td>{{ post.code }}</td>
+					</tr>
+					<tr>
+						<td>NOMBRE</td>
+						<td>{{ post.name }}</td>
+					</tr>
+				</table>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'FundSeverances-List' }">Volver a la lista de mensajes</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-FundSeverances">
+			<div>
+				<h2>FundSeverances - Crear</h2>
+				<form v-on:submit="createFundSeverance">
+					<div class="form-group">
+						<label for="add-content">Codigo</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.code" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">Nombre</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'FundSeverances-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-FundSeverances">
+			<div>
+				<h2>FundSeverances - Modificar</h2>
+				<form v-on:submit="updateFundSeverance">
+					<div class="form-group">
+						<label for="edit-content">Codigo</label>
+						<input class="form-control" id="edit-content" v-model="post.code" />
+					</div>
+					<div class="form-group">
+						<label for="edit-content">Nombre</label>
+						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'FundSeverances-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-FundSeverances">
+			<div>
+				<h2>FundSeverances - Eliminar</h2>
+				<form v-on:submit="deleteFundSeverance">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'FundSeverances-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ CAJAS DE PENSION FIN -------------------------------------  -->
+		
+		<!-- // ------------ GEO - DEPARTAMENTOS INICIO -------------------------------------  -->
+		<template id="page-GEO-Departments">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>GEO - DEPARTAMENTOS</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'DepartmentsGEO-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Codigo</th>
+							<th>Nombre</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'DepartmentsGEO-View', params: { geo_department_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'DepartmentsGEO-View', params: { geo_department_id: post.id }}">{{ post.code }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'DepartmentsGEO-View', params: { geo_department_id: post.id }}">{{ post.name }}</router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'DepartmentsGEO-Edit', params: { geo_department_id: post.id }}">Modificar</router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'DepartmentsGEO-Delete', params: { geo_department_id: post.id }}">Eliminar</router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-GEO-Departments">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>GEO - DEPARTAMENTOS - {{ post.name }}</h1>
+					</div>
+				</header>
+				<table class="table">
+					<tr>
+						<td>ID INTERNO</td>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<td>CODIGO</td>
+						<td>{{ post.code }}</td>
+					</tr>
+					<tr>
+						<td>NOMBRE</td>
+						<td>{{ post.name }}</td>
+					</tr>
+				</table>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'DepartmentsGEO-List' }">Volver a la lista de mensajes</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-GEO-Departments">
+			<div>
+				<h2>GEO - DEPARTAMENTOS - Crear</h2>
+				<form v-on:submit="createDepartmentGEO">
+					<div class="form-group">
+						<label for="add-content">Codigo</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.code" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">Nombre</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'DepartmentsGEO-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-GEO-Departments">
+			<div>
+				<h2>GEO - DEPARTAMENTOS - Modificar</h2>
+				<form v-on:submit="updateDepartmentGEO">
+					<div class="form-group">
+						<label for="edit-content">Codigo</label>
+						<input class="form-control" id="edit-content" v-model="post.code" />
+					</div>
+					<div class="form-group">
+						<label for="edit-content">Nombre</label>
+						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'DepartmentsGEO-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-GEO-Departments">
+			<div>
+				<h2>GEO - DEPARTAMENTOS - Eliminar</h2>
+				<form v-on:submit="deleteDepartmentGEO">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'DepartmentsGEO-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ GEO - DEPARTAMENTOS FIN -------------------------------------  -->
+		
+		<!-- // ------------ GEO - CIUDADES INICIO -------------------------------------  -->
+		<template id="page-GEO-Citys">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>GEO - CIUDADES</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'CitysGEO-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Departamento</th>
+							<th>Nombre</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'CitysGEO-View', params: { geo_city_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'CitysGEO-View', params: { geo_city_id: post.id }}">{{ post.department.name }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'CitysGEO-View', params: { geo_city_id: post.id }}">{{ post.name }}</router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'CitysGEO-Edit', params: { geo_city_id: post.id }}">Modificar</router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'CitysGEO-Delete', params: { geo_city_id: post.id }}">Eliminar</router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
 			
-		<!-- Bootstrap core JavaScript
-		================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
+		<template id="view-GEO-Citys">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>GEO - CIUDADES - {{ post.name }}</h1>
+					</div>
+				</header>
+				<table class="table">
+					<tr>
+						<td>ID INTERNO</td>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<td>DEPARTAMENTO</td>
+						<td>
+							<table class="table">
+								<tr>
+									<td>ID INTERNO</td>
+									<td>{{ post.department.id }}</td>
+								</tr>
+								<tr>
+									<td>CODIGO</td>
+									<td>{{ post.department.code }}</td>
+								</tr>
+								<tr>
+									<td>NOMBRE</td>
+									<td>{{ post.department.name }}</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>NOMBRE</td>
+						<td>{{ post.name }}</td>
+					</tr>
+				</table>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'CitysGEO-List' }">Volver a la lista de mensajes</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-GEO-Citys">
+			<div>
+				<h2>GEO - CIUDADES - Crear</h2>
+				<form v-on:submit="createDepartmentGEO">
+					<div class="form-group">
+						<label for="add-content">DEPARTAMENTO</label>
+						<select class="form-control" v-model="post.department" id="add-content">
+							<option v-for="item in selectOptions.departments" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content">NOMBRE</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'DepartmentsGEO-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+
+		<template id="edit-GEO-Citys">
+			<div>
+				<h2>GEO - CIUDADES - Modificar</h2>
+				<form v-on:submit="updateCityGEO">
+					<div class="form-group">
+						<label for="edit-content">DEPARTAMENTO</label>
+						<select class="form-control" v-model="post.department" id="add-content">
+							<option v-for="item in selectOptions.departments" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="edit-content">NOMBRE</label>
+						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'CitysGEO-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+
+		<template id="delete-GEO-Citys">
+			<div>
+				<h2>GEO - CIUDADES - Eliminar</h2>
+				<form v-on:submit="deleteCityGEO">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'CitysGEO-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ GEO - CIUDADES FIN -------------------------------------  -->
+		
+		<!-- // ------------ ESTADOS - EMPLEADOS INICIO -------------------------------------  -->
+		<template id="page-StatusEmployees">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>ESTADOS - EMPLEADOS</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'StatusEmployees-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'StatusEmployees-View', params: { status_employee_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'StatusEmployees-View', params: { status_employee_id: post.id }}">{{ post.name }}</router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'StatusEmployees-Edit', params: { status_employee_id: post.id }}">Modificar</router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'StatusEmployees-Delete', params: { status_employee_id: post.id }}">Eliminar</router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-StatusEmployees">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>ESTADOS - EMPLEADOS - {{ post.name }}</h1>
+					</div>
+				</header>
+				<table class="table">
+					<tr>
+						<td>ID INTERNO</td>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<td>NOMBRE</td>
+						<td>{{ post.name }}</td>
+					</tr>
+				</table>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'StatusEmployees-List' }">Volver a la lista de mensajes</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-StatusEmployees">
+			<div>
+				<h2>ESTADOS - EMPLEADOS - Crear</h2>
+				<form v-on:submit="createStatusEmployee">
+					<div class="form-group">
+						<label for="add-content">Nombre</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'StatusEmployees-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-StatusEmployees">
+			<div>
+				<h2>ESTADOS - EMPLEADOS - Modificar</h2>
+				<form v-on:submit="updateStatusEmployee">
+					<div class="form-group">
+						<label for="edit-content">Nombre</label>
+						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'StatusEmployees-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-StatusEmployees">
+			<div>
+				<h2>ESTADOS - EMPLEADOS - Eliminar</h2>
+				<form v-on:submit="deleteStatusEmployee">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'StatusEmployees-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ ESTADOS - EMPLEADOS FIN -------------------------------------  -->
+		
+		<!-- // ------------ ESTADOS - SERVICIOS INICIO -------------------------------------  -->
+		<template id="page-StatusServices">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>ESTADOS - SERVICIOS</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'StatusServices-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>Color</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'StatusServices-View', params: { status_service_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'StatusServices-View', params: { status_service_id: post.id }}">{{ post.name }}</router-link></td>
+							<!-- <td><router-link v-bind:to="{name: 'StatusServices-View', params: { status_service_id: post.id }}">{{ post.color }}</router-link></td> -->
+							<td v-bind:style="'background-color: ' + post.color"><router-link v-bind:to="{name: 'StatusServices-View', params: {status_service_id: post.id}}"></router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'StatusServices-Edit', params: { status_service_id: post.id }}">Modificar</router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'StatusServices-Delete', params: { status_service_id: post.id }}">Eliminar</router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-StatusServices">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>ESTADOS - SERVICIOS - {{ post.name }}</h1>
+					</div>
+				</header>
+				<table class="table">
+					<tr>
+						<td>ID INTERNO</td>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<td>NOMBRE</td>
+						<td>{{ post.name }}</td>
+					</tr>
+					<tr>
+						<td>COLOR</td>
+						<td v-bind:style="'background-color: ' + post.color"></td>
+					</tr>
+					<tr>
+						<td>COLOR CODE</td>
+						<td>{{ post.color }}</td>
+					</tr>
+				</table>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'StatusServices-List' }">Volver a la lista de mensajes</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-StatusServices">
+			<div>
+				<h2>ESTADOS - SERVICIOS - Crear</h2>
+				<form v-on:submit="createStatusService">
+					<div class="form-group">
+						<label for="add-content">NOMBRE</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.name" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">COLOR</label>
+						<input class="form-control" type="color" id="add-content" v-model="post.color" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'StatusServices-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-StatusServices">
+			<div>
+				<h2>ESTADOS - SERVICIOS - Modificar</h2>
+				<form v-on:submit="updateStatusService">
+					<div class="form-group">
+						<label for="edit-content">Nombre</label>
+						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">COLOR</label>
+						<input class="form-control" type="color" id="add-content" v-model="post.color" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'StatusServices-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-StatusServices">
+			<div>
+				<h2>ESTADOS - SERVICIOS - Eliminar</h2>
+				<form v-on:submit="deleteStatusService">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'StatusServices-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ ESTADOS - SERVICIOS FIN -------------------------------------  -->
+		
+		<!-- // ------------ ESTADOS - VEHICULOS INICIO -------------------------------------  -->
+		<template id="page-StatusVehicles">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>ESTADOS - VEHICULOS</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'StatusVehicles-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'StatusVehicles-View', params: { status_vehicle_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'StatusVehicles-View', params: { status_vehicle_id: post.id }}">{{ post.name }}</router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'StatusVehicles-Edit', params: { status_vehicle_id: post.id }}">Modificar</router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'StatusVehicles-Delete', params: { status_vehicle_id: post.id }}">Eliminar</router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-StatusVehicles">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>ESTADOS - VEHICULOS - {{ post.name }}</h1>
+					</div>
+				</header>
+				<table class="table">
+					<tr>
+						<td>ID INTERNO</td>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<td>NOMBRE</td>
+						<td>{{ post.name }}</td>
+					</tr>
+				</table>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'StatusVehicles-List' }">Volver a la lista de mensajes</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-StatusVehicles">
+			<div>
+				<h2>ESTADOS - VEHICULOS - Crear</h2>
+				<form v-on:submit="createStatusVehicle">
+					<div class="form-group">
+						<label for="add-content">NOMBRE</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'StatusVehicles-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-StatusVehicles">
+			<div>
+				<h2>ESTADOS - VEHICULOS - Modificar</h2>
+				<form v-on:submit="updateStatusVehicle">
+					<div class="form-group">
+						<label for="edit-content">Nombre</label>
+						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'StatusVehicles-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-StatusVehicles">
+			<div>
+				<h2>ESTADOS - VEHICULOS - Eliminar</h2>
+				<form v-on:submit="deleteStatusVehicle">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'StatusVehicles-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ ESTADOS - VEHICULOS FIN -------------------------------------  -->
+		
+		<!-- // ------------ TIPOS - SANGRE INICIO -------------------------------------  -->
+		<template id="page-TypesBloods">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>TIPOS - SANGRE</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesBloods-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>Color</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'TypesBloods-View', params: { type_blood_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'TypesBloods-View', params: { type_blood_id: post.id }}">{{ post.name }}</router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesBloods-Edit', params: { type_blood_id: post.id }}">Modificar</router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesBloods-Delete', params: { type_blood_id: post.id }}">Eliminar</router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-TypesBloods">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>TIPOS - SANGRE - {{ post.name }}</h1>
+					</div>
+				</header>
+				<table class="table">
+					<tr>
+						<td>ID INTERNO</td>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<td>NOMBRE</td>
+						<td>{{ post.name }}</td>
+					</tr>
+				</table>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'TypesBloods-List' }">Volver a la lista de mensajes</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-TypesBloods">
+			<div>
+				<h2>TIPOS - SANGRE - Crear</h2>
+				<form v-on:submit="createTypesBlood">
+					<div class="form-group">
+						<label for="add-content">NOMBRE</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesBloods-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-TypesBloods">
+			<div>
+				<h2>TIPOS - SANGRE - Modificar</h2>
+				<form v-on:submit="updateTypesBlood">
+					<div class="form-group">
+						<label for="edit-content">Nombre</label>
+						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesBloods-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-TypesBloods">
+			<div>
+				<h2>TIPOS - SANGRE - Eliminar</h2>
+				<form v-on:submit="deleteTypesBlood">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesBloods-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ TIPOS - SANGRE FIN -------------------------------------  -->
+		
+		<!-- // ------------ TIPOS - RH INICIO -------------------------------------  -->
+		<template id="page-TypesBloodsRH">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>TIPOS - RH</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesBloodsRH-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>Color</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'TypesBloodsRH-View', params: { type_blood_rh_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'TypesBloodsRH-View', params: { type_blood_rh_id: post.id }}">{{ post.name }}</router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesBloodsRH-Edit', params: { type_blood_rh_id: post.id }}">Modificar</router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesBloodsRH-Delete', params: { type_blood_rh_id: post.id }}">Eliminar</router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-TypesBloodsRH">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>TIPOS - RH - {{ post.name }}</h1>
+					</div>
+				</header>
+				<table class="table">
+					<tr>
+						<td>ID INTERNO</td>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<td>NOMBRE</td>
+						<td>{{ post.name }}</td>
+					</tr>
+				</table>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'TypesBloodsRH-List' }">Volver a la lista de mensajes</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-TypesBloodsRH">
+			<div>
+				<h2>TIPOS - RH - Crear</h2>
+				<form v-on:submit="createTypesBloodRH">
+					<div class="form-group">
+						<label for="add-content">NOMBRE</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesBloodsRH-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-TypesBloodsRH">
+			<div>
+				<h2>TIPOS - RH - Modificar</h2>
+				<form v-on:submit="updateTypesBloodRH">
+					<div class="form-group">
+						<label for="edit-content">Nombre</label>
+						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesBloodsRH-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-TypesBloodsRH">
+			<div>
+				<h2>TIPOS - RH - Eliminar</h2>
+				<form v-on:submit="deleteTypesBloodRH">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesBloodsRH-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ TIPOS - RH FIN -------------------------------------  -->
+		
+		<!-- // ------------ TIPOS - CLIENTES INICIO -------------------------------------  -->
+		<template id="page-TypesClients">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>TIPOS - CLIENTES</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesClients-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>Color</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'TypesClients-View', params: { type_client_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'TypesClients-View', params: { type_client_id: post.id }}">{{ post.name }}</router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesClients-Edit', params: { type_client_id: post.id }}">Modificar</router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesClients-Delete', params: { type_client_id: post.id }}">Eliminar</router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-TypesClients">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>TIPOS - CLIENTES - {{ post.name }}</h1>
+					</div>
+				</header>
+				<table class="table">
+					<tr>
+						<td>ID INTERNO</td>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<td>NOMBRE</td>
+						<td>{{ post.name }}</td>
+					</tr>
+				</table>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'TypesClients-List' }">Volver a la lista de mensajes</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-TypesClients">
+			<div>
+				<h2>TIPOS - CLIENTES - Crear</h2>
+				<form v-on:submit="createTypesClient">
+					<div class="form-group">
+						<label for="add-content">NOMBRE</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesClients-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-TypesClients">
+			<div>
+				<h2>TIPOS - CLIENTES - Modificar</h2>
+				<form v-on:submit="updateTypesClient">
+					<div class="form-group">
+						<label for="edit-content">Nombre</label>
+						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesClients-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-TypesClients">
+			<div>
+				<h2>TIPOS - CLIENTES - Eliminar</h2>
+				<form v-on:submit="deleteTypesClient">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesClients-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ TIPOS - CLIENTES FIN -------------------------------------  -->
+		
+		<!-- // ------------ TIPOS - CONTACTOS INICIO -------------------------------------  -->
+		<template id="page-TypesContacts">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>TIPOS - CONTACTOS</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesContacts-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>Color</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'TypesContacts-View', params: { type_contact_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'TypesContacts-View', params: { type_contact_id: post.id }}">{{ post.name }}</router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesContacts-Edit', params: { type_contact_id: post.id }}">Modificar</router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesContacts-Delete', params: { type_contact_id: post.id }}">Eliminar</router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-TypesContacts">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>TIPOS - CONTACTOS - {{ post.name }}</h1>
+					</div>
+				</header>
+				<table class="table">
+					<tr>
+						<td>ID INTERNO</td>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<td>NOMBRE</td>
+						<td>{{ post.name }}</td>
+					</tr>
+				</table>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'TypesContacts-List' }">Volver a la lista de mensajes</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-TypesContacts">
+			<div>
+				<h2>TIPOS - CONTACTOS - Crear</h2>
+				<form v-on:submit="createTypesContact">
+					<div class="form-group">
+						<label for="add-content">NOMBRE</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesContacts-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-TypesContacts">
+			<div>
+				<h2>TIPOS - CONTACTOS - Modificar</h2>
+				<form v-on:submit="updateTypesContact">
+					<div class="form-group">
+						<label for="edit-content">Nombre</label>
+						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesContacts-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-TypesContacts">
+			<div>
+				<h2>TIPOS - CONTACTOS - Eliminar</h2>
+				<form v-on:submit="deleteTypesContact">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesContacts-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ TIPOS - CONTACTOS FIN -------------------------------------  -->
+		
+		
+		
+		
+		
+		<!-- Bootstrap core JavaScript -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
 		<script src="/dist/js/bootstrap.min.js"></script>
