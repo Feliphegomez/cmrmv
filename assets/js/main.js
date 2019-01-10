@@ -2802,6 +2802,542 @@ var Types_Contacts_Delete = Vue.extend({
 });
 // ------------ TIPOS - CONTACTOS FIN ------------------------------------- 
 
+// ------------ TIPOS - COMBUSTIBLES INICIO ------------------------------------- 
+var Types_Fuels_List = Vue.extend({
+  template: '#page-TypesFuels',
+  data: function () {
+    return {
+		posts: [],
+		searchKey: ''
+	};
+  },
+  mounted: function () {
+    var self = this;
+    apiMV.get('/types_fuels').then(function (response) {
+		self.posts = response.data.records;
+    }).catch(function (error) {
+		console.log(error);
+    });
+  },
+  computed: {
+    filteredposts: function () {
+      return this.posts.filter(function (post) {
+        return this.searchKey=='' || post.name.indexOf(this.searchKey) !== -1;
+      },this);
+    }
+  }
+});
+
+var Types_Fuels_View = Vue.extend({
+	template: '#view-TypesFuels',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: '',
+			},
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesFuel();
+	},
+	methods: {
+		findTypesFuel: function(){
+			var self = this;
+			var idTypesFuel = self.$route.params.type_fuel_id;
+			
+			apiMV.get('/types_fuels/' + idTypesFuel).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/Fuels');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/Fuels');
+			});
+		}
+	}
+});
+
+var Types_Fuels_Add = Vue.extend({
+	template: '#add-TypesFuels',
+	data: function () {
+		return {
+			post: {
+				name: '',
+			}
+		}
+	},
+	methods: {
+		createTypesFuel: function() {
+			var post = this.post;
+			apiMV.post('/types_fuels', post).then(function (response) {
+				post.id = response.data;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/Fuels');
+		}
+	}
+});
+
+var Types_Fuels_Edit = Vue.extend({
+	template: '#edit-TypesFuels',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesFuel();
+	},
+	methods: {
+		updateTypesFuel: function () {
+			var post = this.post;
+			apiMV.put('/types_fuels/' + post.id, post).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/Fuels');
+		},
+		findTypesFuel: function(){
+			var self = this;
+			var idTypesFuel = self.$route.params.type_fuel_id;
+			
+			apiMV.get('/types_fuels/' + idTypesFuel).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/Fuels');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/Fuels');
+			});
+		}
+	}
+});
+
+var Types_Fuels_Delete = Vue.extend({
+	template: '#delete-TypesFuels',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesFuel();
+	},
+	methods: {
+		deleteTypesFuel: function () {
+			var post = this.post;
+			
+			apiMV.delete('/types_fuels/' + post.id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/Fuels');
+			location.reload();
+		},
+		findTypesFuel: function(){
+			var self = this;
+			var idTypesFuel = self.$route.params.type_fuel_id;
+			
+			apiMV.get('/types_fuels/' + idTypesFuel).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/Fuels');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/Fuels');
+			});
+		}
+	}
+});
+// ------------ TIPOS - COMBUSTIBLES FIN ------------------------------------- 
+
+// ------------ TIPOS - IDENTIFICACIONES INICIO ------------------------------------- 
+var Types_Identifications_List = Vue.extend({
+  template: '#page-TypesIdentifications',
+  data: function () {
+    return {
+		posts: [],
+		searchKey: ''
+	};
+  },
+  mounted: function () {
+    var self = this;
+    apiMV.get('/types_identifications').then(function (response) {
+		self.posts = response.data.records;
+    }).catch(function (error) {
+		console.log(error);
+    });
+  },
+  computed: {
+    filteredposts: function () {
+      return this.posts.filter(function (post) {
+        return this.searchKey=='' || post.name.indexOf(this.searchKey) !== -1;
+      },this);
+    }
+  }
+});
+
+var Types_Identifications_View = Vue.extend({
+	template: '#view-TypesIdentifications',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: '',
+			},
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesIdentification();
+	},
+	methods: {
+		findTypesIdentification: function(){
+			var self = this;
+			var idTypesIdentification = self.$route.params.type_identification_id;
+			
+			apiMV.get('/types_identifications/' + idTypesIdentification).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/Identifications');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/Identifications');
+			});
+		}
+	}
+});
+
+var Types_Identifications_Add = Vue.extend({
+	template: '#add-TypesIdentifications',
+	data: function () {
+		return {
+			post: {
+				name: '',
+			}
+		}
+	},
+	methods: {
+		createTypesIdentification: function() {
+			var post = this.post;
+			apiMV.post('/types_identifications', post).then(function (response) {
+				post.id = response.data;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/Identifications');
+		}
+	}
+});
+
+var Types_Identifications_Edit = Vue.extend({
+	template: '#edit-TypesIdentifications',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesIdentification();
+	},
+	methods: {
+		updateTypesIdentification: function () {
+			var post = this.post;
+			apiMV.put('/types_identifications/' + post.id, post).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/Identifications');
+		},
+		findTypesIdentification: function(){
+			var self = this;
+			var idTypesIdentification = self.$route.params.type_identification_id;
+			
+			apiMV.get('/types_identifications/' + idTypesIdentification).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/Identifications');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/Identifications');
+			});
+		}
+	}
+});
+
+var Types_Identifications_Delete = Vue.extend({
+	template: '#delete-TypesIdentifications',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesIdentification();
+	},
+	methods: {
+		deleteTypesIdentification: function () {
+			var post = this.post;
+			
+			apiMV.delete('/types_identifications/' + post.id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/Identifications');
+			location.reload();
+		},
+		findTypesIdentification: function(){
+			var self = this;
+			var idTypesIdentification = self.$route.params.type_identification_id;
+			
+			apiMV.get('/types_identifications/' + idTypesIdentification).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/Identifications');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/Identifications');
+			});
+		}
+	}
+});
+// ------------ TIPOS - IDENTIFICACIONES FIN ------------------------------------- 
+
+// ------------ TIPOS - MEDICIONES INICIO ------------------------------------- 
+var Types_Meditions_List = Vue.extend({
+  template: '#page-TypesMeditions',
+  data: function () {
+    return {
+		posts: [],
+		searchKey: ''
+	};
+  },
+  mounted: function () {
+    var self = this;
+    apiMV.get('/types_meditions').then(function (response) {
+		self.posts = response.data.records;
+    }).catch(function (error) {
+		console.log(error);
+    });
+  },
+  computed: {
+    filteredposts: function () {
+      return this.posts.filter(function (post) {
+        return this.searchKey=='' || post.name.indexOf(this.searchKey) !== -1;
+      },this);
+    }
+  }
+});
+
+var Types_Meditions_View = Vue.extend({
+	template: '#view-TypesMeditions',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: '',
+				title: '',
+			},
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesMedition();
+	},
+	methods: {
+		findTypesMedition: function(){
+			var self = this;
+			var idTypesMedition = self.$route.params.type_medition_id;
+			
+			apiMV.get('/types_meditions/' + idTypesMedition).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/Meditions');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/Meditions');
+			});
+		}
+	}
+});
+
+var Types_Meditions_Add = Vue.extend({
+	template: '#add-TypesMeditions',
+	data: function () {
+		return {
+			post: {
+				name: '',
+				title: '',
+			}
+		}
+	},
+	methods: {
+		createTypesMedition: function() {
+			var post = this.post;
+			apiMV.post('/types_meditions', post).then(function (response) {
+				post.id = response.data;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/Meditions');
+		}
+	}
+});
+
+var Types_Meditions_Edit = Vue.extend({
+	template: '#edit-TypesMeditions',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: '',
+				title: '',
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesMedition();
+	},
+	methods: {
+		updateTypesMedition: function () {
+			var post = this.post;
+			apiMV.put('/types_meditions/' + post.id, post).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/Meditions');
+		},
+		findTypesMedition: function(){
+			var self = this;
+			var idTypesMedition = self.$route.params.type_medition_id;
+			
+			apiMV.get('/types_meditions/' + idTypesMedition).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/Meditions');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/Meditions');
+			});
+		}
+	}
+});
+
+var Types_Meditions_Delete = Vue.extend({
+	template: '#delete-TypesMeditions',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: '',
+				title: '',
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesMedition();
+	},
+	methods: {
+		deleteTypesMedition: function () {
+			var post = this.post;
+			
+			apiMV.delete('/types_meditions/' + post.id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/Meditions');
+			location.reload();
+		},
+		findTypesMedition: function(){
+			var self = this;
+			var idTypesMedition = self.$route.params.type_medition_id;
+			
+			apiMV.get('/types_meditions/' + idTypesMedition).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/Meditions');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/Meditions');
+			});
+		}
+	}
+});
+// ------------ TIPOS - MEDICIONES FIN ------------------------------------- 
+
+
 
 var router = new VueRouter({routes:[
 	{ path: '/', component: Home, name: 'Home'},
@@ -2899,6 +3435,24 @@ var router = new VueRouter({routes:[
 	{ path: '/Types/Contacts/add', component: Types_Contacts_Add, name: 'TypesContacts-Add'},
 	{ path: '/Types/Contacts/:type_contact_id/edit', component: Types_Contacts_Edit, name: 'TypesContacts-Edit'},
 	{ path: '/Types/Contacts/:type_contact_id/delete', component: Types_Contacts_Delete, name: 'TypesContacts-Delete'},
+	
+	{ path: '/Types/Fuels', component: Types_Fuels_List, name: 'TypesFuels-List'},
+	{ path: '/Types/Fuels/:type_fuel_id', component: Types_Fuels_View, name: 'TypesFuels-View'},
+	{ path: '/Types/Fuels/add', component: Types_Fuels_Add, name: 'TypesFuels-Add'},
+	{ path: '/Types/Fuels/:type_fuel_id/edit', component: Types_Fuels_Edit, name: 'TypesFuels-Edit'},
+	{ path: '/Types/Fuels/:type_fuel_id/delete', component: Types_Fuels_Delete, name: 'TypesFuels-Delete'},
+	
+	{ path: '/Types/Identifications', component: Types_Identifications_List, name: 'TypesIdentifications-List'},
+	{ path: '/Types/Identifications/:type_identification_id', component: Types_Identifications_View, name: 'TypesIdentifications-View'},
+	{ path: '/Types/Identifications/add', component: Types_Identifications_Add, name: 'TypesIdentifications-Add'},
+	{ path: '/Types/Identifications/:type_identification_id/edit', component: Types_Identifications_Edit, name: 'TypesIdentifications-Edit'},
+	{ path: '/Types/Identifications/:type_identification_id/delete', component: Types_Identifications_Delete, name: 'TypesIdentifications-Delete'},
+	
+	{ path: '/Types/Meditions', component: Types_Meditions_List, name: 'TypesMeditions-List'},
+	{ path: '/Types/Meditions/:type_medition_id', component: Types_Meditions_View, name: 'TypesMeditions-View'},
+	{ path: '/Types/Meditions/add', component: Types_Meditions_Add, name: 'TypesMeditions-Add'},
+	{ path: '/Types/Meditions/:type_medition_id/edit', component: Types_Meditions_Edit, name: 'TypesMeditions-Edit'},
+	{ path: '/Types/Meditions/:type_medition_id/delete', component: Types_Meditions_Delete, name: 'TypesMeditions-Delete'},
 ]});
 
 var appRender = new Vue({
