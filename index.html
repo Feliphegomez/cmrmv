@@ -24,6 +24,30 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		<style>
+		.image-preview-input {
+			position: relative;
+			overflow: hidden;
+			margin: 0px;    
+			color: #333;
+			background-color: #fff;
+			border-color: #ccc;    
+		}
+		.image-preview-input input[type=file] {
+			position: absolute;
+			top: 0;
+			right: 0;
+			margin: 0;
+			padding: 0;
+			font-size: 20px;
+			cursor: pointer;
+			opacity: 0;
+			filter: alpha(opacity=0);
+		}
+		.image-preview-input-title {
+			margin-left:2px;
+		}
+		</style>
 	</head>
 	<body>
 		<div>
@@ -2702,7 +2726,6 @@
 		</template>
 		<!-- // ------------ TIPOS - VEHICULOS FIN -------------------------------------  -->
 		
-		
 		<!-- // ------------ SERVICIOS - INICIO -------------------------------------  -->
 		<template id="page-Services">
 			<div>
@@ -2920,9 +2943,7 @@
 						</tr>
 					</tbody>
 				</table>
-				
 			</div>
-				
 		</template>
 		
 		<template id="view-Vehicles">
@@ -2933,160 +2954,212 @@
 					</div>
 				</header>
 				
-
-				<table class="table">
-					<tr>
-						<td>ID INTERNO</td>
-						<td>{{ post.id }}</td>
-					</tr>
-					<tr>
-						<td>PLACA</td>
-						<td>{{ post.license_plate }}</td>
-					</tr>
-					<tr>
-						<td>MARCA</td>
-						<td>{{ post.brand }}</td>
-					</tr>
-					<tr>
-						<td>TIPO DE VEHICULO</td>
-						<td>
-							<table class="table">
-								<tr>
-									<td>ID</td>
-									<td>{{ post.type_vehicle.id }}</td>
-								</tr>
-								<tr>
-									<td>NOMBRE</td>
-									<td>{{ post.type_vehicle.name }}</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-					<tr>
-						<td>CAPACIDAD DE PASAJEROS</td>
-						<td>{{ post.passangers_capacity }}</td>
-					</tr>
-					<tr>
-						<td>TIPO DE COMBUSTIBLE</td>
-						<td>
-							<table class="table">
-								<tr>
-									<td>ID</td>
-									<td>{{ post.type_fuel.id }}</td>
-								</tr>
-								<tr>
-									<td>NOMBRE</td>
-									<td>{{ post.type_fuel.name }}</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-					<tr>
-						<td>CILINDRAJE</td>
-						<td>{{ post.cilindraje }}</td>
-					</tr>
-					<tr>
-						<td>TITULAR</td>
-						<td>
-							<table class="table">
-								<tr>
-									<td>NOMBRE COMPLETO</td>
-									<td>{{ post.holder.first_name }} {{ post.holder.second_name }} {{ post.holder.surname }} {{ post.holder.second_surname }}</td>
-								</tr>
-								<tr>
-									<td>TELEFONO FIJO</td>
-									<td>{{ post.holder.phone }}</td>
-								</tr>
-								<tr>
-									<td>TELEFONO MOVIL</td>
-									<td>{{ post.holder.phone_mobile }}</td>
-								</tr>
-								<tr>
-									<td>CORREO ELECTRONICO</td>
-									<td>{{ post.holder.mail }}</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-					<tr>
-						<td>PROPIETARIO</td>
-						<td>
-							<table class="table">
-								<tr>
-									<td>NOMBRE COMPLETO</td>
-									<td>{{ post.propietary.first_name }} {{ post.propietary.second_name }} {{ post.propietary.surname }} {{ post.propietary.second_surname }}</td>
-								</tr>
-								<tr>
-									<td>TELEFONO FIJO</td>
-									<td>{{ post.propietary.phone }}</td>
-								</tr>
-								<tr>
-									<td>TELEFONO MOVIL</td>
-									<td>{{ post.propietary.phone_mobile }}</td>
-								</tr>
-								<tr>
-									<td>CORREO ELECTRONICO</td>
-									<td>{{ post.propietary.mail }}</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-					<tr>
-						<td># TARJETA DE PROPIEDAD</td>
-						<td>{{ post.card_propiety_number }}</td>
-					</tr>
-					<tr>
-						<td># CHASIS</td>
-						<td>{{ post.chassis_number }}</td>
-					</tr>
-					<tr>
-						<td># SOAT</td>
-						<td>{{ post.soat_number }}</td>
-					</tr>
-					<tr>
-						<td># POLIZA DE TERCEROS</td>
-						<td>{{ post.third_party_number }}</td>
-					</tr>
-					<tr>
-						<td>FECHA VENCIMIENTO POLIZA SOAT</td>
-						<td>{{ post.soat_date_expiration }}</td>
-					</tr>
-					<tr>
-						<td>FECHA VENCIMIENTO POLIZA TERCEROS</td>
-						<td>{{ post.third_party_date_expiration }}</td>
-					</tr>
-					<tr>
-						<td>CAPACIDAD CON REALCE</td>
-						<td>{{ post.capacity_with_enhancement }}</td>
-					</tr>
-					<tr>
-						<td>CAPACIDAD SIN REALCE</td>
-						<td>{{ post.capacity_without_enhancement }}</td>
-					</tr>
-					<tr>
-						<td>PESO BASE</td>
-						<td>{{ post.base_weight }}</td>
-					</tr>
-					<tr>
-						<td>COSTO DE RENTA</td>
-						<td>{{ post.rent_cost }}</td>
-					</tr>
-					<tr>
-						<td>ESTADO</td>
-						<td>
-							<table class="table">
-								<tr>
-									<td>ID</td>
-									<td>{{ post.status.id }}</td>
-								</tr>
-								<tr>
-									<td>NOMBRE</td>
-									<td>{{ post.status.name }}</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-				</table>
+				<div id="exTab1">
+					<ul  class="nav nav-pills">
+						<li class="active"><a  href="#1a" data-toggle="tab">Infomacion Basica</a></li>
+						<li><a href="#2a" data-toggle="tab">Tripulantes</a></li>
+						<li><a href="#3a" data-toggle="tab">Galeria</a></li>
+					</ul>
+				</div>
+				<div class="tab-content clearfix">
+					<div class="tab-pane active" id="1a">
+						<table class="table">
+							<tr>
+								<td>ID INTERNO</td>
+								<td>{{ post.id }}</td>
+							</tr>
+							<tr>
+								<td>PLACA</td>
+								<td>{{ post.license_plate }}</td>
+							</tr>
+							<tr>
+								<td>MARCA</td>
+								<td>{{ post.brand }}</td>
+							</tr>
+							<tr>
+								<td>TIPO DE VEHICULO</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID</td>
+											<td>{{ post.type_vehicle.id }}</td>
+										</tr>
+										<tr>
+											<td>NOMBRE</td>
+											<td>{{ post.type_vehicle.name }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>CAPACIDAD DE PASAJEROS</td>
+								<td>{{ post.passangers_capacity }}</td>
+							</tr>
+							<tr>
+								<td>TIPO DE COMBUSTIBLE</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID</td>
+											<td>{{ post.type_fuel.id }}</td>
+										</tr>
+										<tr>
+											<td>NOMBRE</td>
+											<td>{{ post.type_fuel.name }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>CILINDRAJE</td>
+								<td>{{ post.cilindraje }}</td>
+							</tr>
+							<tr>
+								<td>TITULAR</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>NOMBRE COMPLETO</td>
+											<td>{{ post.holder.first_name }} {{ post.holder.second_name }} {{ post.holder.surname }} {{ post.holder.second_surname }}</td>
+										</tr>
+										<tr>
+											<td>TELEFONO FIJO</td>
+											<td>{{ post.holder.phone }}</td>
+										</tr>
+										<tr>
+											<td>TELEFONO MOVIL</td>
+											<td>{{ post.holder.phone_mobile }}</td>
+										</tr>
+										<tr>
+											<td>CORREO ELECTRONICO</td>
+											<td>{{ post.holder.mail }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>PROPIETARIO</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>NOMBRE COMPLETO</td>
+											<td>{{ post.propietary.first_name }} {{ post.propietary.second_name }} {{ post.propietary.surname }} {{ post.propietary.second_surname }}</td>
+										</tr>
+										<tr>
+											<td>TELEFONO FIJO</td>
+											<td>{{ post.propietary.phone }}</td>
+										</tr>
+										<tr>
+											<td>TELEFONO MOVIL</td>
+											<td>{{ post.propietary.phone_mobile }}</td>
+										</tr>
+										<tr>
+											<td>CORREO ELECTRONICO</td>
+											<td>{{ post.propietary.mail }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td># TARJETA DE PROPIEDAD</td>
+								<td>{{ post.card_propiety_number }}</td>
+							</tr>
+							<tr>
+								<td># CHASIS</td>
+								<td>{{ post.chassis_number }}</td>
+							</tr>
+							<tr>
+								<td># SOAT</td>
+								<td>{{ post.soat_number }}</td>
+							</tr>
+							<tr>
+								<td># POLIZA DE TERCEROS</td>
+								<td>{{ post.third_party_number }}</td>
+							</tr>
+							<tr>
+								<td>FECHA VENCIMIENTO POLIZA SOAT</td>
+								<td>{{ post.soat_date_expiration }}</td>
+							</tr>
+							<tr>
+								<td>FECHA VENCIMIENTO POLIZA TERCEROS</td>
+								<td>{{ post.third_party_date_expiration }}</td>
+							</tr>
+							<tr>
+								<td>CAPACIDAD CON REALCE</td>
+								<td>{{ post.capacity_with_enhancement }}</td>
+							</tr>
+							<tr>
+								<td>CAPACIDAD SIN REALCE</td>
+								<td>{{ post.capacity_without_enhancement }}</td>
+							</tr>
+							<tr>
+								<td>PESO BASE</td>
+								<td>{{ post.base_weight }}</td>
+							</tr>
+							<tr>
+								<td>COSTO DE RENTA</td>
+								<td>{{ post.rent_cost }}</td>
+							</tr>
+							<tr>
+								<td>ESTADO</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID</td>
+											<td>{{ post.status.id }}</td>
+										</tr>
+										<tr>
+											<td>NOMBRE</td>
+											<td>{{ post.status.name }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="tab-pane" id="2a">
+						<div class="row">
+							<h3>Tripulantes</h3>
+							<hr>
+							<div class="col-md-12">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>ID</td>
+											<td>Cargo</td>
+											<td>Empleado</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="item in crew">
+											<td>{{ item.charge.id }}</td>
+											<td>{{ item.charge.name }}</td>
+											<td>{{ item.employee.first_name }} {{ item.employee.second_name }} {{ item.employee.surname }} {{ item.employee.second_surname }}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane" id="3a">
+						<h3>Galeria</h3>
+						<hr>
+						<div class="col-md-12" style="display:nones;">
+							<div class="card card-default">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-lg-3" v-for="img in galery_vehicles" style="min-height: 350px;height:350px;">
+											<a class="btn btn-info btn-xs" target="_new" v-bind:href="'/api/pictures/' + img.picture"><i class="fa fa-eye"></i> Ver</a>
+											<hr>
+											<img width="100%" class="image image-responsive" v-bind:src="'/api/pictures/' + img.picture" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
 				<br/>
 				<span class="fa fa-arrow-left" aria-hidden="true"></span>
 				<router-link v-bind:to="{ name: 'Vehicles-List' }">Volver a la lista</router-link>
@@ -3201,175 +3274,225 @@
 						<li class="active"><a  href="#1a" data-toggle="tab">Infomacion Basica</a></li>
 						<li><a href="#2a" data-toggle="tab">Tripulantes</a></li>
 						<li><a href="#3a" data-toggle="tab">Galeria</a></li>
-						<li><a href="#4a" data-toggle="tab">Background color</a></li>
 					</ul>
-
 				</div>
-				
-					<div class="tab-content clearfix">
-						<div class="tab-pane active" id="1a">
-							<form v-on:submit="updateVehicle">
-								<div class="form-group">
-									<label for="edit-content">PLACA</label>
-									<input class="form-control" id="edit-content" v-model="post.license_plate" />
-								</div>
-								<div class="form-group">
-									<label for="add-content">MARCA</label>
-									<input class="form-control" type="text" id="add-content" v-model="post.brand" />
-								</div>
-								<div class="form-group">
-									<label for="add-content">MODELO</label>
-									<input class="form-control" type="text" id="add-content" v-model="post.model" />
-								</div>
-								<div class="form-group">
-									<label for="add-content">TIPO DE VEHICULO</label>
-									<select class="form-control" v-model="post.type_vehicle" id="add-content">
-										<option v-for="item in selectOptions.types_vehicles" :value="item.id">{{ item.name }}</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="add-content">CAPACIDAD DE PASAJEROS</label>
-									<input class="form-control" type="text" id="add-content" v-model="post.passangers_capacity" />
-								</div>
-								<div class="form-group">
-									<label for="add-content">TIPO DE COMBUSTIBLE</label>
-									<select class="form-control" v-model="post.type_fuel" id="add-content">
-										<option v-for="item in selectOptions.types_fuels" :value="item.id">{{ item.name }}</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="add-content">CILINDRAJE</label>
-									<input class="form-control" type="text" id="add-content" v-model="post.cilindraje" />
-								</div>
-								<div class="form-group">
-									<label for="add-content">TITULAR</label>
-									<select class="form-control" v-model="post.holder" id="add-content">
-										<option v-for="item in selectOptions.contacts" :value="item.id">{{ item.identification_number }} - {{ item.first_name }} {{ item.second_name }} {{ item.surname }} {{ item.second_surname }}</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="add-content">PROPIETARIO</label>
-									<select class="form-control" v-model="post.propietary" id="add-content">
-										<option v-for="item in selectOptions.contacts" :value="item.id">{{ item.identification_number }} - {{ item.first_name }} {{ item.second_name }} {{ item.surname }} {{ item.second_surname }}</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="add-content"># TARJETA DE PROPIEDAD</label>
-									<input class="form-control" type="text" id="add-content" v-model="post.card_propiety_number" />
-								</div>
-								<div class="form-group">
-									<label for="add-content"># TARJETA DE CHASIS</label>
-									<input class="form-control" type="text" id="add-content" v-model="post.chassis_number" />
-								</div>
-								<div class="form-group">
-									<label for="add-content"># SOAT</label>
-									<input class="form-control" type="text" id="add-content" v-model="post.soat_number" />
-								</div>
-								<div class="form-group">
-									<label for="add-content"># POLIZA DE TERCEROS</label>
-									<input class="form-control" type="text" id="add-content" v-model="post.third_party_number" />
-								</div>
-								<div class="form-group">
-									<label for="add-content">FECHA DE VENCIMIENTO SOAT</label>
-									<input class="form-control" type="date" id="add-content" v-model="post.soat_date_expiration" />
-								</div>
-								<div class="form-group">
-									<label for="add-content">FECHA DE VENCIMIENTO POLIZA DE TERCEROS</label>
-									<input class="form-control" type="date" id="add-content" v-model="post.third_party_date_expiration" />
-								</div>
-								<div class="form-group">
-									<label for="add-content">CAPACIDAD CON REALCE</label>
-									<input class="form-control" type="text" id="add-content" v-model="post.capacity_with_enhancement" />
-								</div>
-								<div class="form-group">
-									<label for="add-content">CAPACIDAD SIN REALCE</label>
-									<input class="form-control" type="text" id="add-content" v-model="post.capacity_without_enhancement" />
-								</div>
-								<div class="form-group">
-									<label for="add-content">PESO BASE</label>
-									<input class="form-control" type="text" id="add-content" v-model="post.base_weight" />
-								</div>
-								<div class="form-group">
-									<label for="add-content">COSTO DE RENTA</label>
-									<input class="form-control" type="text" id="add-content" v-model="post.rent_cost" />
-								</div>
-								<div class="form-group">
-									<label for="add-content">ESTADO</label>
-									<select class="form-control" v-model="post.status" id="add-content">
-										<option v-for="item in selectOptions.status_vehicles" :value="item.id">{{ item.name }}</option>
-									</select>
-								</div>
-								<button type="submit" class="btn btn-primary">Guardar</button>
-								<router-link class="btn btn-primary" v-bind:to="{ name: 'Vehicles-List' }">Regresar</router-link>
-							</form>
+				<hr>
+				<div class="tab-content clearfix">
+					<div class="tab-pane active" id="1a">
+						<form v-on:submit="updateVehicle">
+							<div class="form-group">
+								<label for="edit-content">PLACA</label>
+								<input class="form-control" id="edit-content" v-model="post.license_plate" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">MARCA</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.brand" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">MODELO</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.model" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">TIPO DE VEHICULO</label>
+								<select class="form-control" v-model="post.type_vehicle" id="add-content">
+									<option v-for="item in selectOptions.types_vehicles" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="add-content">CAPACIDAD DE PASAJEROS</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.passangers_capacity" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">TIPO DE COMBUSTIBLE</label>
+								<select class="form-control" v-model="post.type_fuel" id="add-content">
+									<option v-for="item in selectOptions.types_fuels" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="add-content">CILINDRAJE</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.cilindraje" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">TITULAR</label>
+								<select class="form-control" v-model="post.holder" id="add-content">
+									<option v-for="item in selectOptions.contacts" :value="item.id">{{ item.identification_number }} - {{ item.first_name }} {{ item.second_name }} {{ item.surname }} {{ item.second_surname }}</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="add-content">PROPIETARIO</label>
+								<select class="form-control" v-model="post.propietary" id="add-content">
+									<option v-for="item in selectOptions.contacts" :value="item.id">{{ item.identification_number }} - {{ item.first_name }} {{ item.second_name }} {{ item.surname }} {{ item.second_surname }}</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="add-content"># TARJETA DE PROPIEDAD</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.card_propiety_number" />
+							</div>
+							<div class="form-group">
+								<label for="add-content"># TARJETA DE CHASIS</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.chassis_number" />
+							</div>
+							<div class="form-group">
+								<label for="add-content"># SOAT</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.soat_number" />
+							</div>
+							<div class="form-group">
+								<label for="add-content"># POLIZA DE TERCEROS</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.third_party_number" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">FECHA DE VENCIMIENTO SOAT</label>
+								<input class="form-control" type="date" id="add-content" v-model="post.soat_date_expiration" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">FECHA DE VENCIMIENTO POLIZA DE TERCEROS</label>
+								<input class="form-control" type="date" id="add-content" v-model="post.third_party_date_expiration" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">CAPACIDAD CON REALCE</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.capacity_with_enhancement" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">CAPACIDAD SIN REALCE</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.capacity_without_enhancement" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">PESO BASE</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.base_weight" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">COSTO DE RENTA</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.rent_cost" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">ESTADO</label>
+								<select class="form-control" v-model="post.status" id="add-content">
+									<option v-for="item in selectOptions.status_vehicles" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<button type="submit" class="btn btn-primary">Guardar</button>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'Vehicles-List' }">Regresar</router-link>
+						</form>
 
-						</div>
-						<div class="tab-pane" id="2a">
+					</div>
+					<div class="tab-pane" id="2a">
+						<div class="row">
+							<h3>Tripulantes</h3>
+							<hr>
 							<div class="row">
-								<h3>Tripulantes</h3>
+								<div class="form-group col-sm-12 text-right">
+									<div class="actions">
+										<button class="btn btn-primary" onclick="javascript: $('#includeCrewVehicle-Fast').show();">
+											<span class="fa fa-plus"></span>
+											Agregar
+										</button>
+									</div>
+								</div>
+							</div>
+			
+							
+							<div class="col-md-12" id="includeCrewVehicle-Fast">
+								<form class="row" v-on:submit="includeCrewVehicle"> 
+									<div class="form-group col-md-4">
+										<label for="edit-content">CARGO</label>
+										<select class="form-control" v-model="post_crew.charge" id="add-content">
+											<option v-for="item in selectOptions.types_charges" :value="item.id">{{ item.name }}</option>
+										</select>
+									</div>
+									<div class="form-group col-md-4">
+										<label for="add-content">EMPLEADO</label>
+										<select class="form-control" v-model="post_crew.employee" id="add-content">
+											<option v-for="item in selectOptions.employees" :value="item.id">{{ item.identification_number }} - {{ item.first_name }} {{ item.second_name }} {{ item.surname }} {{ item.second_surname }}</option>
+										</select>
+									</div>
+									<button type="submit" class="btn btn-primary col-md-4">Agregar</button>
+								</form>
 								<hr>
-								<div class="row">
-									<div class="form-group col-sm-12 text-right">
-										<div class="actions">
-											<button class="btn btn-primary" onclick="javascript: $('#includeCrewVehicle-Fast').show();">
-												<span class="fa fa-plus"></span>
-												Agregar
-											</button>
+							</div>
+							<div class="col-md-12">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>ID</td>
+											<td>Cargo</td>
+											<td>Empleado</td>
+											<td></td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="item in crew">
+											<td>{{ item.charge.id }}</td>
+											<td>{{ item.charge.name }}</td>
+											<td>{{ item.employee.first_name }} {{ item.employee.second_name }} {{ item.employee.surname }} {{ item.employee.second_surname }}</td>
+											<td>
+												<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'includeCrewVehicle-Delete', params: { vehicle_id: post.id, crew_vehicle_id: item.id }}">Eliminar</router-link>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane" id="3a">
+						<h3>Galeria</h3>
+						<hr>
+						
+						<div class="col-md-3" style="display:nones;">
+							<div class="card card-default">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-lg-2">
+											<input v-model="image_preview.name" type="hidden" class="form-control" />
+										</div>
+										<div class="col-lg-3">
+											<input v-model="image_preview.type" type="hidden" class="form-control" readonly="" />
+										</div>
+										<div class="col-lg-3">
+											<input v-model="image_preview.size" type="hidden" class="form-control" readonly="" />
+										</div>
+										<div class="col-lg-12">
+											<input v-model="image_preview.src" type="hidden" class="form-control image-preview-filename" readonly="" />
+										</div>
+										<div class="col-lg-12">
+											<div class="input-group image-preview">
+												<img id="dynamic" width="100%" v-bind:src="image_preview.src" />
+											</div>
 										</div>
 									</div>
 								</div>
-				
-								
-								<div class="col-md-12" id="includeCrewVehicle-Fast">
-									<form class="row" v-on:submit="includeCrewVehicle"> 
-										<div class="form-group col-md-4">
-											<label for="edit-content">CARGO</label>
-											<select class="form-control" v-model="post_crew.charge" id="add-content">
-												<option v-for="item in selectOptions.types_charges" :value="item.id">{{ item.name }}</option>
-											</select>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="form-group col-sm-12 text-right">
+									<div class="input-group image-preview" style="float-right">
+										<div class="btn btn-default image-preview-input">
+											<span class="glyphicon glyphicon-folder-open"></span>
+											<span class="image-preview-input-title"> <i class="fa fa-camera"></i> </span>
+											<input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" @change="changeImage" />
 										</div>
-										<div class="form-group col-md-4">
-											<label for="add-content">EMPLEADO</label>
-											<select class="form-control" v-model="post_crew.employee" id="add-content">
-												<option v-for="item in selectOptions.employees" :value="item.id">{{ item.identification_number }} - {{ item.first_name }} {{ item.second_name }} {{ item.surname }} {{ item.second_surname }}</option>
-											</select>
-										</div>
-										<button type="submit" class="btn btn-primary col-md-4">Agregar</button>
-									</form>
-									<hr>
+									</div>
 								</div>
-								<div class="col-md-12">
-									<table class="table">
-										<thead>
-											<tr>
-												<td>ID</td>
-												<td>Cargo</td>
-												<td>Empleado</td>
-												<td></td>
-											</tr>
-										</thead>
-										<tbody>
-											<tr v-for="item in crew">
-												<td>{{ item.charge.id }}</td>
-												<td>{{ item.charge.name }}</td>
-												<td>{{ item.employee.first_name }} {{ item.employee.second_name }} {{ item.employee.surname }} {{ item.employee.second_surname }}</td>
-												<td>
-													<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'includeCrewVehicle-Delete', params: { vehicle_id: post.id, crew_vehicle_id: item.id }}">Eliminar</router-link>
-												</td>
-											</tr>
-										</tbody>
-									</table>
+							</div>
+							
+						</div>
+						<div class="col-md-9" style="display:nones;">
+							<div class="card card-default">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-lg-3" v-for="img in galery_vehicles" style="min-height: 350px;height:350px;">
+											<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'GaleryVehicles-delete', params: { vehicle_id: post.id, galery_vehicles_id: img.id }}">
+												<i class="fa fa-trash"></i> Eliminar
+											</router-link>
+											<a class="btn btn-info btn-xs" target="_new" v-bind:href="'/api/pictures/' + img.picture"><i class="fa fa-eye"></i> Ver</a>
+											<hr>
+											<img width="100%" class="image image-responsive" v-bind:src="'/api/pictures/' + img.picture" />
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div class="tab-pane" id="3a">
-							<h3>Galeria</h3>
-							<hr>
-						</div>
-						<div class="tab-pane" id="4a">
-							<h3>We use css to change the background color of the content to be equal to the tab</h3>
-						</div>
 					</div>
+				</div>
 			</div>
 		</template>
 		
@@ -3394,8 +3517,254 @@
 				</form>
 			</div>
 		</template>
+		
+		<template id="GaleryVehicles-delete">
+		  <div>
+			<h2>Delete galery_vehicles {{ galery_vehicles_id }}</h2>
+			<form v-on:submit="deletegalery_vehicles" method="POST">
+			  <p>The action cannot be undone.</p>
+			  <button type="submit" class="btn btn-danger">Eliminar</button>
+			  <router-link class="btn btn-primary" v-bind:to="'/Vehicles/' + vehicle_id + '/edit'">Cancelar</router-link>
+			</form>
+		  </div>
+		</template>
 		<!-- // ------------ VEHICULOS - FIN -------------------------------------  -->
 		
+		<!-- // ------------ CONTACTOS - INICIO -------------------------------------  -->
+		<template id="page-Contacts">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>CONTACTOS</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'Contacts-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Numero de identificacion</th>
+							<th>Nombre Completo</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'Contacts-View', params: { contact_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'Contacts-View', params: { contact_id: post.id }}">{{ post.identification_number }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'Contacts-View', params: { contact_id: post.id }}">{{ post.first_name }} {{ post.second_name }} {{ post.surname }} {{ post.second_surname }}</router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'Contacts-Edit', params: { contact_id: post.id }}">Modificar</router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'Contacts-Delete', params: { contact_id: post.id }}">Eliminar</router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-Contacts">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>CONTACTOS - [{{ post.identification_number }}] {{ post.first_name }} {{ post.second_name }} {{ post.surname }} {{ post.second_surname }}</h1>
+					</div>
+				</header>
+				<table class="table">
+					<tr>
+						<td>ID INTERNO</td>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<td>TIPO DE IDENTIFICACION</td>
+						<td>
+							<table class="table">
+								<tr>
+									<td>ID INTERNO</td>
+									<td>{{ post.identification_type.id }}</td>
+								</tr>
+								<tr>
+									<td>NOMBRE</td>
+									<td>{{ post.identification_type.name }}</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td># IDENTIFICACION</td>
+						<td>{{ post.identification_number }}</td>
+					</tr>
+					<tr>
+						<td>PRIMER NOMBRE</td>
+						<td>{{ post.first_name }}</td>
+					</tr>
+					<tr>
+						<td>SEGUNDO NOMBRE</td>
+						<td>{{ post.second_name }}</td>
+					</tr>
+					<tr>
+						<td>PRIMER APELLIDO</td>
+						<td>{{ post.surname }}</td>
+					</tr>
+					<tr>
+						<td>SEGUNDO APELLIDO</td>
+						<td>{{ post.second_surname }}</td>
+					</tr>
+					<tr>
+						<td>TELEFONO FIJO</td>
+						<td>{{ post.phone }}</td>
+					</tr>
+					<tr>
+						<td>TELEFONO MOVIL</td>
+						<td>{{ post.phone_mobile }}</td>
+					</tr>
+					<tr>
+						<td>CORREO ELECTRONICO</td>
+						<td>{{ post.mail }}</td>
+					</tr>
+					<tr>
+						<td>DEPARTAMENTO</td>
+						<td>
+							<table class="table">
+								<tr>
+									<td>ID INTERNO</td>
+									<td>{{ post.department.id }}</td>
+								</tr>
+								<tr>
+									<td>NOMBRE</td>
+									<td>{{ post.department.name }}</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>CIUDAD</td>
+						<td>
+							<table class="table">
+								<tr>
+									<td>ID INTERNO</td>
+									<td>{{ post.city.id }}</td>
+								</tr>
+								<tr>
+									<td>NOMBRE</td>
+									<td>{{ post.city.name }}</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>DIRECCION DETALLADA</td>
+						<td>{{ post.address }}</td>
+					</tr>
+					<tr>
+						<td>DIRECCION NORMALIZADA</td>
+						<td>{{ post.geo_address }}</td>
+					</tr>
+				</table>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'Contacts-List' }">Volver a la lista</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-Contacts">
+			<div>
+				<h2>CONTACTOS - Crear</h2>
+				<form v-on:submit="createContact">
+					<div class="form-group">
+						<label for="add-content">TIPO DE IDENTIFICACION</label>
+						<select class="form-control" v-model="post.identification_type" id="add-content">
+							<option v-for="item in selectOptions.types_identifications" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content"># IDENTIFICACION</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.identification_number" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">PRIMER NOMBRE</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.first_name" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">SEGUNDO NOMBRE</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.second_name" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">PRIMER APELLIDO</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.surname" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">SEGUNDO APELLIDO</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.second_surname" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">TELEFONO FIJO</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.phone" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">TELEFONO MOVIL</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.phone_mobile" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">DEPARTAMENTO</label>
+						<select class="form-control" v-model="post.department" id="add-content" @change="loadCitys">
+							<option v-for="item in selectOptions.geo_departments" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content">CIUDAD</label>
+						<select class="form-control" v-model="post.city" id="add-content" >
+							<option v-for="item in selectOptions.geo_citys" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'Contacts-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-Contacts">
+			<div>
+				<h2>CONTACTOS - Modificar</h2>
+				<form v-on:submit="updateContact">
+					<div class="form-group">
+						<label for="edit-content">Nombre</label>
+						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'Contacts-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-Contacts">
+			<div>
+				<h2>CONTACTOS - Eliminar</h2>
+				<form v-on:submit="deleteContact">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'Contacts-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ CONTACTOS - FIN -------------------------------------  -->
 		
 		<!-- Bootstrap core JavaScript -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

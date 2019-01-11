@@ -4195,6 +4195,8 @@ var Vehicles_View = Vue.extend({
 					name: '',
 				},
 			},
+			galery_vehicles: [],
+			crew: [],
 		};
 	},
 	mounted: function () {
@@ -4228,6 +4230,38 @@ var Vehicles_View = Vue.extend({
 				console.log(error);
 				router.push('/Vehicles');
 			});
+			
+			apiMV.get('/crew_vehicles', {
+				params: {
+					filter: [
+						'vehicle,eq,' + idVehicles,
+					],
+					join: [
+						'employees',
+						'types_charges',
+					],
+				}
+			}).then(function (response) {
+				self.crew = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/galery_vehicles', {
+				params: {
+					filter: [
+						'vehicle,eq,' + idVehicles,
+					],
+					join: [
+						//'pictures',
+					],
+				}
+			}).then(function (response) {
+				self.galery_vehicles = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
 		}
 	}
 });
@@ -4366,6 +4400,13 @@ var Vehicles_Edit = Vue.extend({
 				status: 0,
 			},
 			crew: [],
+			image_preview: {
+				name: '',
+				size: 0,
+				src: '',
+				type: '',
+			},
+			galery_vehicles: [],
 		};
 	},
 	mounted: function () {
@@ -4480,7 +4521,6 @@ var Vehicles_Edit = Vue.extend({
 				router.push('/Vehicles');
 			});
 			
-			
 			apiMV.get('/crew_vehicles', {
 				params: {
 					filter: [
@@ -4497,6 +4537,60 @@ var Vehicles_Edit = Vue.extend({
 				console.log(error);
 			});
 			
+			apiMV.get('/galery_vehicles', {
+				params: {
+					filter: [
+						'vehicle,eq,' + idVehicles,
+					],
+					join: [
+						//'pictures',
+					],
+				}
+			}).then(function (response) {
+				self.galery_vehicles = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+		},
+		changeImage: function(e){
+			var self = this;
+			var image = e;
+			var file = image.target.files[0];
+			var reader = new FileReader();
+			// Set preview image into the popover data-content
+
+			reader.onload = function (e) {
+				self.image_preview.name = file.name;
+				self.image_preview.size = file.size;
+				self.image_preview.src = e.target.result;
+				self.image_preview.type = file.type;
+				//img.attr('src', e.target.result);
+				///$(".image-preview-filename").val(file.name);
+				$(".image-preview-input-title").text("Subir Otra");
+
+				//$(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
+
+
+				apiMV.post('/pictures', self.image_preview).then(function (response) {
+					var imageId = response.data;
+					var tempInsert = {};
+					
+					tempInsert.picture = imageId;
+					tempInsert.vehicle = self.post.id;
+					
+					apiMV.post('/galery_vehicles', tempInsert).then(function (response) {
+						var imageId = response.data;
+						//location.reload();
+						self.findVehicle();
+					}).catch(function (error) {
+						console.log(error.response);
+					});
+
+				}).catch(function (error) {
+					console.log(error.response);
+				});
+			}        
+			reader.readAsDataURL(file);
 		}
 	}
 });
@@ -4597,7 +4691,350 @@ var Crew_Vehicle_Delete = Vue.extend({
 		}
 	}
 });
+
+var Galery_Vehicles_Delete = Vue.extend({
+    template: '#GaleryVehicles-delete',
+    data: function () {
+        return {
+            vehicle_id: this.$route.params.vehicle_id,
+            post: {
+                id: 0,
+            },
+            vehicle_id: this.$route.params.vehicle_id,
+            galery_vehicles_id: this.$route.params.galery_vehicles_id,
+        };
+    },
+    methods: {
+        deletegalery_vehicles: function () {
+          var self = this;
+          var galery_vehiclesId = self.galery_vehicles_id;          
+          apiMV.delete('/galery_vehicles/' + galery_vehiclesId).then(function (response) {
+            
+          }).catch(function (error) {
+            console.log(error.response);
+          });
+          
+          router.push('/Vehicles/' + self.vehicle_id + '/edit');
+          // router.push('/');
+          // location.reload();
+        }
+    },
+	mounted: function(){
+   		var self = this;		
+		apiMV.get('/vehicles?join=galery_vehicles,employee_charges&join=crew_vehicles,employee_charges,persons', {
+			params: {
+				filter: [
+					'id,eq,' + self.$route.params.vehicle_id
+				],
+				//join: 'employee_charges,persons,crew_vehicles'
+			}
+		}).then(function (response) {
+		  self.post = response.data.records[0];
+		}).catch(function (error) {
+		  console.log(error.response);
+		});
+	}
+});
 // ------------ VEHICULOS FIN ------------------------------------- 
+
+// ------------ TIPOS - CLIENTES INICIO ------------------------------------- 
+var Contacts_List = Vue.extend({
+  template: '#page-Contacts',
+  data: function () {
+    return {
+		posts: [],
+		searchKey: ''
+	};
+  },
+  mounted: function () {
+    var self = this;
+    apiMV.get('/contacts').then(function (response) {
+		self.posts = response.data.records;
+    }).catch(function (error) {
+		console.log(error);
+    });
+  },
+  computed: {
+    filteredposts: function () {
+      return this.posts.filter(function (post) {
+        return this.searchKey=='' || post.identification_number.indexOf(this.searchKey) !== -1;
+      },this);
+    }
+  }
+});
+
+var Contacts_View = Vue.extend({
+	template: '#view-Contacts',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				identification_type: {
+					id: 0,
+					name: '',
+				},
+				identification_number: '',
+				first_name: '',
+				second_name: '',
+				surname: '',
+				second_surname: '',
+				phone: '',
+				phone_mobile: '',
+				mail: '',
+				department: {
+					id: 0,
+					name: '',
+				},
+				city: {
+					id: 0,
+					name: '',
+				},
+				address: '',
+				geo_address: '',
+			},
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findContact();
+	},
+	methods: {
+		findContact: function(){
+			var self = this;
+			var idContact = self.$route.params.contact_id;
+			
+			apiMV.get('/contacts/' + idContact, {
+				params: {
+					join: [
+						'types_identifications',
+						'geo_departments',
+						'geo_citys',
+					],
+				}
+			}).then(function (response) {
+				if(!response.data.id || !response.data.identification_number)
+				{
+					router.push('/Contacts');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				console.log(error.response);
+				//router.push('/Contacts');
+			});
+		}
+	}
+});
+
+var Contacts_Add = Vue.extend({
+	template: '#add-Contacts',
+	data: function () {
+		return {
+			selectOptions: {
+				types_identifications: [],
+				geo_departments: [],
+				geo_citys: [
+					{
+						id: 0,
+						name: 'Selecciona el department',
+					},
+				],
+			},
+			post: {
+				id: 0,
+				identification_type: 0,
+				identification_number: '',
+				first_name: '',
+				second_name: '',
+				surname: '',
+				second_surname: '',
+				phone: '',
+				phone_mobile: '',
+				mail: '',
+				department: 0,
+				city: 0,
+				address: '',
+				geo_address: '',
+			}
+		}
+	},
+	mounted: function(){
+		var self = this;
+		self.loadSelects();
+	},
+	methods: {
+		loadSelects: function(){
+			var self = this;
+			
+			apiMV.get('/types_identifications', {
+				params: {
+					order: 'name,asc',
+				}
+			}).then(function (response) {
+				self.selectOptions.types_identifications = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/geo_departments', {
+				params: {
+					order: 'name,asc',
+				}
+			}).then(function (response) {
+				self.selectOptions.geo_departments = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+		},
+		loadCitys: function(){
+			var self = this;
+			
+			apiMV.get('/geo_citys', {
+				params: {
+					order: 'name,asc',
+					filter: 'department,eq,' + self.post.department,
+				}
+			}).then(function (response) {
+				self.selectOptions.geo_citys = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+		},
+		createContact: function() {
+			var post = this.post;
+			apiMV.post('/contacts', post).then(function (response) {
+				post.id = response.data;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Contacts');
+		}
+	}
+});
+
+var Contacts_Edit = Vue.extend({
+	template: '#edit-Contacts',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				identification_type: 0,
+				identification_number: '',
+				first_name: '',
+				second_name: '',
+				surname: '',
+				second_surname: '',
+				phone: '',
+				phone_mobile: '',
+				mail: '',
+				department: 0,
+				city: 0,
+				address: '',
+				geo_address: '',
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findContact();
+	},
+	methods: {
+		updateContact: function () {
+			var post = this.post;
+			apiMV.put('/contacts/' + post.id, post).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Contacts');
+		},
+		findContact: function(){
+			var self = this;
+			var idContact = self.$route.params.contact_id;
+			
+			apiMV.get('/contacts/' + idContact).then(function (response) {
+				if(!response.data.id || !response.data.identification_number)
+				{
+					router.push('/Contacts');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Contacts');
+			});
+		}
+	}
+});
+
+var Contacts_Delete = Vue.extend({
+	template: '#delete-Contacts',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				type: 0,
+				identification_type: 0,
+				identification_number: '',
+				first_name: '',
+				second_name: '',
+				surname: '',
+				second_surname: '',
+				phone: '',
+				phone_mobile: '',
+				mail: '',
+				department: 0,
+				city: 0,
+				address: '',
+				geo_address: '',
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findContact();
+	},
+	methods: {
+		deleteContact: function () {
+			var post = this.post;
+			
+			apiMV.delete('/contacts/' + post.id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Contacts');
+			location.reload();
+		},
+		findContact: function(){
+			var self = this;
+			var idContact = self.$route.params.contact_id;
+			
+			apiMV.get('/contacts/' + idContact).then(function (response) {
+				if(!response.data.id || !response.data.identification_number)
+				{
+					router.push('/Contacts');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Contacts');
+			});
+		}
+	}
+});
+
+// ------------ TIPOS - CLIENTES FIN ------------------------------------- 
 
 var router = new VueRouter({routes:[
 	{ path: '/', component: Home, name: 'Home'},
@@ -4744,7 +5181,13 @@ var router = new VueRouter({routes:[
 	{ path: '/Vehicles/:vehicle_id/edit', component: Vehicles_Edit, name: 'Vehicles-Edit'},
 	{ path: '/Vehicles/:vehicle_id/delete', component: Vehicles_Delete, name: 'Vehicles-Delete'},
 	{ path: '/Vehicles/:vehicle_id/crew/:crew_vehicle_id/delete', component: Crew_Vehicle_Delete, name: 'includeCrewVehicle-Delete'},
+	{ path: '/Vehicles/:vehicle_id/picture/:galery_vehicles_id/delete', component: Galery_Vehicles_Delete, name: 'GaleryVehicles-delete'},
 	
+	{ path: '/Contacts', component: Contacts_List, name: 'Contacts-List'},
+	{ path: '/Contacts/:contact_id', component: Contacts_View, name: 'Contacts-View'},
+	{ path: '/Contacts/add', component: Contacts_Add, name: 'Contacts-Add'},
+	{ path: '/Contacts/:contact_id/edit', component: Contacts_Edit, name: 'Contacts-Edit'},
+	{ path: '/Contacts/:contact_id/delete', component: Contacts_Delete, name: 'Contacts-Delete'},
 	
 ]});
 
