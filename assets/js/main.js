@@ -1562,7 +1562,6 @@ var GEO_Citys_Delete = Vue.extend({
 });
 // ------------ GEO - CIUDADES FIN ------------------------------------- 
 
-
 // ------------ ESTADOS -  EMPLEADOS INICIO ------------------------------------- 
 var Status_Employees_List = Vue.extend({
   template: '#page-StatusEmployees',
@@ -3189,7 +3188,7 @@ var Types_Meditions_View = Vue.extend({
 			post: {
 				id: 0,
 				name: '',
-				title: '',
+				code: '',
 			},
 		};
 	},
@@ -3225,7 +3224,7 @@ var Types_Meditions_Add = Vue.extend({
 		return {
 			post: {
 				name: '',
-				title: '',
+				code: '',
 			}
 		}
 	},
@@ -3249,7 +3248,7 @@ var Types_Meditions_Edit = Vue.extend({
 			post: {
 				id: 0,
 				name: '',
-				title: '',
+				code: '',
 			}
 		};
 	},
@@ -3295,7 +3294,7 @@ var Types_Meditions_Delete = Vue.extend({
 			post: {
 				id: 0,
 				name: '',
-				title: '',
+				code: '',
 			}
 		};
 	},
@@ -3337,7 +3336,1268 @@ var Types_Meditions_Delete = Vue.extend({
 });
 // ------------ TIPOS - MEDICIONES FIN ------------------------------------- 
 
+// ------------ TIPOS - RENUNCIAS INICIO ------------------------------------- 
+var Types_ReasonsResignations_List = Vue.extend({
+  template: '#page-TypesReasonsResignations',
+  data: function () {
+    return {
+		posts: [],
+		searchKey: ''
+	};
+  },
+  mounted: function () {
+    var self = this;
+    apiMV.get('/types_reasons_resignations').then(function (response) {
+		self.posts = response.data.records;
+    }).catch(function (error) {
+		console.log(error);
+    });
+  },
+  computed: {
+    filteredposts: function () {
+      return this.posts.filter(function (post) {
+        return this.searchKey=='' || post.name.indexOf(this.searchKey) !== -1;
+      },this);
+    }
+  }
+});
 
+var Types_ReasonsResignations_View = Vue.extend({
+	template: '#view-TypesReasonsResignations',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: '',
+			},
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesReasonResignation();
+	},
+	methods: {
+		findTypesReasonResignation: function(){
+			var self = this;
+			var idTypesReasonResignation = self.$route.params.type_reason_resignation_id;
+			
+			apiMV.get('/types_reasons_resignations/' + idTypesReasonResignation).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/ReasonsResignations');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/ReasonsResignations');
+			});
+		}
+	}
+});
+
+var Types_ReasonsResignations_Add = Vue.extend({
+	template: '#add-TypesReasonsResignations',
+	data: function () {
+		return {
+			post: {
+				name: '',
+			}
+		}
+	},
+	methods: {
+		createTypesMedition: function() {
+			var post = this.post;
+			apiMV.post('/types_reasons_resignations', post).then(function (response) {
+				post.id = response.data;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/ReasonsResignations');
+		}
+	}
+});
+
+var Types_ReasonsResignations_Edit = Vue.extend({
+	template: '#edit-TypesReasonsResignations',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesReasonResignation();
+	},
+	methods: {
+		updateTypesMedition: function () {
+			var post = this.post;
+			apiMV.put('/types_reasons_resignations/' + post.id, post).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/ReasonsResignations');
+		},
+		findTypesReasonResignation: function(){
+			var self = this;
+			var idTypesReasonResignation = self.$route.params.type_reason_resignation_id;
+			
+			apiMV.get('/types_reasons_resignations/' + idTypesReasonResignation).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/ReasonsResignations');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/ReasonsResignations');
+			});
+		}
+	}
+});
+
+var Types_ReasonsResignations_Delete = Vue.extend({
+	template: '#delete-TypesReasonsResignations',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesReasonResignation();
+	},
+	methods: {
+		deleteTypesMedition: function () {
+			var post = this.post;
+			
+			apiMV.delete('/types_reasons_resignations/' + post.id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/ReasonsResignations');
+			location.reload();
+		},
+		findTypesReasonResignation: function(){
+			var self = this;
+			var idTypesReasonResignation = self.$route.params.type_reason_resignation_id;
+			
+			apiMV.get('/types_reasons_resignations/' + idTypesReasonResignation).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/ReasonsResignations');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/ReasonsResignations');
+			});
+		}
+	}
+});
+// ------------ TIPOS - RENUNCIAS FIN ------------------------------------- 
+
+// ------------ TIPOS - SOCIEDADES INICIO ------------------------------------- 
+var Types_Societys_List = Vue.extend({
+  template: '#page-TypesSocietys',
+  data: function () {
+    return {
+		posts: [],
+		searchKey: ''
+	};
+  },
+  mounted: function () {
+    var self = this;
+    apiMV.get('/types_societys').then(function (response) {
+		self.posts = response.data.records;
+    }).catch(function (error) {
+		console.log(error);
+    });
+  },
+  computed: {
+    filteredposts: function () {
+      return this.posts.filter(function (post) {
+        return this.searchKey=='' || post.name.indexOf(this.searchKey) !== -1;
+      },this);
+    }
+  }
+});
+
+var Types_Societys_View = Vue.extend({
+	template: '#view-TypesSocietys',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: '',
+			},
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesSociety();
+	},
+	methods: {
+		findTypesSociety: function(){
+			var self = this;
+			var idTypesSocietys = self.$route.params.type_society_id;
+			
+			apiMV.get('/types_societys/' + idTypesSocietys).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/Societys');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/Societys');
+			});
+		}
+	}
+});
+
+var Types_Societys_Add = Vue.extend({
+	template: '#add-TypesSocietys',
+	data: function () {
+		return {
+			post: {
+				name: '',
+			}
+		}
+	},
+	methods: {
+		createTypesSociety: function() {
+			var post = this.post;
+			apiMV.post('/types_societys', post).then(function (response) {
+				post.id = response.data;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/Societys');
+		}
+	}
+});
+
+var Types_Societys_Edit = Vue.extend({
+	template: '#edit-TypesSocietys',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesSociety();
+	},
+	methods: {
+		updateTypesSociety: function () {
+			var post = this.post;
+			apiMV.put('/types_societys/' + post.id, post).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/Societys');
+		},
+		findTypesSociety: function(){
+			var self = this;
+			var idTypesSocietys = self.$route.params.type_society_id;
+			
+			apiMV.get('/types_societys/' + idTypesSocietys).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/Societys');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/Societys');
+			});
+		}
+	}
+});
+
+var Types_Societys_Delete = Vue.extend({
+	template: '#delete-TypesSocietys',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesSociety();
+	},
+	methods: {
+		deleteTypesSociety: function () {
+			var post = this.post;
+			
+			apiMV.delete('/types_societys/' + post.id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/Societys');
+			location.reload();
+		},
+		findTypesSociety: function(){
+			var self = this;
+			var idTypesSocietys = self.$route.params.type_society_id;
+			
+			apiMV.get('/types_societys/' + idTypesSocietys).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/Societys');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/Societys');
+			});
+		}
+	}
+});
+// ------------ TIPOS - SOCIEDADES FIN ------------------------------------- 
+
+// ------------ TIPOS - VEHICULOS - INICIO ------------------------------------- 
+var Types_Vehicles_List = Vue.extend({
+  template: '#page-TypesVehicles',
+  data: function () {
+    return {
+		posts: [],
+		searchKey: ''
+	};
+  },
+  mounted: function () {
+    var self = this;
+    apiMV.get('/types_vehicles').then(function (response) {
+		self.posts = response.data.records;
+    }).catch(function (error) {
+		console.log(error);
+    });
+  },
+  computed: {
+    filteredposts: function () {
+      return this.posts.filter(function (post) {
+        return this.searchKey=='' || post.name.indexOf(this.searchKey) !== -1;
+      },this);
+    }
+  }
+});
+
+var Types_Vehicles_View = Vue.extend({
+	template: '#view-TypesVehicles',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: '',
+			},
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesVehicle();
+	},
+	methods: {
+		findTypesVehicle: function(){
+			var self = this;
+			var idTypesVehicles = self.$route.params.type_vehicle_id;
+			
+			apiMV.get('/types_vehicles/' + idTypesVehicles).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/Vehicles');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/Vehicles');
+			});
+		}
+	}
+});
+
+var Types_Vehicles_Add = Vue.extend({
+	template: '#add-TypesVehicles',
+	data: function () {
+		return {
+			post: {
+				name: '',
+			}
+		}
+	},
+	methods: {
+		createTypesVehicle: function() {
+			var post = this.post;
+			apiMV.post('/types_vehicles', post).then(function (response) {
+				post.id = response.data;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/Vehicles');
+		}
+	}
+});
+
+var Types_Vehicles_Edit = Vue.extend({
+	template: '#edit-TypesVehicles',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesVehicle();
+	},
+	methods: {
+		updateTypesVehicle: function () {
+			var post = this.post;
+			apiMV.put('/types_vehicles/' + post.id, post).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/Vehicles');
+		},
+		findTypesVehicle: function(){
+			var self = this;
+			var idTypesVehicles = self.$route.params.type_vehicle_id;
+			
+			apiMV.get('/types_vehicles/' + idTypesVehicles).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/Vehicles');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/Vehicles');
+			});
+		}
+	}
+});
+
+var Types_Vehicles_Delete = Vue.extend({
+	template: '#delete-TypesVehicles',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesVehicle();
+	},
+	methods: {
+		deleteTypesVehicle: function () {
+			var post = this.post;
+			
+			apiMV.delete('/types_vehicles/' + post.id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/Vehicles');
+			location.reload();
+		},
+		findTypesVehicle: function(){
+			var self = this;
+			var idTypesVehicles = self.$route.params.type_vehicle_id;
+			
+			apiMV.get('/types_vehicles/' + idTypesVehicles).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/Vehicles');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/Vehicles');
+			});
+		}
+	}
+});
+// ------------ TIPOS - VEHICULOS - FIN ------------------------------------- 
+
+// ------------ SERVICIOS - INICIO ------------------------------------- 
+var Services_List = Vue.extend({
+  template: '#page-Services',
+  data: function () {
+    return {
+        posts: [],
+        searchKey: '',
+    };
+  },
+  created: function () {
+    var self = this;
+    apiMV.get('/services', {
+      params: {
+        join:[
+          'types_meditions',
+        ],
+      }
+    }).then(function (response) {
+      self.posts = response.data.records;
+    }).catch(function (error) {
+      console.log(error);
+    });
+    
+  },
+  computed: {
+    filteredposts: function () {
+      return this.posts.filter(function (post) {
+        return this.searchKey=='' || post.name.indexOf(this.searchKey) !== -1;
+      },this);
+    }
+  }
+});
+
+var Services_View = Vue.extend({
+	template: '#view-Services',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: '',
+				description: '',
+				type_medition: {
+					id: 0,
+					name: '',
+					code: '',
+				},
+				price: '',
+			},
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findService();
+	},
+	methods: {
+		findService: function(){
+			var self = this;
+			var idService = self.$route.params.service_id;
+			
+			apiMV.get('/services/' + idService, {
+				params: {
+					join: 'types_meditions'
+				}
+			}).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Services');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Services');
+			});
+		}
+	}
+});
+
+var Services_Add = Vue.extend({
+	template: '#add-Services',
+	data: function () {
+		return {
+			selectOptions: {
+				types_meditions: [],
+			},
+			post: {
+				name: '',
+				description: '',
+				type_medition: 0,
+				price: '',
+			}
+		}
+	},
+	mounted: function () {
+		var self = this;
+		self.loadSelects();
+	},
+	methods: {
+		loadSelects: function(){
+			var self = this;
+			apiMV.get('/types_meditions', {
+				params: {
+					order: 'name,asc',
+				}
+			}).then(function (response) {
+				self.selectOptions.types_meditions = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+		},
+		createService: function() {
+			var post = this.post;
+			apiMV.post('/services', post).then(function (response) {
+				post.id = response.data;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Services');
+		}
+	}
+});
+
+var Services_Edit = Vue.extend({
+	template: '#edit-Services',
+	data: function () {
+		return {
+			selectOptions: {
+				types_meditions: [],
+			},
+			post: {
+				id: 0,
+				name: '',
+				description: '',
+				type_medition: 0,
+				price: '',
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.loadSelects();
+		self.findService();
+	},
+	methods: {
+		loadSelects: function(){
+			var self = this;
+			apiMV.get('/types_meditions', {
+				params: {
+					order: 'name,asc',
+				}
+			}).then(function (response) {
+				self.selectOptions.types_meditions = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+		},
+		updateService: function () {
+			var post = this.post;
+			apiMV.put('/services/' + post.id, post).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Services');
+		},
+		findService: function(){
+			var self = this;
+			var idService = self.$route.params.service_id;
+			
+			apiMV.get('/services/' + idService).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Services');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Services');
+			});
+		}
+	}
+});
+
+var Services_Delete = Vue.extend({
+	template: '#delete-Services',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: '',
+				description: '',
+				type_medition: 0,
+				price: '',
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findService();
+	},
+	methods: {
+		deleteService: function () {
+			var post = this.post;
+			
+			apiMV.delete('/services/' + post.id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Services');
+			location.reload();
+		},
+		findService: function(){
+			var self = this;
+			var idService = self.$route.params.service_id;
+			
+			apiMV.get('/services/' + idService).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Services');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Services');
+			});
+		}
+	}
+});
+// ------------ SERVICIOS - FIN ------------------------------------- 
+
+// ------------ VEHICULOS INICIO ------------------------------------- 
+var Vehicles_List = Vue.extend({
+  template: '#page-Vehicles',
+  data: function () {
+    return {
+		posts: [],
+		searchKey: ''
+	};
+  },
+  mounted: function () {
+    var self = this;
+    apiMV.get('/vehicles', {
+		params: {
+			join: [
+				'types_vehicles',
+				'types_fuels',
+				'contacts',
+				'status_vehicles',
+			],
+		}
+	}).then(function (response) {
+		self.posts = response.data.records;
+    }).catch(function (error) {
+		console.log(error);
+    });
+  },
+  computed: {
+    filteredposts: function () {
+      return this.posts.filter(function (post) {
+        return this.searchKey=='' || post.license_plate.indexOf(this.searchKey) !== -1;
+      },this);
+    }
+  }
+});
+
+var Vehicles_View = Vue.extend({
+	template: '#view-Vehicles',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				license_plate: '',
+				brand: '',
+				model: '',
+				type_vehicle: {
+					id: 0,
+					name: '',
+				},
+				passangers_capacity: 0,
+				type_fuel: {
+					id: 0,
+					name: '',
+				},
+				cilindraje: '',
+				holder: {
+					id: 0,
+					first_name: '',
+					second_name: '',
+					surname: '',
+					second_surname: '',
+					phone: '',
+					phone_mobile: '',
+					mail: '',
+				},
+				propietary: {
+					id: 0,
+					first_name: '',
+					second_name: '',
+					surname: '',
+					second_surname: '',
+					phone: '',
+					phone_mobile: '',
+					mail: '',
+				},
+				card_propiety_number: '',
+				chassis_number: '',
+				soat_number: '',
+				third_party_number: '',
+				soat_date_expiration: '',
+				third_party_date_expiration: '',
+				capacity_with_enhancement: '',
+				capacity_without_enhancement: '',
+				base_weight: '',
+				rent_cost: '',
+				status: {
+					id: 0,
+					name: '',
+				},
+			},
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findVehicle();
+	},
+	methods: {
+		findVehicle: function(){
+			var self = this;
+			var idVehicles = self.$route.params.vehicle_id;
+			
+			apiMV.get('/vehicles/' + idVehicles, {
+				params: {
+					join: [
+						'types_vehicles',
+						'types_fuels',
+						'contacts',
+						'status_vehicles',
+					],
+				}
+			}).then(function (response) {
+				if(!response.data.id || !response.data.license_plate)
+				{
+					router.push('/Vehicles');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Vehicles');
+			});
+		}
+	}
+});
+
+var Vehicles_Add = Vue.extend({
+	template: '#add-Vehicles',
+	data: function () {
+		return {
+			selectOptions: {
+				types_vehicles: [],
+				types_fuels: [],
+				contacts: [],
+				status_vehicles: [],
+			},
+			post: {
+				license_plate: '',
+				brand: '',
+				model: '',
+				type_vehicle: 0,
+				passangers_capacity: 0,
+				type_fuel: 0,
+				cilindraje: '',
+				holder: 0,
+				propietary: 0,
+				card_propiety_number: '',
+				chassis_number: '',
+				soat_number: '',
+				third_party_number: '',
+				soat_date_expiration: '',
+				third_party_date_expiration: '',
+				capacity_with_enhancement: '',
+				capacity_without_enhancement: '',
+				base_weight: '',
+				rent_cost: '',
+				status: 0,
+			},
+		}
+	},
+	mounted: function(){
+		var self = this;
+		self.loadSelects();
+	},
+	methods: {
+		loadSelects: function(){
+			var self = this;
+			apiMV.get('/types_vehicles', {
+				params: {
+					order: 'name,asc',
+				}
+			}).then(function (response) {
+				self.selectOptions.types_vehicles = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/types_fuels', {
+				params: {
+					order: 'name,asc',
+				}
+			}).then(function (response) {
+				self.selectOptions.types_fuels = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/contacts', {
+				params: {
+					order: 'identification_number,asc',
+				}
+			}).then(function (response) {
+				self.selectOptions.contacts = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/status_vehicles', {
+				params: {
+					order: 'name,asc',
+				}
+			}).then(function (response) {
+				self.selectOptions.status_vehicles = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+		},
+		createVehicle: function() {
+			var post = this.post;
+			apiMV.post('/vehicles', post).then(function (response) {
+				post.id = response.data;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Vehicles');
+		}
+	}
+});
+
+var Vehicles_Edit = Vue.extend({
+	template: '#edit-Vehicles',
+	data: function () {
+		return {
+			selectOptions: {
+				types_vehicles: [],
+				types_fuels: [],
+				contacts: [],
+				employees: [],
+				status_vehicles: [],
+				types_charges: [],
+			},
+			post_crew: {
+				vehicle: 0,
+				charge: 0,
+				employee: 0,
+			},
+			post: {
+				id: 0,
+				license_plate: '',
+				brand: '',
+				model: '',
+				type_vehicle: 0,
+				passangers_capacity: 0,
+				type_fuel: 0,
+				cilindraje: '',
+				holder: 0,
+				propietary: 0,
+				card_propiety_number: '',
+				chassis_number: '',
+				soat_number: '',
+				third_party_number: '',
+				soat_date_expiration: '',
+				third_party_date_expiration: '',
+				capacity_with_enhancement: '',
+				capacity_without_enhancement: '',
+				base_weight: '',
+				rent_cost: '',
+				status: 0,
+			},
+			crew: [],
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.loadSelects();
+		self.findVehicle();
+	},
+	methods: {
+		loadSelects: function(){
+			var self = this;
+			apiMV.get('/types_vehicles', {
+				params: {
+					order: 'name,asc',
+				}
+			}).then(function (response) {
+				self.selectOptions.types_vehicles = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/types_fuels', {
+				params: {
+					order: 'name,asc',
+				}
+			}).then(function (response) {
+				self.selectOptions.types_fuels = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/types_charges', {
+				params: {
+					order: 'name,asc',
+				}
+			}).then(function (response) {
+				self.selectOptions.types_charges = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/contacts', {
+				params: {
+					order: 'identification_number,asc',
+				}
+			}).then(function (response) {
+				self.selectOptions.contacts = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/employees', {
+				params: {
+					
+				}
+			}).then(function (response) {
+				self.selectOptions.employees = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/status_vehicles', {
+				params: {
+					order: 'name,asc',
+				}
+			}).then(function (response) {
+				self.selectOptions.status_vehicles = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+		},
+		updateVehicle: function () {
+			var post = this.post;
+			apiMV.put('/vehicles/' + post.id, post).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Vehicles');
+		},
+		includeCrewVehicle: function () {
+			var self = this;
+			console.log(self.post_crew);
+			
+			apiMV.post('/crew_vehicles', self.post_crew).then(function (response) {
+				// post.id = response.data;
+				$("#includeCrewVehicle-Fast").hide();
+				self.post_crew.charge = 0;
+				self.post_crew.employee = 0;
+				self.findVehicle();
+			}).catch(function (error) {
+				console.log(error);
+				console.log(error.response);
+			});
+			
+		},
+		findVehicle: function(){
+			var self = this;
+			var idVehicles = self.$route.params.vehicle_id;
+			
+			apiMV.get('/vehicles/' + idVehicles).then(function (response) {
+				if(!response.data.id || !response.data.license_plate)
+				{
+					router.push('/Vehicles');
+				}
+				else
+				{
+					self.post = response.data;
+					self.post_crew.vehicle = response.data.id;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Vehicles');
+			});
+			
+			
+			apiMV.get('/crew_vehicles', {
+				params: {
+					filter: [
+						'vehicle,eq,' + idVehicles,
+					],
+					join: [
+						'employees',
+						'types_charges',
+					],
+				}
+			}).then(function (response) {
+				self.crew = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+		}
+	}
+});
+
+var Vehicles_Delete = Vue.extend({
+	template: '#delete-Vehicles',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				license_plate: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findVehicle();
+	},
+	methods: {
+		deleteVehicle: function () {
+			var post = this.post;
+			
+			apiMV.delete('/vehicles/' + post.id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Vehicles');
+			location.reload();
+		},
+		findVehicle: function(){
+			var self = this;
+			var idVehicles = self.$route.params.vehicle_id;
+			
+			apiMV.get('/vehicles/' + idVehicles).then(function (response) {
+				if(!response.data.id || !response.data.license_plate)
+				{
+					router.push('/Vehicles');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Vehicles');
+			});
+		}
+	}
+});
+
+var Crew_Vehicle_Delete = Vue.extend({
+	template: '#delete-includeCrewVehicle',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				charge: 0,
+				vehicle: 0,
+				employee: 0,
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findCrewVehicle();
+	},
+	methods: {
+		deleteCrewVehicle: function () {
+			var self = this;
+			var idCrewVehicles = self.$route.params.vehicle_id;
+			var post = this.post;
+			
+			apiMV.delete('/crew_vehicles/' + post.id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+				router.push('/Vehicles/' + idCrewVehicles + '/edit');
+		},
+		findCrewVehicle: function(){
+			var self = this;
+			var idCrewVehicles = self.$route.params.crew_vehicle_id;
+			
+			apiMV.get('/crew_vehicles/' + idCrewVehicles).then(function (response) {
+				if(!response.data.id || !response.data.charge)
+				{
+					router.push('/Vehicles/' + idCrewVehicles + '/edit');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Vehicles/' + idCrewVehicles + '/edit');
+			});
+		}
+	}
+});
+// ------------ VEHICULOS FIN ------------------------------------- 
 
 var router = new VueRouter({routes:[
 	{ path: '/', component: Home, name: 'Home'},
@@ -3453,6 +4713,39 @@ var router = new VueRouter({routes:[
 	{ path: '/Types/Meditions/add', component: Types_Meditions_Add, name: 'TypesMeditions-Add'},
 	{ path: '/Types/Meditions/:type_medition_id/edit', component: Types_Meditions_Edit, name: 'TypesMeditions-Edit'},
 	{ path: '/Types/Meditions/:type_medition_id/delete', component: Types_Meditions_Delete, name: 'TypesMeditions-Delete'},
+	
+	{ path: '/Types/ReasonsResignations', component: Types_ReasonsResignations_List, name: 'TypesReasonsResignations-List'},
+	{ path: '/Types/ReasonsResignations/:type_reason_resignation_id', component: Types_ReasonsResignations_View, name: 'TypesReasonsResignations-View'},
+	{ path: '/Types/ReasonsResignations/add', component: Types_ReasonsResignations_Add, name: 'TypesReasonsResignations-Add'},
+	{ path: '/Types/ReasonsResignations/:type_reason_resignation_id/edit', component: Types_ReasonsResignations_Edit, name: 'TypesReasonsResignations-Edit'},
+	{ path: '/Types/ReasonsResignations/:type_reason_resignation_id/delete', component: Types_ReasonsResignations_Delete, name: 'TypesReasonsResignations-Delete'},
+	
+	{ path: '/Types/Societys', component: Types_Societys_List, name: 'TypesSocietys-List'},
+	{ path: '/Types/Societys/:type_society_id', component: Types_Societys_View, name: 'TypesSocietys-View'},
+	{ path: '/Types/Societys/add', component: Types_Societys_Add, name: 'TypesSocietys-Add'},
+	{ path: '/Types/Societys/:type_society_id/edit', component: Types_Societys_Edit, name: 'TypesSocietys-Edit'},
+	{ path: '/Types/Societys/:type_society_id/delete', component: Types_Societys_Delete, name: 'TypesSocietys-Delete'},
+	
+	{ path: '/Types/Vehicles', component: Types_Vehicles_List, name: 'TypesVehicles-List'},
+	{ path: '/Types/Vehicles/:type_vehicle_id', component: Types_Vehicles_View, name: 'TypesVehicles-View'},
+	{ path: '/Types/Vehicles/add', component: Types_Vehicles_Add, name: 'TypesVehicles-Add'},
+	{ path: '/Types/Vehicles/:type_vehicle_id/edit', component: Types_Vehicles_Edit, name: 'TypesVehicles-Edit'},
+	{ path: '/Types/Vehicles/:type_vehicle_id/delete', component: Types_Vehicles_Delete, name: 'TypesVehicles-Delete'},
+	
+	{ path: '/Services', component: Services_List, name: 'Services-List'},
+	{ path: '/Services/:service_id', component: Services_View, name: 'Services-View'},
+	{ path: '/Services/add', component: Services_Add, name: 'Services-Add'},
+	{ path: '/Services/:service_id/edit', component: Services_Edit, name: 'Services-Edit'},
+	{ path: '/Services/:service_id/delete', component: Services_Delete, name: 'Services-Delete'},
+	
+	{ path: '/Vehicles', component: Vehicles_List, name: 'Vehicles-List'},
+	{ path: '/Vehicles/:vehicle_id', component: Vehicles_View, name: 'Vehicles-View'},
+	{ path: '/Vehicles/add', component: Vehicles_Add, name: 'Vehicles-Add'},
+	{ path: '/Vehicles/:vehicle_id/edit', component: Vehicles_Edit, name: 'Vehicles-Edit'},
+	{ path: '/Vehicles/:vehicle_id/delete', component: Vehicles_Delete, name: 'Vehicles-Delete'},
+	{ path: '/Vehicles/:vehicle_id/crew/:crew_vehicle_id/delete', component: Crew_Vehicle_Delete, name: 'includeCrewVehicle-Delete'},
+	
+	
 ]});
 
 var appRender = new Vue({
@@ -3569,7 +4862,6 @@ var appRender = new Vue({
 		
 	},
 }).$mount('#app');
-
 
 
 // -------------------------

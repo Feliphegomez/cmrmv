@@ -182,7 +182,7 @@
 		  <div>
 			<h2>Sesion no encontrada</h2>
 			<p>
-				No iniciaste sesion o tu sesion a expirado, ingresa tu usuario y contraseĂ±a para continuar utilizando el sitio.
+				No iniciaste sesion o tu sesion a expirado, ingresa tu usuario y contraseña para continuar utilizando el sitio.
 			</p>
 		  </div>
 		</template>
@@ -3308,33 +3308,21 @@
 							<div class="row">
 								<h3>Tripulantes</h3>
 								<hr>
-								<div class="row">
-									<div class="form-group col-sm-12 text-right">
-										<div class="actions">
-											<button class="btn btn-primary" onclick="javascript: $('#includeCrewVehicle-Fast').show();">
-												<span class="fa fa-plus"></span>
-												Agregar
-											</button>
-										</div>
-									</div>
-								</div>
-				
-								
 								<div class="col-md-12" id="includeCrewVehicle-Fast">
-									<form class="row" v-on:submit="includeCrewVehicle"> 
-										<div class="form-group col-md-4">
+									<form > <!-- v-on:submit="updateVehicle" -->
+										<div class="form-group">
 											<label for="edit-content">CARGO</label>
 											<select class="form-control" v-model="post_crew.charge" id="add-content">
 												<option v-for="item in selectOptions.types_charges" :value="item.id">{{ item.name }}</option>
 											</select>
 										</div>
-										<div class="form-group col-md-4">
+										<div class="form-group">
 											<label for="add-content">EMPLEADO</label>
 											<select class="form-control" v-model="post_crew.employee" id="add-content">
-												<option v-for="item in selectOptions.employees" :value="item.id">{{ item.identification_number }} - {{ item.first_name }} {{ item.second_name }} {{ item.surname }} {{ item.second_surname }}</option>
+												<option v-for="item in selectOptions.contacts" :value="item.id">{{ item.identification_number }} - {{ item.first_name }} {{ item.second_name }} {{ item.surname }} {{ item.second_surname }}</option>
 											</select>
 										</div>
-										<button type="submit" class="btn btn-primary col-md-4">Agregar</button>
+										<button type="submit" class="btn btn-primary">A�adir</button>
 									</form>
 									<hr>
 								</div>
@@ -3345,7 +3333,6 @@
 												<td>ID</td>
 												<td>Cargo</td>
 												<td>Empleado</td>
-												<td></td>
 											</tr>
 										</thead>
 										<tbody>
@@ -3353,9 +3340,6 @@
 												<td>{{ item.charge.id }}</td>
 												<td>{{ item.charge.name }}</td>
 												<td>{{ item.employee.first_name }} {{ item.employee.second_name }} {{ item.employee.surname }} {{ item.employee.second_surname }}</td>
-												<td>
-													<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'includeCrewVehicle-Delete', params: { vehicle_id: post.id, crew_vehicle_id: item.id }}">Eliminar</router-link>
-												</td>
 											</tr>
 										</tbody>
 									</table>
@@ -3383,18 +3367,8 @@
 				</form>
 			</div>
 		</template>
-		
-		<template id="delete-includeCrewVehicle">
-			<div>
-				<h2>VEHICULOS - TRIPULACION - Eliminar</h2>
-				<form v-on:submit="deleteCrewVehicle">
-					<p>The action cannot be undone.</p>
-					<button type="submit" class="btn btn-danger">Eliminar</button>
-					<router-link class="btn btn-primary" v-bind:to="{name: 'Vehicles-Edit', params: { vehicle_id: post.id }}">Cancelar</router-link>
-				</form>
-			</div>
-		</template>
 		<!-- // ------------ VEHICULOS - FIN -------------------------------------  -->
+		
 		
 		
 		<!-- Bootstrap core JavaScript -->
