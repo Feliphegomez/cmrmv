@@ -3336,183 +3336,6 @@ var Types_Meditions_Delete = Vue.extend({
 });
 // ------------ TIPOS - MEDICIONES FIN ------------------------------------- 
 
-// ------------ TIPOS - RENUNCIAS INICIO ------------------------------------- 
-var Types_ReasonsResignations_List = Vue.extend({
-  template: '#page-TypesReasonsResignations',
-  data: function () {
-    return {
-		posts: [],
-		searchKey: ''
-	};
-  },
-  mounted: function () {
-    var self = this;
-    apiMV.get('/types_reasons_resignations').then(function (response) {
-		self.posts = response.data.records;
-    }).catch(function (error) {
-		console.log(error);
-    });
-  },
-  computed: {
-    filteredposts: function () {
-      return this.posts.filter(function (post) {
-        return this.searchKey=='' || post.name.indexOf(this.searchKey) !== -1;
-      },this);
-    }
-  }
-});
-
-var Types_ReasonsResignations_View = Vue.extend({
-	template: '#view-TypesReasonsResignations',
-	data: function () {
-		return {
-			post: {
-				id: 0,
-				name: '',
-			},
-		};
-	},
-	mounted: function () {
-		var self = this;
-		self.findTypesReasonResignation();
-	},
-	methods: {
-		findTypesReasonResignation: function(){
-			var self = this;
-			var idTypesReasonResignation = self.$route.params.type_reason_resignation_id;
-			
-			apiMV.get('/types_reasons_resignations/' + idTypesReasonResignation).then(function (response) {
-				if(!response.data.id || !response.data.name)
-				{
-					router.push('/Types/ReasonsResignations');
-				}
-				else
-				{
-					self.post = response.data;
-				}
-			}).catch(function (error) {
-				console.log(error);
-				router.push('/Types/ReasonsResignations');
-			});
-		}
-	}
-});
-
-var Types_ReasonsResignations_Add = Vue.extend({
-	template: '#add-TypesReasonsResignations',
-	data: function () {
-		return {
-			post: {
-				name: '',
-			}
-		}
-	},
-	methods: {
-		createTypesMedition: function() {
-			var post = this.post;
-			apiMV.post('/types_reasons_resignations', post).then(function (response) {
-				post.id = response.data;
-			}).catch(function (error) {
-				console.log(error);
-			});
-			router.push('/Types/ReasonsResignations');
-		}
-	}
-});
-
-var Types_ReasonsResignations_Edit = Vue.extend({
-	template: '#edit-TypesReasonsResignations',
-	data: function () {
-		return {
-			post: {
-				id: 0,
-				name: ''
-			}
-		};
-	},
-	mounted: function () {
-		var self = this;
-		self.findTypesReasonResignation();
-	},
-	methods: {
-		updateTypesMedition: function () {
-			var post = this.post;
-			apiMV.put('/types_reasons_resignations/' + post.id, post).then(function (response) {
-				console.log(response.data);
-			}).catch(function (error) {
-				console.log(error);
-			});
-			router.push('/Types/ReasonsResignations');
-		},
-		findTypesReasonResignation: function(){
-			var self = this;
-			var idTypesReasonResignation = self.$route.params.type_reason_resignation_id;
-			
-			apiMV.get('/types_reasons_resignations/' + idTypesReasonResignation).then(function (response) {
-				if(!response.data.id || !response.data.name)
-				{
-					router.push('/Types/ReasonsResignations');
-				}
-				else
-				{
-					self.post = response.data;
-				}
-			}).catch(function (error) {
-				console.log(error);
-				router.push('/Types/ReasonsResignations');
-			});
-		}
-	}
-});
-
-var Types_ReasonsResignations_Delete = Vue.extend({
-	template: '#delete-TypesReasonsResignations',
-	data: function () {
-		return {
-			post: {
-				id: 0,
-				name: ''
-			}
-		};
-	},
-	mounted: function () {
-		var self = this;
-		self.findTypesReasonResignation();
-	},
-	methods: {
-		deleteTypesMedition: function () {
-			var post = this.post;
-			
-			apiMV.delete('/types_reasons_resignations/' + post.id).then(function (response) {
-				console.log(response.data);
-			}).catch(function (error) {
-				console.log(error);
-			});
-			router.push('/Types/ReasonsResignations');
-			location.reload();
-		},
-		findTypesReasonResignation: function(){
-			var self = this;
-			var idTypesReasonResignation = self.$route.params.type_reason_resignation_id;
-			
-			apiMV.get('/types_reasons_resignations/' + idTypesReasonResignation).then(function (response) {
-				if(!response.data.id || !response.data.name)
-				{
-					router.push('/Types/ReasonsResignations');
-				}
-				else
-				{
-					self.post = response.data;
-				}
-			}).catch(function (error) {
-				console.log(error);
-				router.push('/Types/ReasonsResignations');
-			});
-		}
-	}
-});
-// ------------ TIPOS - RENUNCIAS FIN ------------------------------------- 
-
 // ------------ TIPOS - SOCIEDADES INICIO ------------------------------------- 
 var Types_Societys_List = Vue.extend({
   template: '#page-TypesSocietys',
@@ -3866,6 +3689,361 @@ var Types_Vehicles_Delete = Vue.extend({
 	}
 });
 // ------------ TIPOS - VEHICULOS - FIN ------------------------------------- 
+
+// ------------ TIPOS - CARGOS - INICIO ------------------------------------- 
+var Types_Charges_List = Vue.extend({
+  template: '#page-TypesCharges',
+  data: function () {
+    return {
+		posts: [],
+		searchKey: ''
+	};
+  },
+  mounted: function () {
+    var self = this;
+    apiMV.get('/types_charges').then(function (response) {
+		self.posts = response.data.records;
+    }).catch(function (error) {
+		console.log(error);
+    });
+  },
+  computed: {
+    filteredposts: function () {
+      return this.posts.filter(function (post) {
+        return this.searchKey=='' || post.name.indexOf(this.searchKey) !== -1;
+      },this);
+    }
+  }
+});
+
+var Types_Charges_View = Vue.extend({
+	template: '#view-TypesCharges',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: '',
+			},
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesCharge();
+	},
+	methods: {
+		findTypesCharge: function(){
+			var self = this;
+			var idTypesCharge = self.$route.params.type_charge_id;
+			
+			apiMV.get('/types_charges/' + idTypesCharge).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/Charges');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/Charges');
+			});
+		}
+	}
+});
+
+var Types_Charges_Add = Vue.extend({
+	template: '#add-TypesCharges',
+	data: function () {
+		return {
+			post: {
+				name: '',
+			}
+		}
+	},
+	methods: {
+		createTypesCharge: function() {
+			var post = this.post;
+			apiMV.post('/types_charges', post).then(function (response) {
+				post.id = response.data;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/Charges');
+		}
+	}
+});
+
+var Types_Charges_Edit = Vue.extend({
+	template: '#edit-TypesCharges',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesCharge();
+	},
+	methods: {
+		updateTypesCharge: function () {
+			var post = this.post;
+			apiMV.put('/types_charges/' + post.id, post).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/Charges');
+		},
+		findTypesCharge: function(){
+			var self = this;
+			var idTypesCharge = self.$route.params.type_charge_id;
+			
+			apiMV.get('/types_charges/' + idTypesCharge).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/Charges');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/Charges');
+			});
+		}
+	}
+});
+
+var Types_Charges_Delete = Vue.extend({
+	template: '#delete-TypesCharges',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findTypesCharge();
+	},
+	methods: {
+		deleteTypesCharge: function () {
+			var post = this.post;
+			
+			apiMV.delete('/types_charges/' + post.id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Types/Charges');
+			location.reload();
+		},
+		findTypesCharge: function(){
+			var self = this;
+			var idTypesCharge = self.$route.params.type_charge_id;
+			
+			apiMV.get('/types_charges/' + idTypesCharge).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Types/Charges');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Types/Charges');
+			});
+		}
+	}
+});
+// ------------ TIPOS - CARGOS - FIN ------------------------------------- 
+
+// ------------ ACCIONES DE DESEMPEÑO - INICIO ------------------------------------- 
+var Actions_Performance_Employees_List = Vue.extend({
+	template: '#page-Actions_Performance_Employees',
+	data: function () {
+    return {
+		posts: [],
+		searchKey: ''
+	};
+  },
+	mounted: function () {
+		var self = this;
+		apiMV.get('/actions_performances_employees').then(function (response) {
+			self.posts = response.data.records;
+		}).catch(function (error) {
+			console.log(error);
+		});
+	},
+	computed: {
+		filteredposts: function () {
+			return this.posts.filter(function (post) {
+				return this.searchKey=='' || post.name.indexOf(this.searchKey) !== -1;
+			},this);
+		}
+	}
+});
+
+var Actions_Performance_Employees_View = Vue.extend({
+	template: '#view-Actions_Performance_Employees',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: '',
+			},
+		};
+	},
+	computed: function () {
+		var self = this;
+		self.findAction_Performance_Employee();
+	},
+	methods: {
+		findAction_Performance_Employee: function(){
+			var self = this;
+			var idAction_Performance_Employee = self.$route.params.action_performance_employee_id;
+			
+			apiMV.get('/actions_performances_employees/' + idAction_Performance_Employee).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Employees/Actions/Performances/');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Employees/Actions/Performances/');
+			});
+		}
+	}
+});
+
+var Actions_Performance_Employees_Add = Vue.extend({
+	template: '#add-Actions_Performance_Employees',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		}
+	},
+	methods: {
+		createAction_Performance_Employee: function() {
+			var post = this.post;
+			apiMV.post('/actions_performances_employees', post).then(function (response) {
+				post.id = response.data;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Employees/Actions/Performances/');
+		}
+	}
+});
+
+var Actions_Performance_Employees_Edit = Vue.extend({
+	template: '#edit-Actions_Performance_Employees',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findAction_Performance_Employee();
+	},
+	methods: {
+		updateAction_Performance_Employee: function () {
+			var post = this.post;
+			apiMV.put('/actions_performances_employees/' + post.id, post).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Employees/Actions/Performances/');
+		},
+		findAction_Performance_Employee: function(){
+			var self = this;
+			var idAction_Performance_Employee = self.$route.params.action_performance_employee_id;
+			
+			apiMV.get('/actions_performances_employees/' + idAction_Performance_Employee).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Employees/Actions/Performances/');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Employees/Actions/Performances/');
+			});
+		}
+	}
+});
+
+var Actions_Performance_Employees_Delete = Vue.extend({
+	template: '#delete-Actions_Performance_Employees',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findAction_Performance_Employee();
+	},
+	methods: {
+		deleteAction_Performance_Employee: function () {
+			var post = this.post;
+			
+			apiMV.delete('/actions_performances_employees/' + post.id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Employees/Actions/Performances/');
+			location.reload();
+		},
+		findAction_Performance_Employee: function(){
+			var self = this;
+			var idAction_Performance_Employee = self.$route.params.action_performance_employee_id;
+			
+			apiMV.get('/actions_performances_employees/' + idAction_Performance_Employee).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Employees/Actions/Performances/');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Employees/Actions/Performances/');
+			});
+		}
+	}
+});
+// ------------ ACCIONES DE DESEMPEÑO - FIN ------------------------------------- 
 
 // ------------ SERVICIOS - INICIO ------------------------------------- 
 var Services_List = Vue.extend({
@@ -4792,6 +4970,7 @@ var Contacts_View = Vue.extend({
 				address: '',
 				geo_address: '',
 			},
+			post_contacts: [],
 		};
 	},
 	mounted: function () {
@@ -4921,6 +5100,11 @@ var Contacts_Edit = Vue.extend({
 	template: '#edit-Contacts',
 	data: function () {
 		return {
+			selectOptions: {
+				types_identifications: [],
+				geo_departments: [],
+				geo_citys: [],
+			},
 			post: {
 				id: 0,
 				identification_type: 0,
@@ -4941,9 +5125,59 @@ var Contacts_Edit = Vue.extend({
 	},
 	mounted: function () {
 		var self = this;
+		self.loadSelects();
 		self.findContact();
 	},
 	methods: {
+		loadSelects: function(){
+			var self = this;
+			
+			apiMV.get('/types_identifications', {
+				params: {
+					order: 'name,asc',
+				}
+			}).then(function (response) {
+				self.selectOptions.types_identifications = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/geo_departments', {
+				params: {
+					order: 'name,asc',
+				}
+			}).then(function (response) {
+				self.selectOptions.geo_departments = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/geo_citys', {
+				params: {
+					order: 'name,asc',
+				}
+			}).then(function (response) {
+				self.selectOptions.geo_citys = response.data.records;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+		},
+		loadCitys: function(){
+			var self = this;
+			
+			apiMV.get('/geo_citys', {
+				params: {
+					order: 'name,asc',
+					filter: 'department,eq,' + self.post.department,
+				}
+			}).then(function (response) {
+				self.selectOptions.geo_citys = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+		},
 		updateContact: function () {
 			var post = this.post;
 			apiMV.put('/contacts/' + post.id, post).then(function (response) {
@@ -4980,7 +5214,6 @@ var Contacts_Delete = Vue.extend({
 		return {
 			post: {
 				id: 0,
-				type: 0,
 				identification_type: 0,
 				identification_number: '',
 				first_name: '',
@@ -5033,8 +5266,1650 @@ var Contacts_Delete = Vue.extend({
 		}
 	}
 });
-
 // ------------ TIPOS - CLIENTES FIN ------------------------------------- 
+
+// ------------ EMPLEADOS - INICIO ------------------------------------- 
+var Employees_List = Vue.extend({
+  template: '#page-Employees',
+  data: function () {
+    return {
+		posts: [],
+		searchKey: ''
+	};
+  },
+  mounted: function () {
+    var self = this;
+    apiMV.get('/employees').then(function (response) {
+		self.posts = response.data.records;
+    }).catch(function (error) {
+		console.log(error);
+    });
+  },
+  computed: {
+    filteredposts: function () {
+      return this.posts.filter(function (post) {
+        return this.searchKey=='' || post.first_name.indexOf(this.searchKey) !== -1;
+      },this);
+    }
+  }
+});
+
+var Employees_View = Vue.extend({
+	template: '#view-Employees',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				first_name: '',
+				second_name: '',
+				surname: '',
+				second_surname: '',
+				identification_type: {
+					id: 0,
+					name: '',
+				},
+				identification_number: '',
+				identification_date_expedition: '',
+				birthdate: '',
+				blood_type: {
+					id: 0,
+					name: '',
+				},
+				blood_rh: {
+					id: 0,
+					name: '',
+				},
+				mail: '',
+				number_phone: '',
+				number_mobile: '',
+				company_date_entry: '',
+				company_date_out: '',
+				company_mail: '',
+				company_number_phone: '',
+				company_number_mobile: '',
+				avatar: 0,
+				status: {
+					id: 0,
+					name: '',
+				},
+				eps: {
+					id: 0,
+					name: '',
+				},
+				arl: {
+					id: 0,
+					name: '',
+				},
+				pension_fund: {
+					id: 0,
+					name: '',
+				},
+				compensation_fund: {
+					id: 0,
+					name: '',
+				},
+				severance_fund: {
+					id: 0,
+					name: '',
+				},
+				department: {
+					id: 0,
+					name: '',
+				},
+				city: {
+					id: 0,
+					name: '',
+				},
+				address: '',
+				geo_address: '',
+				observations: '',
+			},
+			post_contacts: [],
+			contracted_staff: [],
+			performances_employees: [],
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findEmployee();
+	},
+	methods: {
+		findEmployee: function(){
+			var self = this;
+			var idEmployee = self.$route.params.employee_id;
+			
+			apiMV.get('/employees/' + idEmployee, {
+				params: {
+					join: [
+						'types_identifications',
+						'types_bloods',
+						'types_bloods_rhs',
+						'status_employees',
+						'eps',
+						'arl',
+						'funds_pensions',
+						'funds_compensations',
+						'funds_severances',
+						'geo_departments',
+						'geo_citys',
+					],
+				}
+			}).then(function (response) {
+				if(!response.data.id || !response.data.first_name)
+				{
+					router.push('/Employees');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Employees');
+			});
+			
+			apiMV.get('/crew_employees', {
+				params: {
+					filter: 'employee,eq,' + idEmployee,
+					join: [
+						'contacts',
+						'types_contacts',
+					],
+				}
+			}).then(function (response) {
+				self.post_contacts = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/contracted_staff', {
+				params: {
+					filter: 'employee,eq,' + idEmployee,
+					join: [
+						'contracts_employees',
+						'types_charges',
+						'contracts_employees,terms_contrats_employees',
+					],
+				}
+			}).then(function (response) {
+				self.contracted_staff = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/performances_employees', {
+				params: {
+					filter: 'employee,eq,' + idEmployee,
+					join: [
+						'reasons_performances_employees',
+						'actions_performances_employees',
+					],
+				}
+			}).then(function (response) {
+				self.performances_employees = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}
+});
+
+var Employees_Add = Vue.extend({
+	template: '#add-Employees',
+	data: function () {
+		return {
+			selectOptions: {
+				types_identifications: [],
+				types_bloods: [],
+				types_bloods_rhs: [],
+				status_employees: [],
+				eps: [],
+				arl: [],
+				funds_pensions: [],
+				funds_compensations: [],
+				funds_severances: [],
+				geo_departments: [],
+				geo_citys: [],
+			},
+			post: {
+				id: 0,
+				first_name: '',
+				second_name: '',
+				surname: '',
+				second_surname: '',
+				identification_type: 0,
+				identification_number: '',
+				identification_date_expedition: '',
+				birthdate: '',
+				blood_type: 0,
+				blood_rh: 0,
+				mail: '',
+				number_phone: '',
+				number_mobile: '',
+				company_date_entry: '',
+				company_date_out: '',
+				company_mail: '',
+				company_number_phone: '',
+				company_number_mobile: '',
+				avatar: 0,
+				status: 0,
+				eps: 0,
+				arl: 0,
+				pension_fund: 0,
+				compensation_fund: 0,
+				severance_fund: 0,
+				department: 0,
+				city: 0,
+				address: '',
+				geo_address: '',
+				observations: '',
+			},
+		}
+	},
+	methods: {
+		createEmployee: function() {
+			var post = this.post;
+			apiMV.post('/employees', post).then(function (response) {
+				post.id = response.data;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Employees');
+		},
+		loadSelects: function(){
+			var self = this;
+			
+			apiMV.get('/types_identifications', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.types_identifications = response.data.records; })
+				.catch(function (error) { console.log(error); });
+				
+			apiMV.get('/types_bloods', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.types_bloods = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/types_bloods_rhs', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.types_bloods_rhs = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/status_employees', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.status_employees = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/eps', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.eps = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/arl', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.arl = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/funds_pensions', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.funds_pensions = response.data.records; })
+				.catch(function (error) { console.log(error); });
+				
+			apiMV.get('/funds_compensations', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.funds_compensations = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/funds_severances', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.funds_severances = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			
+			apiMV.get('/geo_departments', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.geo_departments = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+		},
+		loadCitys: function(){
+			var self = this;
+			
+			apiMV.get('/geo_citys', {
+				params: {
+					order: 'name,asc',
+					filter: 'department,eq,' + self.post.department,
+				}
+			}).then(function (response) {
+				self.selectOptions.geo_citys = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+		},
+	},
+	mounted: function(){
+		var self = this;
+		self.loadSelects();
+	},
+});
+
+var Employees_Edit = Vue.extend({
+	template: '#edit-Employees',
+	data: function () {
+		return {
+			selectOptions: {
+				types_identifications: [],
+				types_bloods: [],
+				types_bloods_rhs: [],
+				status_employees: [],
+				eps: [],
+				arl: [],
+				funds_pensions: [],
+				funds_compensations: [],
+				funds_severances: [],
+				geo_departments: [],
+				geo_citys: [],
+				contacts: [],
+				types_contacts: [],
+				contracted_staff: [],
+				types_contracts: [],
+				contracts_employees: [],
+				reasons_performances_employees: [],
+				actions_performances_employees: [],
+			},
+			post: {
+				id: 0,
+				name: ''
+			},
+			post_contacts: [],
+			post_crew: {
+				employee: this.$route.params.employee_id,
+				contact: 0,
+			},
+			contracted_staff: [],
+			post_contracted_staff: {
+				employee: this.$route.params.employee_id,
+				contract_employee: 0,
+				type_charge: 0,
+				date_start: '',
+				date_end: '',
+			},
+			performances_employees: [],
+			post_performances_employees: {
+				employee: this.$route.params.employee_id,
+				reason: 0,
+				date_start: '',
+				date_end: '',
+				action_taken: 0,
+				notes: '',
+			},
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.loadSelects();
+		self.findEmployee();
+	},
+	methods: {
+		includeContractEmployee: function () {
+			var self = this;
+			if(self.post_contracted_staff.date_end == '' || self.post_contracted_staff.date_end == 0){
+				delete self.post_contracted_staff.date_end;
+			}
+			
+			apiMV.post('/contracted_staff', self.post_contracted_staff).then(function (response) {
+				// post.id = response.data;
+				$("#includeContractEmployee-Fast").hide();
+				self.findEmployee();
+				self.contract_employee.type_charge = 0;
+				self.contract_employee.date_start = '';
+				self.contract_employee.date_end = '';
+				self.contract_employee.contract_employee = 0;
+			}).catch(function (error) {
+				console.log(error);
+				console.log(error.response);
+			});
+			
+		},
+		includeCrewEmployee: function () {
+			var self = this;
+			
+			apiMV.post('/crew_employees', self.post_crew).then(function (response) {
+				// post.id = response.data;
+				$("#includeCrewEmployee-Fast").hide();
+				self.post_crew.contact = 0;
+				self.findEmployee();
+			}).catch(function (error) {
+				console.log(error);
+				console.log(error.response);
+			});
+			
+		},
+		updateEmployee: function () {
+			var post = this.post;
+			apiMV.put('/employees/' + post.id, post).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Employees');
+		},
+		findEmployee: function(){
+			var self = this;
+			var idEmployee = self.$route.params.employee_id;
+			
+			apiMV.get('/employees/' + idEmployee).then(function (response) {
+				if(!response.data.id || !response.data.first_name)
+				{
+					router.push('/Employees');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Employees');
+			});
+			
+			apiMV.get('/crew_employees', {
+				params: {
+					filter: 'employee,eq,' + idEmployee,
+					join: [
+						'contacts',
+						'types_contacts',
+					],
+				}
+			}).then(function (response) {
+				self.post_contacts = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/contracted_staff', {
+				params: {
+					filter: 'employee,eq,' + idEmployee,
+					join: [
+						'contracts_employees',
+						'types_charges',
+						'contracts_employees,terms_contrats_employees',
+					],
+				}
+			}).then(function (response) {
+				self.contracted_staff = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/performances_employees', {
+				params: {
+					filter: 'employee,eq,' + idEmployee,
+					join: [
+						'reasons_performances_employees',
+						'actions_performances_employees',
+					],
+				}
+			}).then(function (response) {
+				self.performances_employees = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			$('#includeCrewEmployee-Fast').hide();
+			$('#includeContractEmployee-Fast').hide();
+			$('#includePerformancesEmployee-Fast').hide();
+		},
+		loadSelects: function(){
+			var self = this;
+			
+			apiMV.get('/types_identifications', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.types_identifications = response.data.records; })
+				.catch(function (error) { console.log(error); });
+				
+			apiMV.get('/types_bloods', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.types_bloods = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/types_bloods_rhs', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.types_bloods_rhs = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/status_employees', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.status_employees = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/eps', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.eps = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/arl', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.arl = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/funds_pensions', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.funds_pensions = response.data.records; })
+				.catch(function (error) { console.log(error); });
+				
+			apiMV.get('/funds_compensations', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.funds_compensations = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/funds_severances', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.funds_severances = response.data.records; })
+				.catch(function (error) { console.log(error); });
+						
+			apiMV.get('/geo_departments', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.geo_departments = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/geo_citys', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.geo_citys = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/contacts', { params: { order: 'identification_number,asc', } })
+				.then(function (response) { self.selectOptions.contacts = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/types_contacts', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.types_contacts = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/contracted_staff', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.contracted_staff = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/types_charges', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.types_charges = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/contracts_employees', { params: { order: 'name,asc', join: 'terms_contrats_employees' } })
+				.then(function (response) { self.selectOptions.contracts_employees = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/reasons_performances_employees', { params: { order: 'name,asc', join: 'terms_contrats_employees' } })
+				.then(function (response) { self.selectOptions.reasons_performances_employees = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+			apiMV.get('/actions_performances_employees', { params: { order: 'name,asc', join: 'terms_contrats_employees' } })
+				.then(function (response) { self.selectOptions.actions_performances_employees = response.data.records; })
+				.catch(function (error) { console.log(error); });
+			
+		},
+		loadCitys: function(){
+			var self = this;
+			
+			apiMV.get('/geo_citys', {
+				params: {
+					order: 'name,asc',
+					filter: 'department,eq,' + self.post.department,
+				}
+			}).then(function (response) {
+				self.selectOptions.geo_citys = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+		},
+		includePerformancesEmployee: function () {
+			var self = this;
+			if(self.post_performances_employees.date_end == '' || self.post_performances_employees.date_end == 0){
+				delete self.post_performances_employees.date_end;
+			}
+			
+			apiMV.post('/performances_employees', self.post_performances_employees).then(function (response) {
+				// post.id = response.data;
+				$("#includePerformancesEmployee-Fast").hide();
+				self.findEmployee();
+				self.post_performances_employees.reason = 0;
+				self.post_performances_employees.action_taken = 0;
+				self.post_performances_employees.date_start = '';
+				self.post_performances_employees.date_end = '';
+				self.post_performances_employees.notes = '';
+			}).catch(function (error) {
+				console.log(error);
+				console.log(error.response);
+			});
+			
+		},
+	}
+});
+
+var Employees_Delete = Vue.extend({
+	template: '#delete-Employees',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findEmployee();
+	},
+	methods: {
+		deleteEmployee: function () {
+			var post = this.post;
+			
+			apiMV.delete('/employees/' + post.id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Employees');
+			location.reload();
+		},
+		findEmployee: function(){
+			var self = this;
+			var idEmployee = self.$route.params.employee_id;
+			
+			apiMV.get('/employees/' + idEmployee).then(function (response) {
+				if(!response.data.id || !response.data.first_name)
+				{
+					router.push('/Employees');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Employees');
+			});
+		}
+	}
+});
+
+var Employees_Contacts_Delete = Vue.extend({
+	template: '#delete-EmployeesContacts',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				employee: '',
+				contact: '',
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findEmployeeContact();
+	},
+	methods: {
+		deleteEmployeeContact: function () {
+			var self = this;
+			var post = this.post;
+			
+			apiMV.delete('/crew_employees/' + self.$route.params.employee_contact_id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Employees/' + self.$route.params.employee_id + '/Edit');
+		},
+		findEmployeeContact: function(){
+			var self = this;
+			var idEmployeeContact = self.$route.params.employee_contact_id;
+			
+			apiMV.get('/crew_employees/' + idEmployeeContact).then(function (response) {
+				if(!response.data.id || !response.data.first_name)
+				{
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}
+});
+
+var ContractedStaff_Delete = Vue.extend({
+	template: '#delete-ContractedStaff',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				employee: 0,
+				contract_employee: 0,
+				type_charge: 0,
+				date_start: '',
+				date_end: '',
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findContractedStaff();
+	},
+	methods: {
+		deleteContractedStaff: function () {
+			var self = this;
+			var post = this.post;
+			
+			apiMV.delete('/contracted_staff/' + self.$route.params.contracted_staff_id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Employees/' + self.$route.params.employee_id + '/Edit');
+		},
+		findContractedStaff: function(){
+			var self = this;
+			var idContractedStaff = self.$route.params.contracted_staff_id;
+			
+			apiMV.get('/contracted_staff/' + idContractedStaff).then(function (response) {
+				if(!response.data.id || !response.data.first_name)
+				{
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}
+});
+// ------------ EMPLEADOS - FIN ------------------------------------- 
+
+// ------------ CLIENTES - INICIO ------------------------------------- 
+var Clients_List = Vue.extend({
+  template: '#page-Clients',
+  data: function () {
+    return {
+		posts: [],
+		searchKey: ''
+	};
+  },
+  mounted: function () {
+    var self = this;
+    apiMV.get('/clients', {
+		params: {
+			join: [
+				'types_clients',
+				'types_identifications',
+			]
+		}
+	}).then(function (response) {
+		self.posts = response.data.records;
+    }).catch(function (error) {
+		console.log(error);
+    });
+  },
+  computed: {
+    filteredposts: function () {
+      return this.posts.filter(function (post) {
+        return this.searchKey=='' || post.social_reason.indexOf(this.searchKey) !== -1;
+      },this);
+    }
+  }
+});
+
+var Clients_View = Vue.extend({
+	template: '#view-Clients',
+	data: function () {
+		return {
+			post: {
+				type: {
+					id: 0,
+					name: '',
+				},
+				identification_type: {
+					id: 0,
+					name: '',
+				},
+				identification_number: '',
+				social_reason: '',
+				tradename: '',
+				society_type: {
+					id: 0,
+					name: '',
+				},
+				department: {
+					id: 0,
+					name: '',
+				},
+				city: {
+					id: 0,
+					department: 0,
+					name: '',
+				},
+				address: '',
+				geo_address: '',
+				legal_representative: {
+					id: 0,
+					first_name: '',
+					second_name: '',
+					surname: '',
+					second_surname: '',
+					phone: '',
+					phone_mobile: '',
+					mail: '',
+				},
+				contact_principal: {
+					id: 0,
+					first_name: '',
+					second_name: '',
+					surname: '',
+					second_surname: '',
+					phone: '',
+					phone_mobile: '',
+					mail: '',
+				},
+				enable_audit: 0,
+			},
+			crew_clients: [],
+			redicated_clients: [],
+			auditors_clients: [],
+			services_clients: [],
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findClients();
+	},
+	methods: {
+		findClients: function(){
+			var self = this;
+			var idClient = self.$route.params.client_id;
+			
+			apiMV.get('/clients/' + idClient, {
+				params: {
+					join: [
+						'types_clients',
+						'types_identifications',
+						'types_societys',
+						'geo_departments',
+						'geo_citys',
+						'contacts',
+					],
+				}
+			}).then(function (response) {
+				if(!response.data.id || !response.data.social_reason)
+				{
+					router.push('/Clients');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Clients');
+			});
+			
+			apiMV.get('/crew_clients', {
+				params: {
+					filter: 'client,eq,' + idClient,
+					join: [
+						'contacts',
+						'types_contacts',
+					],
+				}
+			}).then(function (response) {
+				self.crew_clients = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/redicated_clients', {
+				params: {
+					filter: 'client,eq,' + idClient,
+				}
+			}).then(function (response) {
+				self.redicated_clients = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/auditors_clients', {
+				params: {
+					filter: 'client,eq,' + idClient,
+					join: [
+						'contacts',
+					],
+				}
+			}).then(function (response) {
+				self.auditors_clients = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/services_clients', {
+				params: {
+					filter: 'client,eq,' + idClient,
+					join: [
+						'services',
+						'attributes_services_clients',
+						'attributes_services_clients,attributes',
+					],
+				}
+			}).then(function (response) {
+				self.services_clients = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}
+});
+
+var Clients_Add = Vue.extend({
+	template: '#add-Clients',
+	data: function () {
+		return {
+			selectOptions: {
+				types_clients: [],
+				types_identifications: [],
+				types_societys: [],
+				geo_departments: [],
+				geo_citys: [],
+				contacts: [],
+			},
+			post: {
+				type: 0,
+				identification_type: 0,
+				identification_number: '',
+				social_reason: '',
+				tradename: '',
+				society_type: 0,
+				department: 0,
+				city: 0,
+				address: '',
+				geo_address: '',
+				legal_representative: 0,
+				contact_principal: 0,
+				contact_alternative: 0,
+				enable_audit: 0,
+			}
+		}
+	},
+	mounted: function(){
+		var self = this;
+		self.loadSelects();
+	},
+	methods: {
+		loadSelects: function(){
+			var self = this;
+			
+			apiMV.get('/types_clients', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.types_clients = response.data.records; })
+				.catch(function (error) { console.log(error); });
+				
+			apiMV.get('/types_identifications', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.types_identifications = response.data.records; })
+				.catch(function (error) { console.log(error); });
+				
+			apiMV.get('/types_societys', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.types_societys = response.data.records; })
+				.catch(function (error) { console.log(error); });
+				
+			apiMV.get('/geo_departments', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.geo_departments = response.data.records; })
+				.catch(function (error) { console.log(error); });
+				
+			apiMV.get('/contacts', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.contacts = response.data.records; })
+				.catch(function (error) { console.log(error); });
+				
+		},
+		loadCitys: function(){
+			var self = this;
+			
+			apiMV.get('/geo_citys', {
+				params: {
+					order: 'name,asc',
+					filter: 'department,eq,' + self.post.department,
+				}
+			}).then(function (response) {
+				self.selectOptions.geo_citys = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+		},
+		createClient: function() {
+			var post = this.post;
+			apiMV.post('/clients', post).then(function (response) {
+				post.id = response.data;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Clients');
+		}
+	}
+});
+
+var Clients_Edit = Vue.extend({
+	template: '#edit-Clients',
+	data: function () {
+		return {
+			selectOptions: {
+				types_clients: [],
+				types_identifications: [],
+				types_societys: [],
+				geo_departments: [],
+				geo_citys: [],
+				contacts: [],
+				types_contacts: [],
+			},
+			post: {
+				id: 0,
+				type: 0,
+				identification_type: 0,
+				identification_number: '',
+				social_reason: '',
+				tradename: '',
+				society_type: 0,
+				department: 0,
+				city: 0,
+				address: '',
+				geo_address: '',
+				legal_representative: 0,
+				contact_principal: 0,
+				contact_alternative: 0,
+				enable_audit: 0,
+			},
+			crew_clients: [],
+			redicated_clients: [],
+			auditors_clients: [],
+			services_clients: [],
+			post_crew_clients: {
+				client: this.$route.params.client_id,
+				contact: 0,
+				type_contact: 0,
+			},
+			post_redicated_clients: {
+				client: this.$route.params.client_id,
+				consecutive: '',
+				name: '',
+				object: '',
+				description_service: '',
+				date_start: '',
+				date_end: '',
+				additional_notes: '',
+			},
+			post_auditors_clients: {
+				contact: 0,
+				client: this.$route.params.client_id,
+			},
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.loadSelects();
+		self.findClients();
+	},
+	methods: {
+		loadSelects: function(){
+			var self = this;
+			
+			apiMV.get('/types_clients', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.types_clients = response.data.records; })
+				.catch(function (error) { console.log(error); });
+				
+			apiMV.get('/types_identifications', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.types_identifications = response.data.records; })
+				.catch(function (error) { console.log(error); });
+				
+			apiMV.get('/types_societys', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.types_societys = response.data.records; })
+				.catch(function (error) { console.log(error); });
+				
+			apiMV.get('/geo_departments', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.geo_departments = response.data.records; })
+				.catch(function (error) { console.log(error); });
+				
+			apiMV.get('/geo_citys', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.geo_citys = response.data.records; })
+				.catch(function (error) { console.log(error); });
+				
+			apiMV.get('/contacts', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.contacts = response.data.records; })
+				.catch(function (error) { console.log(error); });
+				
+			apiMV.get('/types_contacts', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.types_contacts = response.data.records; })
+				.catch(function (error) { console.log(error); });
+				
+		},
+		loadCitys: function(){
+			var self = this;
+			
+			apiMV.get('/geo_citys', {
+				params: {
+					order: 'name,asc',
+					filter: 'department,eq,' + self.post.department,
+				}
+			}).then(function (response) {
+				self.selectOptions.geo_citys = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+		},
+		updateClient: function () {
+			var post = this.post;
+			apiMV.put('/clients/' + post.id, post).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Clients');
+		},
+		findClients: function(){
+			var self = this;
+			var idClient = self.$route.params.client_id;
+			
+			apiMV.get('/clients/' + idClient).then(function (response) {
+				if(!response.data.id || !response.data.social_reason)
+				{
+					router.push('/Clients');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Clients');
+			});
+			
+			apiMV.get('/crew_clients', {
+				params: {
+					filter: 'client,eq,' + idClient,
+					join: [
+						'contacts',
+						'types_contacts',
+					],
+				}
+			}).then(function (response) {
+				self.crew_clients = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/redicated_clients', {
+				params: {
+					filter: 'client,eq,' + idClient,
+				}
+			}).then(function (response) {
+				self.redicated_clients = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/auditors_clients', {
+				params: {
+					filter: 'client,eq,' + idClient,
+					join: [
+						'contacts',
+					],
+				}
+			}).then(function (response) {
+				self.auditors_clients = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			apiMV.get('/services_clients', {
+				params: {
+					filter: 'client,eq,' + idClient,
+					join: [
+						'services',
+						'attributes_services_clients',
+						'attributes_services_clients,attributes',
+					],
+				}
+			}).then(function (response) {
+				self.services_clients = response.data.records;
+				
+			}).catch(function (error) {
+				console.log(error);
+			});
+			
+			$("#includeContactClient-Fast").hide();
+			$("#includeRedicatedClient-Fast").hide();
+			$("#includeAuditorClient-Fast").hide();
+		},
+		includeContactClient: function(){
+			var self = this;
+			
+			apiMV.post('/crew_clients', self.post_crew_clients).then(function (response) {
+				// post.id = response.data;
+				$("#includeContactClient-Fast").hide();
+				self.findClients();
+				self.post_crew_clients.contact = 0;
+				self.post_crew_clients.type_contact = 0;
+			}).catch(function (error) {
+				console.log(error);
+				console.log(error.response);
+			});
+		},
+		includeRedicatedClient: function(){
+			var self = this;
+			
+			apiMV.post('/redicated_clients', self.post_redicated_clients).then(function (response) {
+				// post.id = response.data;
+				$("#includeRedicatedClient-Fast").hide();
+				self.findClients();
+				self.post_redicated_clients.consecutive = '';
+				self.post_redicated_clients.name = '';
+				self.post_redicated_clients.object = '';
+				self.post_redicated_clients.description_service = '';
+				self.post_redicated_clients.date_start = '';
+				self.post_redicated_clients.date_end = '';
+				self.post_redicated_clients.additional_notes = '';
+			}).catch(function (error) {
+				console.log(error);
+				console.log(error.response);
+			});
+		},
+		includeAuditorClient: function(){
+			var self = this;
+			
+			apiMV.post('/auditors_clients', self.post_auditors_clients).then(function (response) {
+				// post.id = response.data;
+				$("#includeAuditorClient-Fast").hide();
+				self.findClients();
+				self.post_auditors_clients.contact = 0;
+			}).catch(function (error) {
+				console.log(error);
+				console.log(error.response);
+			});
+		},
+	}
+});
+
+var Clients_Delete = Vue.extend({
+	template: '#delete-Clients',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				social_reason: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findClients();
+	},
+	methods: {
+		deleteClient: function () {
+			var post = this.post;
+			
+			apiMV.delete('/clients/' + post.id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Clients');
+			location.reload();
+		},
+		findClients: function(){
+			var self = this;
+			var idClient = self.$route.params.client_id;
+			
+			apiMV.get('/clients/' + idClient).then(function (response) {
+				if(!response.data.id || !response.data.social_reason)
+				{
+					router.push('/Clients');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Clients');
+			});
+		}
+	}
+});
+
+var Clients_Contacts_Delete = Vue.extend({
+	template: '#delete-ClientsContacts',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				client: 0,
+				contact: '',
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findClientContact();
+	},
+	methods: {
+		deleteClientsContacts: function () {
+			var self = this;
+			var post = this.post;
+			
+			apiMV.delete('/crew_clients/' + self.$route.params.client_contact_id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Clients/' + self.$route.params.client_id + '/Edit');
+		},
+		findClientContact: function(){
+			var self = this;
+			var idClientContact = self.$route.params.client_contact_id;
+			
+			apiMV.get('/crew_clients/' + idClientContact).then(function (response) {
+				if(!response.data.id || !response.data.contact)
+				{
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}
+});
+
+var Clients_Redicated_Delete = Vue.extend({
+	template: '#delete-RedicatedClients',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				client: 0,
+				consecutive: '',
+				name: '',
+				object: '',
+				description_service: '',
+				date_start: '',
+				date_end: '',
+				additional_notes: '',
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findRedicatedClients();
+	},
+	methods: {
+		deleteRedicatedClients: function () {
+			var self = this;
+			var post = this.post;
+			
+			apiMV.delete('/redicated_clients/' + self.$route.params.redicated_client_id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Clients/' + self.$route.params.client_id + '/Edit');
+		},
+		findRedicatedClients: function(){
+			var self = this;
+			var idRedicatedClients = self.$route.params.redicated_client_id;
+			
+			apiMV.get('/redicated_clients/' + idRedicatedClients).then(function (response) {
+				if(!response.data.id || !response.data.contact)
+				{
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}
+});
+
+var Clients_Auditors_Delete = Vue.extend({
+	template: '#delete-ClientsAuditors',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				client: 0,
+				contact: 0,
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findClientsAuditors();
+	},
+	methods: {
+		deleteClientsAuditors: function () {
+			var self = this;
+			var post = this.post;
+			
+			apiMV.delete('/auditors_clients/' + self.$route.params.auditor_client_id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Clients/' + self.$route.params.client_id + '/Edit');
+		},
+		findClientsAuditors: function(){
+			var self = this;
+			var idClientsAuditors = self.$route.params.auditor_client_id;
+			
+			apiMV.get('/auditors_clients/' + idClientsAuditors).then(function (response) {
+				if(!response.data.id || !response.data.contact)
+				{
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}
+});
+// ------------ CLIENTES - FIN ------------------------------------- 
+
+// ------------ CONCEPTOS - INICIO ------------------------------------- 
+var Attributes_List = Vue.extend({
+	template: '#page-Attributes',
+	data: function () {
+    return {
+		posts: [],
+		searchKey: ''
+	};
+  },
+	mounted: function () {
+		var self = this;
+		apiMV.get('/attributes', {
+				params: {
+					join: [
+						'types_meditions',
+					],
+				}
+			}).then(function (response) {
+			self.posts = response.data.records;
+		}).catch(function (error) {
+			console.log(error);
+		});
+	},
+	computed: {
+		filteredposts: function () {
+			return this.posts.filter(function (post) {
+				return this.searchKey=='' || post.name.indexOf(this.searchKey) !== -1;
+			},this);
+		}
+	}
+});
+
+var Attributes_View = Vue.extend({
+	template: '#view-Attributes',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: '',
+				description: '',
+				type_medition: {
+					id: 0,
+					name: '',
+					code: '',
+				},
+				price: 1.0,
+			},
+		};
+	},
+	mounted: function () {	
+		var self = this;
+		self.findAttribute();
+	},
+	methods: {
+		findAttribute: function(){
+			var self = this;
+			var idAttribute = self.$route.params.attribute_id;
+			
+			apiMV.get('/attributes/' + idAttribute).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Attributes');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Attributes');
+			});
+		}
+	}
+});
+
+var Attributes_Add = Vue.extend({
+	template: '#add-Attributes',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		}
+	},
+	methods: {
+		createAttribute: function() {
+			var post = this.post;
+			apiMV.post('/attributes', post).then(function (response) {
+				post.id = response.data;
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Attributes');
+		}
+	}
+});
+
+var Attributes_Edit = Vue.extend({
+	template: '#edit-Attributes',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findAttribute();
+	},
+	methods: {
+		updateAttribute: function () {
+			var post = this.post;
+			apiMV.put('/attributes/' + post.id, post).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Attributes');
+		},
+		findAttribute: function(){
+			var self = this;
+			var idAttribute = self.$route.params.attribute_id;
+			
+			apiMV.get('/attributes/' + idAttribute).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Attributes');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Attributes');
+			});
+		}
+	}
+});
+
+var Attributes_Delete = Vue.extend({
+	template: '#delete-Attributes',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				name: ''
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findAttribute();
+	},
+	methods: {
+		deleteAttribute: function () {
+			var post = this.post;
+			
+			apiMV.delete('/attributes/' + post.id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+			router.push('/Attributes');
+			location.reload();
+		},
+		findAttribute: function(){
+			var self = this;
+			var idAttribute = self.$route.params.attribute_id;
+			
+			apiMV.get('/attributes/' + idAttribute).then(function (response) {
+				if(!response.data.id || !response.data.name)
+				{
+					router.push('/Attributes');
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error);
+				router.push('/Attributes');
+			});
+		}
+	}
+});
+// ------------ CONCEPTOS - FIN ------------------------------------- 
 
 var router = new VueRouter({routes:[
 	{ path: '/', component: Home, name: 'Home'},
@@ -5150,13 +7025,7 @@ var router = new VueRouter({routes:[
 	{ path: '/Types/Meditions/add', component: Types_Meditions_Add, name: 'TypesMeditions-Add'},
 	{ path: '/Types/Meditions/:type_medition_id/edit', component: Types_Meditions_Edit, name: 'TypesMeditions-Edit'},
 	{ path: '/Types/Meditions/:type_medition_id/delete', component: Types_Meditions_Delete, name: 'TypesMeditions-Delete'},
-	
-	{ path: '/Types/ReasonsResignations', component: Types_ReasonsResignations_List, name: 'TypesReasonsResignations-List'},
-	{ path: '/Types/ReasonsResignations/:type_reason_resignation_id', component: Types_ReasonsResignations_View, name: 'TypesReasonsResignations-View'},
-	{ path: '/Types/ReasonsResignations/add', component: Types_ReasonsResignations_Add, name: 'TypesReasonsResignations-Add'},
-	{ path: '/Types/ReasonsResignations/:type_reason_resignation_id/edit', component: Types_ReasonsResignations_Edit, name: 'TypesReasonsResignations-Edit'},
-	{ path: '/Types/ReasonsResignations/:type_reason_resignation_id/delete', component: Types_ReasonsResignations_Delete, name: 'TypesReasonsResignations-Delete'},
-	
+		
 	{ path: '/Types/Societys', component: Types_Societys_List, name: 'TypesSocietys-List'},
 	{ path: '/Types/Societys/:type_society_id', component: Types_Societys_View, name: 'TypesSocietys-View'},
 	{ path: '/Types/Societys/add', component: Types_Societys_Add, name: 'TypesSocietys-Add'},
@@ -5188,6 +7057,41 @@ var router = new VueRouter({routes:[
 	{ path: '/Contacts/add', component: Contacts_Add, name: 'Contacts-Add'},
 	{ path: '/Contacts/:contact_id/edit', component: Contacts_Edit, name: 'Contacts-Edit'},
 	{ path: '/Contacts/:contact_id/delete', component: Contacts_Delete, name: 'Contacts-Delete'},
+	
+	{ path: '/Types/Charges', component: Types_Charges_List, name: 'TypesCharges-List'},
+	{ path: '/Types/Charges/:type_charge_id', component: Types_Charges_View, name: 'TypesCharges-View'},
+	{ path: '/Types/Charges/add', component: Types_Charges_Add, name: 'TypesCharges-Add'},
+	{ path: '/Types/Charges/:type_charge_id/edit', component: Types_Charges_Edit, name: 'TypesCharges-Edit'},
+	{ path: '/Types/Charges/:type_charge_id/delete', component: Types_Charges_Delete, name: 'TypesCharges-Delete'},
+	
+	{ path: '/Employees', component: Employees_List, name: 'Employees-List'},
+	{ path: '/Employees/:employee_id', component: Employees_View, name: 'Employees-View'},
+	{ path: '/Employees/add', component: Employees_Add, name: 'Employees-Add'},
+	{ path: '/Employees/:employee_id/edit', component: Employees_Edit, name: 'Employees-Edit'},
+	{ path: '/Employees/:employee_id/delete', component: Employees_Delete, name: 'Employees-Delete'},
+	{ path: '/Employees/:employee_id/Contact/:employee_contact_id/delete', component: Employees_Contacts_Delete, name: 'EmployeesContacts-Delete'},
+	{ path: '/Employees/:employee_id/ContractedStaff/:contracted_staff_id/delete', component: ContractedStaff_Delete, name: 'ContractedStaff-Delete'},
+	
+	{ path: '/Clients', component: Clients_List, name: 'Clients-List'},
+	{ path: '/Clients/:client_id', component: Clients_View, name: 'Clients-View'},
+	{ path: '/Clients/add', component: Clients_Add, name: 'Clients-Add'},
+	{ path: '/Clients/:client_id/edit', component: Clients_Edit, name: 'Clients-Edit'},
+	{ path: '/Clients/:client_id/delete', component: Clients_Delete, name: 'Clients-Delete'},
+	{ path: '/Clients/:client_id/Contact/:client_contact_id/delete', component: Clients_Contacts_Delete, name: 'ClientsContacts-Delete'},
+	{ path: '/Clients/:client_id/Redicated/:redicated_client_id/delete', component: Clients_Redicated_Delete, name: 'RedicatedClients-Delete'},
+	{ path: '/Clients/:client_id/Auditors/:auditor_client_id/delete', component: Clients_Auditors_Delete, name: 'ClientsAuditors-Delete'},
+	
+	{ path: '/Employees/Actions/Performances/', component: Actions_Performance_Employees_List, name: 'Actions_Performance_Employees-List'},
+	{ path: '/Employees/Actions/Performances/:action_performance_employee_id', component: Actions_Performance_Employees_View, name: 'Actions_Performance_Employees-View'},
+	{ path: '/Employees/Actions/Performances/add', component: Actions_Performance_Employees_Add, name: 'Actions_Performance_Employees-Add'},
+	{ path: '/Employees/Actions/Performances/:action_performance_employee_id/edit', component: Actions_Performance_Employees_Edit, name: 'Actions_Performance_Employees-Edit'},
+	{ path: '/Employees/Actions/Performances/:action_performance_employee_id/delete', component: Actions_Performance_Employees_Delete, name: 'Actions_Performance_Employees-Delete'},
+	
+	{ path: '/Attributes', component: Attributes_List, name: 'Attributes-List'},
+	{ path: '/Attributes/:attribute_id', component: Attributes_View, name: 'Attributes-View'},
+	{ path: '/Attributes/add', component: Attributes_Add, name: 'Attributes-Add'},
+	{ path: '/Attributes/:attribute_id/edit', component: Attributes_Edit, name: 'Attributes-Edit'},
+	{ path: '/Attributes/:attribute_id/delete', component: Attributes_Delete, name: 'Attributes-Delete'},
 	
 ]});
 
@@ -5305,6 +7209,4 @@ var appRender = new Vue({
 		
 	},
 }).$mount('#app');
-
-
-// -------------------------
+// ------------------------- 

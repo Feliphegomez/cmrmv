@@ -67,12 +67,6 @@
 							</div>
 							<div id="navbar" class="navbar-collapse collapse">
 								<ul class="nav navbar-nav navbar-right" v-if="status === 'connect'">
-									<li><a href="#"><i class="fa fa-home"></i></a></li>
-									<li><a href="#/Clients"><i class="fa fa-users"></i> Clientes</a></li>
-									<li><a href="#/Contacts"><i class="fa fa-user"></i> Contactos</a></li>
-									<li><a href="#/Employees"><i class="fa fa-user-secret"></i> Empleados</a></li>
-									<li><a href="#/Vehicles"><i class="fa fa-truck"></i> Vehiculos</a></li>
-									<li><a href="#/Services"><i class="fa fa-cog"></i> Servicios</a></li>
 									
 									<li class="nav-item dropdown">
 									  <a href="#" class="nav-link dropdown-toggle animated rubberBand" data-toggle="dropdown">
@@ -106,36 +100,52 @@
 										  <i class="fa fa-cogs"></i> 
 										  <span class="badge total-notifications-response-navbartop">Config</span>
 									  </a>
-									  <ul class="dropdown-menu two question-pending-navbar">
-										  <li class="dropdown-header">Listas</li>
-										  <li><a href="#/ARL">ARL</a></li>
-										  <li><a href="#/Vehicles/Categories">Categorias de Vehiculos</a></li>
-										  <li><a href="#/EPS">EPS</a></li>
-										  <li><a href="#/Funds/Compensations">Cajas de compensacion</a></li>
-										  <li><a href="#/Funds/Pension">Cajas de Pension</a></li>
-										  <li><a href="#/Funds/Severances">Cajas de Cesantias</a></li>
-										  <li><a href="#/GEO/Departments">Departamentos (Ciudad)</a></li>
-										  <li><a href="#/GEO/Citys">Ciudades</a></li>
-										  <li><a href="#/Status/Employees">Estados de Empleados</a></li>
-										  <li><a href="#/Status/Services">Estados de Servicios</a></li>
-										  <li><a href="#/Status/Vehicles">Estados de Vehiculos</a></li>
-										  <li><a href="#/Types/Bloods">Tipos de Sangre</a></li>
-										  <li><a href="#/Types/BloodsRH">Tipos de RH</a></li>
-										  <li><a href="#/Types/Clients">Tipos de Cliente</a></li>
-										  <li><a href="#/Types/Contacts">Tipos de Contacto</a></li>
-										  <li><a href="#/Types/Fuels">Tipos de Combustibles</a></li>
-										  <li><a href="#/Types/Identifications">Tipos de Identificaciones</a></li>
-										  <li><a href="#/Types/Meditions">Tipos de Mediciones</a></li>
-										  <li><a href="#/Types/ReasonsResignations">Tipos de Retiros (Empleados)</a></li>
-										  <li><a href="#/Types/Societys">Tipos de Sociedades</a></li>
-										  <li><a href="#/Types/Vehicles">Tipos de Vehiculos</a></li>
-										  <!-- <li role="separator" class="divider"></li> -->
-										  <!-- <li><a href="#">Ver todas las notificaciones</a></li> -->
+										<ul class="dropdown-menu two question-pending-navbar">
+											<li class="dropdown-header">Modulos</li>
+											<li><a href="#/Clients"><i class="fa fa-handshake-o"></i> Clientes</a></li>
+											<li><a href="#/Employees"><i class="fa fa-address-card"></i> Empleados</a></li>
+											<li><a href="#/Vehicles"><i class="fa fa-automobile"></i> Vehiculos</a></li>
+											<li><a href="#/Services"><i class="fa fa-briefcase"></i> Servicios</a></li>
+											<li><a href="#/Contacts"><i class="fa fa-address-book"></i> Contactos</a></li>
+										  
+											<li class="dropdown-header">Listas</li>
+											<li><a href="#/ARL"><i class="fa fa-fire"></i> ARL</a></li>
+											<li><a href="#/EPS"><i class="fa fa-ambulance"></i> EPS</a></li>
+											<li><a href="#/Funds/Compensations"><i class="fa fa-child"></i> Cajas de compensacion</a></li>
+
+											<li><a href="#/Funds/Pension"><i class="fa fa-heartbeat"></i> Cajas de Pension</a></li>
+											<li><a href="#/Funds/Severances"><i class="fa fa-university"></i> Cajas de Cesantias</a></li>
+
+											<li><a href="#/GEO/Departments"><i class="fa fa-globe"></i> Departamentos (Ciudad)</a></li>
+											<li><a href="#/GEO/Citys"><i class="fa fa-map"></i> Ciudades</a></li>
+											<li><a href="#/Status/Employees"><i class="fa fa-suitcase"></i> Estados de Empleados</a></li>
+											<li><a href="#/Status/Services"><i class="fa fa-wrench"></i> Estados de Servicios</a></li>
+
+											<li><a href="#/Vehicles/Categories"><i class="fa fa-rocket"></i> Categorias de Vehiculos</a></li>
+											<li><a href="#/Status/Vehicles"><i class="fa fa-thumbs-o-up"></i> Estados de Vehiculos</a></li>
+
+											<li><a href="#/Types/Bloods"><i class="fa fa-heart"></i> Tipos de Sangre</a></li>
+											<li><a href="#/Types/BloodsRH"><i class="fa fa-heart-o"></i> Tipos de RH</a></li>
+											<li><a href="#/Types/Clients"><i class="fa fa-building"></i> Tipos de Cliente</a></li>
+											<li><a href="#/Types/Contacts"><i class="fa fa-user-o"></i> Tipos de Contacto</a></li>
+
+											<li><a href="#/Types/Fuels"><i class="fa fa-tint"></i> Tipos de Combustibles</a></li>
+
+											<li><a href="#/Types/Identifications"><i class="fa fa-vcard-o"></i> Tipos de Identificaciones</a></li>
+
+											<li><a href="#/Types/Meditions"><i class="fa fa-cubes"></i> Tipos de Mediciones</a></li>
+
+											<li><a href="#/Types/ReasonsResignations"><i class="fa fa-window-close"></i> Tipos de Retiros (Empleados)</a></li>
+											<li><a href="#/Types/Societys"><i class="fa fa-group"></i> Tipos de Sociedades</a></li>
+											<li><a href="#/Types/Vehicles"><i class="fa fa-truck"></i> Tipos de Vehiculos</a></li>
+											<li><a href="#/Types/Charges"><i class="fa fa-id-badge"></i> Tipos de Cargos</a></li>
+											<li><a href="#/Employees/Actions/Performances"><i class="fa fa-id-badge"></i> Acciones de Desempeño</a></li>
+											<li><a href="#/Attributes"><i class="fa fa-id-badge"></i> Conceptos</a></li>
+											<!-- <li role="separator" class="divider"></li> -->
+											<!-- <li><a href="#">Ver todas las notificaciones</a></li> -->
 									  </ul>
 									</li>
 									<!-- <li><a href="#/Help"><i class="fa fa-question-circle" aria-hidden="true"></i> </a></li> -->
-									
-									
 								</ul>
 								<!--
 								<form class="navbar-form navbar-right" v-if="status === 'connect'">
@@ -208,6 +218,17 @@
 			<p>
 				No iniciaste sesion o tu sesion a expirado, ingresa tu usuario y contraseĂ±a para continuar utilizando el sitio.
 			</p>
+			<hr>
+
+			<form class="navbar-form navbar-right" v-if="$parent.status === 'not_connect'" v-on:submit="$parent.submitLogIn">
+				<div class="form-group">
+					<input type="text" placeholder="Email" class="form-control" v-model="$parent.forms.login.nick" />
+				</div>
+				<div class="form-group">
+					<input type="password" placeholder="Password" class="form-control" v-model="$parent.forms.login.hash" />
+				</div>
+				<button type="submit" class="btn btn-success">Ingresar</button>
+			</form>
 		  </div>
 		</template>
 
@@ -284,8 +305,8 @@
 							<td><router-link v-bind:to="{name: 'ARL-View', params: { arl_id: post.id }}">{{ post.code }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'ARL-View', params: { arl_id: post.id }}">{{ post.name }}</router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'ARL-Edit', params: { arl_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'ARL-Delete', params: { arl_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'ARL-Edit', params: { arl_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'ARL-Delete', params: { arl_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -407,8 +428,8 @@
 							<td><router-link v-bind:to="{name: 'VH-Categories-View', params: { cat_vh_id: post.id }}">{{ post.id }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'VH-Categories-View', params: { cat_vh_id: post.id }}">{{ post.name }}</router-link></td>
 							<td>
-								<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'VH-Categories-Edit', params: { cat_vh_id: post.id }}">Modificar</router-link>
-								<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'VH-Categories-Delete', params: { cat_vh_id: post.id }}">Eliminar</router-link>
+								<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'VH-Categories-Edit', params: { cat_vh_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+								<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'VH-Categories-Delete', params: { cat_vh_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -520,8 +541,8 @@
 							<td><router-link v-bind:to="{name: 'EPS-View', params: { eps_id: post.id }}">{{ post.code }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'EPS-View', params: { eps_id: post.id }}">{{ post.name }}</router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'EPS-Edit', params: { eps_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'EPS-Delete', params: { eps_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'EPS-Edit', params: { eps_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'EPS-Delete', params: { eps_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -645,8 +666,8 @@
 							<td><router-link v-bind:to="{name: 'FundsCompensation-View', params: { fund_compensation_id: post.id }}">{{ post.code }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'FundsCompensation-View', params: { fund_compensation_id: post.id }}">{{ post.name }}</router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'FundsCompensation-Edit', params: { fund_compensation_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'FundsCompensation-Delete', params: { fund_compensation_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'FundsCompensation-Edit', params: { fund_compensation_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'FundsCompensation-Delete', params: { fund_compensation_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -770,8 +791,8 @@
 							<td><router-link v-bind:to="{name: 'FundsPension-View', params: { fund_pension_id: post.id }}">{{ post.code }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'FundsPension-View', params: { fund_pension_id: post.id }}">{{ post.name }}</router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'FundsPension-Edit', params: { fund_pension_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'FundsPension-Delete', params: { fund_pension_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'FundsPension-Edit', params: { fund_pension_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'FundsPension-Delete', params: { fund_pension_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -895,8 +916,8 @@
 							<td><router-link v-bind:to="{name: 'FundSeverances-View', params: { fund_severances_id: post.id }}">{{ post.code }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'FundSeverances-View', params: { fund_severances_id: post.id }}">{{ post.name }}</router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'FundSeverances-Edit', params: { fund_severances_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'FundSeverances-Delete', params: { fund_severances_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'FundSeverances-Edit', params: { fund_severances_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'FundSeverances-Delete', params: { fund_severances_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -1020,8 +1041,8 @@
 							<td><router-link v-bind:to="{name: 'DepartmentsGEO-View', params: { geo_department_id: post.id }}">{{ post.code }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'DepartmentsGEO-View', params: { geo_department_id: post.id }}">{{ post.name }}</router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'DepartmentsGEO-Edit', params: { geo_department_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'DepartmentsGEO-Delete', params: { geo_department_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'DepartmentsGEO-Edit', params: { geo_department_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'DepartmentsGEO-Delete', params: { geo_department_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -1145,8 +1166,8 @@
 							<td><router-link v-bind:to="{name: 'CitysGEO-View', params: { geo_city_id: post.id }}">{{ post.department.name }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'CitysGEO-View', params: { geo_city_id: post.id }}">{{ post.name }}</router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'CitysGEO-Edit', params: { geo_city_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'CitysGEO-Delete', params: { geo_city_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'CitysGEO-Edit', params: { geo_city_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'CitysGEO-Delete', params: { geo_city_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -1287,8 +1308,8 @@
 							<td><router-link v-bind:to="{name: 'StatusEmployees-View', params: { status_employee_id: post.id }}">{{ post.id }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'StatusEmployees-View', params: { status_employee_id: post.id }}">{{ post.name }}</router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'StatusEmployees-Edit', params: { status_employee_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'StatusEmployees-Delete', params: { status_employee_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'StatusEmployees-Edit', params: { status_employee_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'StatusEmployees-Delete', params: { status_employee_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -1401,8 +1422,8 @@
 							<!-- <td><router-link v-bind:to="{name: 'StatusServices-View', params: { status_service_id: post.id }}">{{ post.color }}</router-link></td> -->
 							<td v-bind:style="'background-color: ' + post.color"><router-link v-bind:to="{name: 'StatusServices-View', params: {status_service_id: post.id}}"></router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'StatusServices-Edit', params: { status_service_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'StatusServices-Delete', params: { status_service_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'StatusServices-Edit', params: { status_service_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'StatusServices-Delete', params: { status_service_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -1528,8 +1549,8 @@
 							<td><router-link v-bind:to="{name: 'StatusVehicles-View', params: { status_vehicle_id: post.id }}">{{ post.id }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'StatusVehicles-View', params: { status_vehicle_id: post.id }}">{{ post.name }}</router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'StatusVehicles-Edit', params: { status_vehicle_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'StatusVehicles-Delete', params: { status_vehicle_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'StatusVehicles-Edit', params: { status_vehicle_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'StatusVehicles-Delete', params: { status_vehicle_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -1639,8 +1660,8 @@
 							<td><router-link v-bind:to="{name: 'TypesBloods-View', params: { type_blood_id: post.id }}">{{ post.id }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'TypesBloods-View', params: { type_blood_id: post.id }}">{{ post.name }}</router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesBloods-Edit', params: { type_blood_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesBloods-Delete', params: { type_blood_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesBloods-Edit', params: { type_blood_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesBloods-Delete', params: { type_blood_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -1750,8 +1771,8 @@
 							<td><router-link v-bind:to="{name: 'TypesBloodsRH-View', params: { type_blood_rh_id: post.id }}">{{ post.id }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'TypesBloodsRH-View', params: { type_blood_rh_id: post.id }}">{{ post.name }}</router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesBloodsRH-Edit', params: { type_blood_rh_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesBloodsRH-Delete', params: { type_blood_rh_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesBloodsRH-Edit', params: { type_blood_rh_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesBloodsRH-Delete', params: { type_blood_rh_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -1861,8 +1882,8 @@
 							<td><router-link v-bind:to="{name: 'TypesClients-View', params: { type_client_id: post.id }}">{{ post.id }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'TypesClients-View', params: { type_client_id: post.id }}">{{ post.name }}</router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesClients-Edit', params: { type_client_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesClients-Delete', params: { type_client_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesClients-Edit', params: { type_client_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesClients-Delete', params: { type_client_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -1973,8 +1994,8 @@
 							<td><router-link v-bind:to="{name: 'TypesContacts-View', params: { type_contact_id: post.id }}">{{ post.id }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'TypesContacts-View', params: { type_contact_id: post.id }}">{{ post.name }}</router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesContacts-Edit', params: { type_contact_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesContacts-Delete', params: { type_contact_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesContacts-Edit', params: { type_contact_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesContacts-Delete', params: { type_contact_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -2084,8 +2105,8 @@
 							<td><router-link v-bind:to="{name: 'TypesFuels-View', params: { type_fuel_id: post.id }}">{{ post.id }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'TypesFuels-View', params: { type_fuel_id: post.id }}">{{ post.name }}</router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesFuels-Edit', params: { type_fuel_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesFuels-Delete', params: { type_fuel_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesFuels-Edit', params: { type_fuel_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesFuels-Delete', params: { type_fuel_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -2195,8 +2216,8 @@
 							<td><router-link v-bind:to="{name: 'TypesIdentifications-View', params: { type_identification_id: post.id }}">{{ post.id }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'TypesIdentifications-View', params: { type_identification_id: post.id }}">{{ post.name }}</router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesIdentifications-Edit', params: { type_identification_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesIdentifications-Delete', params: { type_identification_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesIdentifications-Edit', params: { type_identification_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesIdentifications-Delete', params: { type_identification_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -2308,8 +2329,8 @@
 							<td><router-link v-bind:to="{name: 'TypesMeditions-View', params: { type_medition_id: post.id }}">{{ post.name }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'TypesMeditions-View', params: { type_medition_id: post.id }}">{{ post.code }}</router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesMeditions-Edit', params: { type_medition_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesMeditions-Delete', params: { type_medition_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesMeditions-Edit', params: { type_medition_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesMeditions-Delete', params: { type_medition_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -2392,117 +2413,6 @@
 		</template>
 		<!-- // ------------ TIPOS - MEDICIONES FIN -------------------------------------  -->
 		
-		<!-- // ------------ TIPOS - RENUNCIAS INICIO -------------------------------------  -->
-		<template id="page-TypesReasonsResignations">
-			<div>
-				<header class="page-header">
-					<div class="branding">
-						<h1>TIPOS - RENUNCIAS</h1>
-					</div>
-				</header>
-				<div class="filters row">
-					<div class="form-group col-sm-8">
-						<label for="search-element">Filtrar / Buscar</label>
-						<input v-model="searchKey" class="form-control" id="search-element" required/>
-					</div>
-					<div class="form-group col-sm-4 text-right">
-						<div class="actions">
-							<br>
-							<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesReasonsResignations-Add' }">
-								<span class="fa fa-plus"></span>
-								Nuevo
-							</router-link>
-						</div>
-					</div>
-				</div>
-				<table class="table table-responsive">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Nombre</th>
-							<th class="col-sm-2">Actions</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr v-if="posts===null">
-							<td colspan="4">Loading...</td>
-						</tr>
-						<tr v-else v-for="post in filteredposts">
-							<td><router-link v-bind:to="{name: 'TypesReasonsResignations-View', params: { type_reason_resignation_id: post.id }}">{{ post.id }}</router-link></td>
-							<td><router-link v-bind:to="{name: 'TypesReasonsResignations-View', params: { type_reason_resignation_id: post.id }}">{{ post.name }}</router-link></td>
-							<td>
-								<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesReasonsResignations-Edit', params: { type_reason_resignation_id: post.id }}">Modificar</router-link>
-								<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesReasonsResignations-Delete', params: { type_reason_resignation_id: post.id }}">Eliminar</router-link>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</template>
-		
-		<template id="view-TypesReasonsResignations">
-			<div>
-				<header class="page-header">
-					<div class="branding">
-						<h1>TIPOS - RENUNCIAS - {{ post.name }}</h1>
-					</div>
-				</header>
-				<table class="table">
-					<tr>
-						<td>ID INTERNO</td>
-						<td>{{ post.id }}</td>
-					</tr>
-					<tr>
-						<td>NOMBRE</td>
-						<td>{{ post.name }}</td>
-					</tr>
-				</table>
-				<br/>
-				<span class="fa fa-arrow-left" aria-hidden="true"></span>
-				<router-link v-bind:to="{ name: 'TypesReasonsResignations-List' }">Volver a la lista</router-link>
-			</div>		  
-		</template>
-		
-		<template id="add-TypesReasonsResignations">
-			<div>
-				<h2>TIPOS - RENUNCIAS - Crear</h2>
-				<form v-on:submit="createTypesMedition">
-					<div class="form-group">
-						<label for="add-content">NOMBRE</label>
-						<input class="form-control" type="text" id="add-content" v-model="post.name" />
-					</div>
-					<button type="submit" class="btn btn-primary">Crear</button>
-					<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesReasonsResignations-List' }">Regresar</router-link>
-				</form>
-			</div>
-		</template>
-		
-		<template id="edit-TypesReasonsResignations">
-			<div>
-				<h2>TIPOS - RENUNCIAS - Modificar</h2>
-				<form v-on:submit="updateTypesMedition">
-					<div class="form-group">
-						<label for="edit-content">Nombre</label>
-						<input class="form-control" id="edit-content" v-model="post.name" />
-					</div>
-					<button type="submit" class="btn btn-primary">Guardar</button>
-					<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesReasonsResignations-List' }">Regresar</router-link>
-				</form>
-			</div>
-		</template>
-		
-		<template id="delete-TypesReasonsResignations">
-			<div>
-				<h2>TIPOS - RENUNCIAS - Eliminar</h2>
-				<form v-on:submit="deleteTypesMedition">
-					<p>The action cannot be undone.</p>
-					<button type="submit" class="btn btn-danger">Eliminar</button>
-					<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesReasonsResignations-List' }">Cancelar</router-link>
-				</form>
-			</div>
-		</template>
-		<!-- // ------------ TIPOS - RENUNCIAS FIN -------------------------------------  -->
-		
 		<!-- // ------------ TIPOS - SOCIEDADES INICIO -------------------------------------  -->
 		<template id="page-TypesSocietys">
 			<div>
@@ -2542,8 +2452,8 @@
 							<td><router-link v-bind:to="{name: 'TypesSocietys-View', params: { type_society_id: post.id }}">{{ post.id }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'TypesSocietys-View', params: { type_society_id: post.id }}">{{ post.name }}</router-link></td>
 							<td>
-								<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesSocietys-Edit', params: { type_society_id: post.id }}">Modificar</router-link>
-								<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesSocietys-Delete', params: { type_society_id: post.id }}">Eliminar</router-link>
+								<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesSocietys-Edit', params: { type_society_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+								<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesSocietys-Delete', params: { type_society_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -2654,8 +2564,8 @@
 							<td><router-link v-bind:to="{name: 'TypesVehicles-View', params: { type_vehicle_id: post.id }}">{{ post.id }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'TypesVehicles-View', params: { type_vehicle_id: post.id }}">{{ post.name }}</router-link></td>
 							<td>
-								<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesVehicles-Edit', params: { type_vehicle_id: post.id }}">Modificar</router-link>
-								<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesVehicles-Delete', params: { type_vehicle_id: post.id }}">Eliminar</router-link>
+								<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesVehicles-Edit', params: { type_vehicle_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+								<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesVehicles-Delete', params: { type_vehicle_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -2726,6 +2636,345 @@
 		</template>
 		<!-- // ------------ TIPOS - VEHICULOS FIN -------------------------------------  -->
 		
+		<!-- // ------------ TIPOS - CARGOS INICIO -------------------------------------  -->
+		<template id="page-TypesCharges">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>TIPOS - CARGOS</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesCharges-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'TypesCharges-View', params: { type_charge_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'TypesCharges-View', params: { type_charge_id: post.id }}">{{ post.name }}</router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'TypesCharges-Edit', params: { type_charge_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'TypesCharges-Delete', params: { type_charge_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-TypesCharges">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>TIPOS - CARGOS - {{ post.name }}</h1>
+					</div>
+				</header>
+				<table class="table">
+					<tr>
+						<td>ID INTERNO</td>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<td>NOMBRE</td>
+						<td>{{ post.name }}</td>
+					</tr>
+				</table>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'TypesCharges-List' }">Volver a la lista</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-TypesCharges">
+			<div>
+				<h2>TIPOS - CARGOS - Crear</h2>
+				<form v-on:submit="createTypesCharge">
+					<div class="form-group">
+						<label for="add-content">NOMBRE</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesCharges-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-TypesCharges">
+			<div>
+				<h2>TIPOS - CARGOS - Modificar</h2>
+				<form v-on:submit="updateTypesCharge">
+					<div class="form-group">
+						<label for="edit-content">Nombre</label>
+						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesCharges-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-TypesCharges">
+			<div>
+				<h2>TIPOS - CARGOS - Eliminar</h2>
+				<form v-on:submit="deleteTypesCharge">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'TypesCharges-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ TIPOS - CARGOS FIN -------------------------------------  -->
+		
+		<!-- // ------------ ACCIONES DE DESEMPEÑO INICIO -------------------------------------  -->
+		<template id="page-Actions_Performance_Employees">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>ACCIONES DE DESEMPEÑO</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'Actions_Performance_Employees-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'Actions_Performance_Employees-View', params: { action_performance_employee_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'Actions_Performance_Employees-View', params: { action_performance_employee_id: post.id }}">{{ post.name }}</router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'Actions_Performance_Employees-Edit', params: { action_performance_employee_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'Actions_Performance_Employees-Delete', params: { action_performance_employee_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-Actions_Performance_Employees">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>ACCIONES DE DESEMPEÑO - {{ post.name }}</h1>
+					</div>
+				</header>
+				<table class="table">
+					<tr>
+						<td>ID INTERNO</td>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<td>NOMBRE</td>
+						<td>{{ post.name }}</td>
+					</tr>
+				</table>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'Actions_Performance_Employees-List' }">Volver a la lista</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-Actions_Performance_Employees">
+			<div>
+				<h2>ACCIONES DE DESEMPEÑO - Crear</h2>
+				<form v-on:submit="createAction_Performance_Employee">
+					<div class="form-group">
+						<label for="add-content">NOMBRE</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'Actions_Performance_Employees-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-Actions_Performance_Employees">
+			<div>
+				<h2>ACCIONES DE DESEMPEÑO - Modificar</h2>
+				<form v-on:submit="updateAction_Performance_Employee">
+					<div class="form-group">
+						<label for="edit-content">Nombre</label>
+						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'Actions_Performance_Employees-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-Actions_Performance_Employees">
+			<div>
+				<h2>ACCIONES DE DESEMPEÑO - Eliminar</h2>
+				<form v-on:submit="deleteAction_Performance_Employee">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'Actions_Performance_Employees-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ ACCIONES DE DESEMPEÑO FIN -------------------------------------  -->
+		
+		<!-- // ------------ CONCEPTOS - INICIO -------------------------------------  -->
+		<template id="page-Attributes">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>CONCEPTOS</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'Attributes-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>Descvripcion</th>
+							<th>Valor</th>
+							<th>Tipo de Medicion</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'Attributes-View', params: { attribute_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'Attributes-View', params: { attribute_id: post.id }}">{{ post.name }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'Attributes-View', params: { attribute_id: post.id }}">{{ post.description }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'Attributes-View', params: { attribute_id: post.id }}">{{ post.price }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'Attributes-View', params: { attribute_id: post.id }}">{{ post.type_medition.code }}</router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'Attributes-Edit', params: { attribute_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'Attributes-Delete', params: { attribute_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-Attributes">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>CONCEPTOS - {{ post.name }}</h1>
+					</div>
+				</header>
+				<table class="table">
+					<tr>
+						<td>ID INTERNO</td>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<td>NOMBRE</td>
+						<td>{{ post.name }}</td>
+					</tr>
+				</table>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'Attributes-List' }">Volver a la lista</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-Attributes">
+			<div>
+				<h2>CONCEPTOS - Crear</h2>
+				<form v-on:submit="createAttribute">
+					<div class="form-group">
+						<label for="add-content">NOMBRE</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'Attributes-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-Attributes">
+			<div>
+				<h2>CONCEPTOS - Modificar</h2>
+				<form v-on:submit="updateAttribute">
+					<div class="form-group">
+						<label for="edit-content">Nombre</label>
+						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'Attributes-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-Attributes">
+			<div>
+				<h2>CONCEPTOS - Eliminar</h2>
+				<form v-on:submit="deleteAttribute">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'Attributes-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ CONCEPTOS - FIN -------------------------------------  -->
+		
 		<!-- // ------------ SERVICIOS - INICIO -------------------------------------  -->
 		<template id="page-Services">
 			<div>
@@ -2769,8 +3018,8 @@
 							<td><router-link v-bind:to="{name: 'Services-View', params: { service_id: post.id }}">{{ post.price }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'Services-View', params: { service_id: post.id }}">{{ post.type_medition.name }}</router-link></td>
 							<td>
-								<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'Services-Edit', params: { service_id: post.id }}">Modificar</router-link>
-								<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'Services-Delete', params: { service_id: post.id }}">Eliminar</router-link>
+								<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'Services-Edit', params: { service_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+								<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'Services-Delete', params: { service_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -2937,8 +3186,8 @@
 							<td><router-link v-bind:to="{name: 'Vehicles-View', params: { vehicle_id: post.id }}">{{ post.license_plate }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'Vehicles-View', params: { vehicle_id: post.id }}">{{ post.type_vehicle.name }}</router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'Vehicles-Edit', params: { vehicle_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'Vehicles-Delete', params: { vehicle_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'Vehicles-Edit', params: { vehicle_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'Vehicles-Delete', params: { vehicle_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -3425,7 +3674,7 @@
 											<td>{{ item.charge.name }}</td>
 											<td>{{ item.employee.first_name }} {{ item.employee.second_name }} {{ item.employee.surname }} {{ item.employee.second_surname }}</td>
 											<td>
-												<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'includeCrewVehicle-Delete', params: { vehicle_id: post.id, crew_vehicle_id: item.id }}">Eliminar</router-link>
+												<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'includeCrewVehicle-Delete', params: { vehicle_id: post.id, crew_vehicle_id: item.id }}"><i class="fa fa-trash"></i> </router-link>
 											</td>
 										</tr>
 									</tbody>
@@ -3437,7 +3686,7 @@
 						<h3>Galeria</h3>
 						<hr>
 						
-						<div class="col-md-3" style="display:nones;">
+						<div class="col-sm-12 col-md-2" style="display:nones;">
 							<div class="card card-default">
 								<div class="card-body">
 									<div class="row">
@@ -3475,7 +3724,7 @@
 							</div>
 							
 						</div>
-						<div class="col-md-9" style="display:nones;">
+						<div class="col-sm-12 col-md-10" style="display:nones;">
 							<div class="card card-default">
 								<div class="card-body">
 									<div class="row">
@@ -3571,8 +3820,8 @@
 							<td><router-link v-bind:to="{name: 'Contacts-View', params: { contact_id: post.id }}">{{ post.identification_number }}</router-link></td>
 							<td><router-link v-bind:to="{name: 'Contacts-View', params: { contact_id: post.id }}">{{ post.first_name }} {{ post.second_name }} {{ post.surname }} {{ post.second_surname }}</router-link></td>
 							<td>
-							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'Contacts-Edit', params: { contact_id: post.id }}">Modificar</router-link>
-							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'Contacts-Delete', params: { contact_id: post.id }}">Eliminar</router-link>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'Contacts-Edit', params: { contact_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'Contacts-Delete', params: { contact_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
 							</td>
 						</tr>
 					</tbody>
@@ -3742,11 +3991,58 @@
 		
 		<template id="edit-Contacts">
 			<div>
-				<h2>CONTACTOS - Modificar</h2>
-				<form v-on:submit="updateContact">
-					<div class="form-group">
-						<label for="edit-content">Nombre</label>
-						<input class="form-control" id="edit-content" v-model="post.name" />
+				<header class="page-header">
+					<div class="branding">
+						<h1>CONTACTOS - Modificar</h1>
+					</div>
+				</header>
+				
+				<form v-on:submit="updateContact" class="row">
+					<div class="form-group col-md-4">
+						<label for="add-content">TIPO DE IDENTIFICACION</label>
+						<select class="form-control" v-model="post.identification_type" id="add-content">
+							<option v-for="item in selectOptions.types_identifications" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="add-content"># IDENTIFICACION</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.identification_number" />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="add-content">PRIMER NOMBRE</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.first_name" />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="add-content">SEGUNDO NOMBRE</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.second_name" />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="add-content">PRIMER APELLIDO</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.surname" />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="add-content">SEGUNDO APELLIDO</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.second_surname" />
+					</div>
+					<div class="form-group col-md-3">
+						<label for="add-content">TELEFONO FIJO</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.phone" />
+					</div>
+					<div class="form-group col-md-3">
+						<label for="add-content">TELEFONO MOVIL</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.phone_mobile" />
+					</div>
+					<div class="form-group col-md-3">
+						<label for="add-content">DEPARTAMENTO</label>
+						<select class="form-control" v-model="post.department" id="add-content" @change="loadCitys">
+							<option v-for="item in selectOptions.geo_departments" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group col-md-3">
+						<label for="add-content">CIUDAD</label>
+						<select class="form-control" v-model="post.city" id="add-content" >
+							<option v-for="item in selectOptions.geo_citys" :value="item.id">{{ item.name }}</option>
+						</select>
 					</div>
 					<button type="submit" class="btn btn-primary">Guardar</button>
 					<router-link class="btn btn-primary" v-bind:to="{ name: 'Contacts-List' }">Regresar</router-link>
@@ -3764,7 +4060,1840 @@
 				</form>
 			</div>
 		</template>
+		
 		<!-- // ------------ CONTACTOS - FIN -------------------------------------  -->
+		
+		<!-- // ------------ EMPLEADOS INICIO -------------------------------------  -->
+		<template id="page-Employees">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>EMPLEADOS</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'Employees-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th># Identificacion</th>
+							<th>Nombre completo</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'Employees-View', params: { employee_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'Employees-View', params: { employee_id: post.id }}">{{ post.identification_number }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'Employees-View', params: { employee_id: post.id }}">{{ post.first_name }} {{ post.second_name }} {{ post.surname }} {{ post.second_surname }}</router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'Employees-Edit', params: { employee_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'Employees-Delete', params: { employee_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-Employees">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>EMPLEADOS - {{ post.first_name }} {{ post.second_name }} {{ post.surname }} {{ post.second_surname }}</h1>
+					</div>
+				</header>
+				<div id="exTab1">
+					<ul  class="nav nav-pills">
+						<li class="active"><a  href="#1a" data-toggle="tab">Infomacion Basica</a></li>
+						<li><a href="#2a" data-toggle="tab">Contactos</a></li>
+						<li><a href="#3a" data-toggle="tab">Contratos</a></li>
+						<li><a href="#4a" data-toggle="tab">Desempeño</a></li>
+						<li><a href="#5a" data-toggle="tab">Colillas</a></li>
+					</ul>
+				</div>
+				<div class="tab-content clearfix">
+					<div class="tab-pane active" id="1a">
+						<h3>Infomacion Basica</h3>
+						<hr>
+						<table class="table">
+							<tr>
+								<td>ID INTERNO</td>
+								<td>{{ post.id }}</td>
+							</tr>
+							<tr>
+								<td>PRIMER NOMBRE</td>
+								<td>{{ post.first_name }}</td>
+							</tr>
+							<tr>
+								<td>SEGUNDO NOMBRE</td>
+								<td>{{ post.second_name }}</td>
+							</tr>
+							<tr>
+								<td>PRIMER APELLIDO</td>
+								<td>{{ post.surname }}</td>
+							</tr>
+							<tr>
+								<td>SEGUNDO APELLIDO</td>
+								<td>{{ post.second_surname }}</td>
+							</tr>
+							<tr>
+								<td>TIPO DE IDENTIFICACION</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID INTERNO</td>
+											<td>{{ post.identification_type.id }}</td>
+										</tr>
+										<tr>
+											<td>NOMBRE</td>
+											<td>{{ post.identification_type.name }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td># IDENTIFICACION</td>
+								<td>{{ post.identification_number }}</td>
+							</tr>
+							<tr>
+								<td>FECHA DE EXPEDICION DEL DOCUMENTO</td>
+								<td>{{ post.identification_date_expedition }}</td>
+							</tr>
+							<tr>
+								<td>FECHA DE NACIMIENTO</td>
+								<td>{{ post.birthdate }}</td>
+							</tr>
+							<tr>
+								<td>TIPO DE SANGRE</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID INTERNO</td>
+											<td>{{ post.blood_type.id }}</td>
+										</tr>
+										<tr>
+											<td>NOMBRE</td>
+											<td>{{ post.blood_type.name }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>TIPO DE RH</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID INTERNO</td>
+											<td>{{ post.blood_rh.id }}</td>
+										</tr>
+										<tr>
+											<td>NOMBRE</td>
+											<td>{{ post.blood_rh.name }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>CORREO ELECTRONICO</td>
+								<td>{{ post.mail }}</td>
+							</tr>
+							<tr>
+								<td>TELEFONO FIJO</td>
+								<td>{{ post.number_phone }}</td>
+							</tr>
+							<tr>
+								<td>TELEFONO MOVIL</td>
+								<td>{{ post.number_mobile }}</td>
+							</tr>
+							<tr>
+								<td>FECHA DE ENTRADA A LA EMPRESA</td>
+								<td>{{ post.company_date_entry }}</td>
+							</tr>
+							<tr>
+								<td>FECHA DE SALIDA DE LA EMPRESA</td>
+								<td>{{ post.company_date_out }}</td>
+							</tr>
+							<tr>
+								<td>CORREO ELECTRONICO EMPRESARIAL</td>
+								<td>{{ post.company_mail }}</td>
+							</tr>
+							<tr>
+								<td>TELEFONO FIJO/EXTENSION EMPRESARIAL</td>
+								<td>{{ post.company_number_phone }}</td>
+							</tr>
+							<tr>
+								<td>TELEFONO MOVIL EMPRESARIAL</td>
+								<td>{{ post.company_number_mobile }}</td>
+							</tr>
+							<tr>
+								<td>FOTO</td>
+								<td>{{ post.avatar }}</td>
+							</tr>
+							<tr>
+								<td>ESTADO</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID INTERNO</td>
+											<td>{{ post.status.id }}</td>
+										</tr>
+										<tr>
+											<td>NOMBRE</td>
+											<td>{{ post.status.name }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>EPS</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID INTERNO</td>
+											<td>{{ post.eps.id }}</td>
+										</tr>
+										<tr>
+											<td>CODIGO</td>
+											<td>{{ post.eps.code }}</td>
+										</tr>
+										<tr>
+											<td>NOMBRE</td>
+											<td>{{ post.eps.name }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>ARL</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID INTERNO</td>
+											<td>{{ post.arl.id }}</td>
+										</tr>
+										<tr>
+											<td>CODIGO</td>
+											<td>{{ post.arl.code }}</td>
+										</tr>
+										<tr>
+											<td>NOMBRE</td>
+											<td>{{ post.arl.name }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>FONDO DE PENSION</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID INTERNO</td>
+											<td>{{ post.pension_fund.id }}</td>
+										</tr>
+										<tr>
+											<td>CODIGO</td>
+											<td>{{ post.pension_fund.code }}</td>
+										</tr>
+										<tr>
+											<td>NOMBRE</td>
+											<td>{{ post.pension_fund.name }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>CAJA DE COMPENSACION</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID INTERNO</td>
+											<td>{{ post.compensation_fund.id }}</td>
+										</tr>
+										<tr>
+											<td>CODIGO</td>
+											<td>{{ post.compensation_fund.code }}</td>
+										</tr>
+										<tr>
+											<td>NOMBRE</td>
+											<td>{{ post.compensation_fund.name }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>FONDO DE CESANTIAS</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID INTERNO</td>
+											<td>{{ post.severance_fund.id }}</td>
+										</tr>
+										<tr>
+											<td>CODIGO</td>
+											<td>{{ post.severance_fund.code }}</td>
+										</tr>
+										<tr>
+											<td>NOMBRE</td>
+											<td>{{ post.severance_fund.name }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>DEPARTAMENTO</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID INTERNO</td>
+											<td>{{ post.department.id }}</td>
+										</tr>
+										<tr>
+											<td>NOMBRE</td>
+											<td>{{ post.department.name }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>CIUDAD</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID INTERNO</td>
+											<td>{{ post.city.id }}</td>
+										</tr>
+										<tr>
+											<td>NOMBRE</td>
+											<td>{{ post.city.name }}</td>
+										</tr>
+										<tr>
+											<td>DEPARTAMENTOS</td>
+											<td>{{ post.city.department }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>DIRECCION DETALLADA</td>
+								<td>{{ post.address }}</td>
+							</tr>
+							<tr>
+								<td>DIRECCION NORMALIZADA</td>
+								<td>{{ post.geo_address }}</td>
+							</tr>
+							<tr>
+								<td>OBSERVACIONES</td>
+								<td>{{ post.observations }}</td>
+							</tr>
+						</table>
+					</div>
+					<div class="tab-pane" id="2a">
+						<div class="row">
+							<h3>Contactos</h3>
+							<hr>
+							<div class="col-md-12">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>ID</td>
+											<td>Nombre Completo</td>
+											<td>Parentesco</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="item in post_contacts">
+											<td>{{ item.id }}</td>
+											<td>{{ item.contact.first_name }} {{ item.contact.second_name }} {{ item.contact.surname }} {{ item.contact.second_surname }}</td>
+											<td>{{ item.type_contact.name }}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane" id="3a">
+						<div class="row">
+							<h3>Contratos</h3>
+							<hr>
+							<div class="col-md-12">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>ID</td>
+											<td>Contrato</td>
+											<td>Termino</td>
+											<td>Salario Básico</td>
+											<td>Descripcion</td>
+											<td>Cargo</td>
+											<td>Fecha Inicio</td>
+											<td>Fecha Termino</td>
+											<td></td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="item in contracted_staff">
+											<td>{{ item.id }}</td>
+											<td>{{ item.contract_employee.name }}</td>
+											<td>{{ item.contract_employee.term.name }}</td>
+											<td>{{ item.contract_employee.basic_salary }}</td>
+											<td>{{ item.contract_employee.description }}</td>
+											<td>{{ item.type_charge.name }}</td>
+											<td>{{ item.date_start }}</td>
+											<td>{{ item.date_end }}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane" id="4a">
+						<div class="row">
+							<h3>Desempeño</h3>
+							<hr>
+							
+							<div class="col-md-12">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>ID</td>
+											<td>Motivo</td>
+											<td>Fecha Inicio</td>
+											<td>Fecha Fin</td>
+											<td>Accion Tomada</td>
+											<td>Notas</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="item in performances_employees">
+											<td>{{ item.id }}</td>
+											<td>{{ item.reason.name }}</td>
+											<td>{{ item.date_start }}</td>
+											<td>{{ item.date_end }}</td>
+											<td>{{ item.action_taken.name }}</td>
+											<td>{{ item.notes }}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane" id="5a">
+						<div class="row">
+							<h3>Colillas</h3>
+							<hr>
+						</div>
+					</div>
+				</div>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'Employees-List' }">Volver a la lista</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-Employees">
+			<div>
+				<h2>EMPLEADOS - Crear</h2>
+				<form v-on:submit="createEmployee">
+					<div class="form-group">
+						<label for="add-content">PRIMER NOMBRE</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.first_name" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">SEGUNDO NOMBRE</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.second_name" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">PRIMER APELLIDO</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.surname" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">SEGUNDO APELLIDO</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.second_surname" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">TIPO DE IDENTIFICACION</label>
+						<select class="form-control" v-model="post.identification_type" id="add-content">
+							<option v-for="item in selectOptions.types_identifications" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content"># IDENTIFICACION</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.identification_number" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">FECHA DE EXPEDICION DEL DOCUMENTO</label>
+						<input class="form-control" type="date" id="add-content" v-model="post.identification_date_expedition" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">FECHA DE NACIMIENTO</label>
+						<input class="form-control" type="date" id="add-content" v-model="post.birthdate" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">TIPO DE SANGRE</label>
+						<select class="form-control" v-model="post.blood_type" id="add-content">
+							<option v-for="item in selectOptions.types_bloods" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content">TIPO DE RH</label>
+						<select class="form-control" v-model="post.blood_rh" id="add-content">
+							<option v-for="item in selectOptions.types_bloods_rhs" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content">CORREO ELECTRONICO</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.mail" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">TELEFONO FIJO</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.number_phone" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">TELEFONO MOVIL</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.number_mobile" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">FECHA DE ENTRADA A LA EMPRESA</label>
+						<input class="form-control" type="date" id="add-content" v-model="post.company_date_entry" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">FECHA DE SALIDA DE LA EMPRESA</label>
+						<input class="form-control" type="date" id="add-content" v-model="post.company_date_out" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">CORREO ELECTRONICO EMPRESARIAL</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.company_mail" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">TELEFONO FIJO/EXTENSION EMPRESARIAL</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.company_number_phone" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">TELEFONO MOVIL EMPRESARIAL</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.company_number_mobile" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">ESTADO</label>
+						<select class="form-control" v-model="post.status" id="add-content">
+							<option v-for="item in selectOptions.status_employees" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content">EPS</label>
+						<select class="form-control" v-model="post.eps" id="add-content">
+							<option v-for="item in selectOptions.eps" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content">ARL</label>
+						<select class="form-control" v-model="post.arl" id="add-content">
+							<option v-for="item in selectOptions.arl" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content">FONDO DE PENSION</label>
+						<select class="form-control" v-model="post.pension_fund" id="add-content">
+							<option v-for="item in selectOptions.funds_pensions" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content">CAJA DE COMPENSACION</label>
+						<select class="form-control" v-model="post.compensation_fund" id="add-content">
+							<option v-for="item in selectOptions.funds_compensations" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content">FONDO DE CESANTIAS</label>
+						<select class="form-control" v-model="post.severance_fund" id="add-content">
+							<option v-for="item in selectOptions.funds_severances" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content">DEPARTAMENTO</label>
+						<select class="form-control" v-model="post.department" id="add-content" @change="loadCitys">
+							<option v-for="item in selectOptions.geo_departments" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content">CIUDAD</label>
+						<select class="form-control" v-model="post.city" id="add-content">
+							<option v-for="item in selectOptions.geo_citys" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content">DIRECCION DETALLADA</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.address" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">DIRECCION NORMALIZADA</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.geo_address" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">OBSERVACIONES</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.observations" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'Employees-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-Employees">
+			<div>
+				<h2>EMPLEADOS - Modificar</h2>
+				<div id="exTab1">
+					<ul  class="nav nav-pills">
+						<li class="active"><a  href="#1a" data-toggle="tab">Infomacion Basica</a></li>
+						<li><a href="#2a" data-toggle="tab">Contactos</a></li>
+						<li><a href="#3a" data-toggle="tab">Contratos</a></li>
+						<li><a href="#4a" data-toggle="tab">Desempeño</a></li>
+						<li><a href="#5a" data-toggle="tab">Colillas</a></li>
+					</ul>
+				</div>
+				<div class="tab-content clearfix">
+					<div class="tab-pane active" id="1a">	
+						<h3>Infomacion Basica</h3>
+						<hr>						
+						<form v-on:submit="updateEmployee">
+							<div class="form-group">
+								<label for="add-content">PRIMER NOMBRE</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.first_name" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">SEGUNDO NOMBRE</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.second_name" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">PRIMER APELLIDO</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.surname" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">SEGUNDO APELLIDO</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.second_surname" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">TIPO DE IDENTIFICACION</label>
+								<select class="form-control" v-model="post.identification_type" id="add-content">
+									<option v-for="item in selectOptions.types_identifications" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="add-content"># IDENTIFICACION</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.identification_number" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">FECHA DE EXPEDICION DEL DOCUMENTO</label>
+								<input class="form-control" type="date" id="add-content" v-model="post.identification_date_expedition" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">FECHA DE NACIMIENTO</label>
+								<input class="form-control" type="date" id="add-content" v-model="post.birthdate" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">TIPO DE SANGRE</label>
+								<select class="form-control" v-model="post.blood_type" id="add-content">
+									<option v-for="item in selectOptions.types_bloods" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="add-content">TIPO DE RH</label>
+								<select class="form-control" v-model="post.blood_rh" id="add-content">
+									<option v-for="item in selectOptions.types_bloods_rhs" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="add-content">CORREO ELECTRONICO</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.mail" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">TELEFONO FIJO</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.number_phone" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">TELEFONO MOVIL</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.number_mobile" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">FECHA DE ENTRADA A LA EMPRESA</label>
+								<input class="form-control" type="date" id="add-content" v-model="post.company_date_entry" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">FECHA DE SALIDA DE LA EMPRESA</label>
+								<input class="form-control" type="date" id="add-content" v-model="post.company_date_out" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">CORREO ELECTRONICO EMPRESARIAL</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.company_mail" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">TELEFONO FIJO/EXTENSION EMPRESARIAL</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.company_number_phone" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">TELEFONO MOVIL EMPRESARIAL</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.company_number_mobile" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">ESTADO</label>
+								<select class="form-control" v-model="post.status" id="add-content">
+									<option v-for="item in selectOptions.status_employees" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="add-content">EPS</label>
+								<select class="form-control" v-model="post.eps" id="add-content">
+									<option v-for="item in selectOptions.eps" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="add-content">ARL</label>
+								<select class="form-control" v-model="post.arl" id="add-content">
+									<option v-for="item in selectOptions.arl" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="add-content">FONDO DE PENSION</label>
+								<select class="form-control" v-model="post.pension_fund" id="add-content">
+									<option v-for="item in selectOptions.funds_pensions" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="add-content">CAJA DE COMPENSACION</label>
+								<select class="form-control" v-model="post.compensation_fund" id="add-content">
+									<option v-for="item in selectOptions.funds_compensations" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="add-content">FONDO DE CESANTIAS</label>
+								<select class="form-control" v-model="post.severance_fund" id="add-content">
+									<option v-for="item in selectOptions.funds_severances" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="add-content">DEPARTAMENTO</label>
+								<select class="form-control" v-model="post.department" id="add-content" @change="loadCitys">
+									<option v-for="item in selectOptions.geo_departments" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="add-content">CIUDAD</label>
+								<select class="form-control" v-model="post.city" id="add-content">
+									<option v-for="item in selectOptions.geo_citys" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="add-content">DIRECCION DETALLADA</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.address" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">DIRECCION NORMALIZADA</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.geo_address" />
+							</div>
+							<div class="form-group">
+								<label for="add-content">OBSERVACIONES</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.observations" />
+							</div>
+							<button type="submit" class="btn btn-primary">Guardar</button>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'Employees-List' }">Regresar</router-link>
+						</form>
+					</div>
+					<div class="tab-pane" id="2a">
+						<div class="row">
+							<h3>Contactos</h3>
+							<hr>
+							<div class="row">
+								<div class="form-group col-sm-12 text-right">
+									<div class="actions">
+										<button class="btn btn-primary" onclick="javascript: $('#includeCrewEmployee-Fast').show();">
+											<span class="fa fa-plus"></span>
+											Agregar
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12" id="includeCrewEmployee-Fast">
+								<form class="row" v-on:submit="includeCrewEmployee"> 
+									<div class="form-group col-md-6">
+										<label for="add-content">CONTACTO</label>
+										<select class="form-control" v-model="post_crew.contact" id="add-content">
+											<option v-for="item in selectOptions.contacts" :value="item.id">{{ item.identification_number }} - {{ item.first_name }} {{ item.second_name }} {{ item.surname }} {{ item.second_surname }}</option>
+										</select>
+									</div>
+									<div class="form-group col-md-6">
+										<label for="edit-content">PARENTESCO</label>
+										<select class="form-control" v-model="post_crew.type_contact" id="add-content">
+											<option v-for="item in selectOptions.types_contacts" :value="item.id">{{ item.name }}</option>
+										</select>
+									</div>
+									<button type="submit" class="btn btn-primary col-md-12">Agregar</button>
+								</form>
+								<hr>
+							</div>
+							
+							<div class="col-md-12">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>ID</td>
+											<td>Nombre Completo</td>
+											<td>Parentesco</td>
+											<td></td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="item in post_contacts">
+											<td>{{ item.id }}</td>
+											<td>{{ item.contact.first_name }} {{ item.contact.second_name }} {{ item.contact.surname }} {{ item.contact.second_surname }}</td>
+											<td>{{ item.type_contact.name }}</td>
+											<td>
+												<router-link class="btn btn-success btn-xs" target="_new" v-bind:to="{name: 'Contacts-View', params: { contact_id: item.contact.id }}"><i class="fa fa-eye"></i> </router-link>
+												<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'EmployeesContacts-Delete', params: { employee_id: item.employee, employee_contact_id: item.id }}"><i class="fa fa-trash"></i> </router-link>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane" id="3a">
+						<div class="row">
+							<h3>Contratos</h3>
+							<hr>
+							<div class="row">
+								<div class="form-group col-sm-12 text-right">
+									<div class="actions">
+										<button class="btn btn-primary" onclick="javascript: $('#includeContractEmployee-Fast').show();">
+											<span class="fa fa-plus"></span>
+											Agregar
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12" id="includeContractEmployee-Fast">
+								<form class="row" v-on:submit="includeContractEmployee"> 
+									<div class="form-group col-md-3">
+										<label for="add-content">CONTRATO</label>
+										<select class="form-control" v-model="post_contracted_staff.contract_employee" id="add-content">
+											<option v-for="item in selectOptions.contracts_employees" :value="item.id">{{ item.name }} - {{ item.term.name }} - {{ item.basic_salary }}</option>
+										</select>
+									</div>
+									<div class="form-group col-md-3">
+										<label for="edit-content">CARGO</label>
+										<select class="form-control" v-model="post_contracted_staff.type_charge" id="add-content">
+											<option v-for="item in selectOptions.types_charges" :value="item.id">{{ item.name }}</option>
+										</select>
+									</div>
+									<div class="form-group col-md-3">
+										<label for="add-content">FECHA INICIO</label>
+										<input class="form-control" type="date" id="add-content" v-model="post_contracted_staff.date_start" />
+									</div>
+									<div class="form-group col-md-3">
+										<label for="add-content">FECHA FIN</label>
+										<input class="form-control" type="date" id="add-content" v-model="post_contracted_staff.date_end" />
+									</div>
+									<button type="submit" class="btn btn-primary col-md-12">Agregar</button>
+								</form>
+								<hr>
+							</div>
+							
+							<div class="col-md-12">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>ID</td>
+											<td>Contrato</td>
+											<td>Termino</td>
+											<td>Salario Básico</td>
+											<td>Descripcion</td>
+											<td>Cargo</td>
+											<td>Fecha Inicio</td>
+											<td>Fecha Termino</td>
+											<td></td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="item in contracted_staff">
+											<td>{{ item.id }}</td>
+											<td>{{ item.contract_employee.name }}</td>
+											<td>{{ item.contract_employee.term.name }}</td>
+											<td>{{ item.contract_employee.basic_salary }}</td>
+											<td>{{ item.contract_employee.description }}</td>
+											<td>{{ item.type_charge.name }}</td>
+											<td>{{ item.date_start }}</td>
+											<td>{{ item.date_end }}</td>
+											<td><router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'ContractedStaff-Delete', params: { employee_id: item.employee, contracted_staff_id: item.id }}"><i class="fa fa-trash"></i> </router-link></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane" id="4a">
+						<div class="row">
+							<h3>Desempeño</h3>
+							<hr>
+							<div class="row">
+								<div class="form-group col-sm-12 text-right">
+									<div class="actions">
+										<button class="btn btn-primary" onclick="javascript: $('#includePerformancesEmployee-Fast').show();">
+											<span class="fa fa-plus"></span>
+											Agregar
+										</button>
+									</div>
+								</div>
+								<div class="col-md-12" id="includePerformancesEmployee-Fast">
+									<form class="row" v-on:submit="includePerformancesEmployee"> 
+										<div class="form-group col-md-3">
+											<label for="add-content">MOTIVO</label>
+											<select class="form-control" v-model="post_performances_employees.reason" id="add-content">
+												<option v-for="item in selectOptions.reasons_performances_employees" :value="item.id">{{ item.name }}</option>
+											</select>
+										</div>
+										<div class="form-group col-md-3">
+											<label for="add-content">FECHA INICIO</label>
+											<input class="form-control" type="date" id="add-content" v-model="post_performances_employees.date_start" />
+										</div>
+										<div class="form-group col-md-3">
+											<label for="add-content">FECHA FIN</label>
+											<input class="form-control" type="date" id="add-content" v-model="post_performances_employees.date_end" />
+										</div>
+										<div class="form-group col-md-3">
+											<label for="edit-content">ACCION TOMADA</label>
+											<select class="form-control" v-model="post_performances_employees.action_taken" id="add-content">
+												<option v-for="item in selectOptions.actions_performances_employees" :value="item.id">{{ item.name }}</option>
+											</select>
+										</div>
+										<div class="form-group col-md-12">
+											<label for="edit-content">NOTAS</label>
+											<textarea class="form-control" v-model="post_performances_employees.notes" id="add-content"></textarea>
+										</div>
+										<button type="submit" class="btn btn-primary col-md-12">Agregar</button>
+									</form>
+									<hr>
+								</div>
+							</div>
+							
+							
+							<div class="col-md-12">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>ID</td>
+											<td>Motivo</td>
+											<td>Fecha Inicio</td>
+											<td>Fecha Fin</td>
+											<td>Accion Tomada</td>
+											<td>Notas</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="item in performances_employees">
+											<td>{{ item.id }}</td>
+											<td>{{ item.reason.name }}</td>
+											<td>{{ item.date_start }}</td>
+											<td>{{ item.date_end }}</td>
+											<td>{{ item.action_taken.name }}</td>
+											<td>{{ item.notes }}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane" id="5a">
+						<div class="row">
+							<h3>Colillas</h3>
+							<hr>
+						</div>
+					</div>
+				</div>
+			</div>
+		</template>
+		
+		<template id="delete-Employees">
+			<div>
+				<h2>EMPLEADOS - Eliminar</h2>
+				<form v-on:submit="deleteEmployee">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'Employees-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-EmployeesContacts">
+			<div>
+				<h2>CONTACTOS - Eliminar</h2>
+				<form v-on:submit="deleteEmployeeContact">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'Employees-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-ContractedStaff">
+			<div>
+				<h2>CONTACTOS - Eliminar</h2>
+				<form v-on:submit="deleteContractedStaff">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'Employees-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ EMPLEADOS FIN -------------------------------------  -->
+		
+		<!-- // ------------ CLIENTES - INICIO -------------------------------------  -->
+		<template id="page-Clients">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>CLIENTES</h1>
+					</div>
+				</header>
+				<div class="filters row">
+					<div class="form-group col-sm-8">
+						<label for="search-element">Filtrar / Buscar</label>
+						<input v-model="searchKey" class="form-control" id="search-element" required/>
+					</div>
+					<div class="form-group col-sm-4 text-right">
+						<div class="actions">
+							<br>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'Clients-Add' }">
+								<span class="fa fa-plus"></span>
+								Nuevo
+							</router-link>
+						</div>
+					</div>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>TIPO DE CLIENTE</th>
+							<th>TIPO DE IDENTIFICACION</th>
+							<th># IDENTIFICACION</th>
+							<th>RASON SOCIAL</th>
+							<th>NOMBRE COMERCIAL</th>
+							<th class="col-sm-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="posts===null">
+							<td colspan="4">Loading...</td>
+						</tr>
+						<tr v-else v-for="post in filteredposts">
+							<td><router-link v-bind:to="{name: 'Clients-View', params: { client_id: post.id }}">{{ post.id }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'Clients-View', params: { client_id: post.id }}">{{ post.type.name }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'Clients-View', params: { client_id: post.id }}">{{ post.identification_type.name }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'Clients-View', params: { client_id: post.id }}">{{ post.identification_number }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'Clients-View', params: { client_id: post.id }}">{{ post.social_reason }}</router-link></td>
+							<td><router-link v-bind:to="{name: 'Clients-View', params: { client_id: post.id }}">{{ post.tradename }}</router-link></td>
+							<td>
+							<router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'Clients-Edit', params: { client_id: post.id }}"><i class="fa fa-pencil-square-o"></i> </router-link>
+							<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'Clients-Delete', params: { client_id: post.id }}"><i class="fa fa-trash"></i> </router-link>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</template>
+		
+		<template id="view-Clients">
+			<div>
+				<header class="page-header">
+					<div class="branding">
+						<h1>CLIENTES - {{ post.identification_number }} - {{ post.social_reason }}</h1>
+					</div>
+				</header>
+				
+				<div id="exTab1">
+					<ul  class="nav nav-pills">
+						<li class="active"><a  href="#1a" data-toggle="tab">Infomacion Basica</a></li>
+						<li><a href="#2a" data-toggle="tab">Contactos</a></li>
+						<li><a href="#3a" data-toggle="tab">Contratos (Radicados)</a></li>
+						<li><a href="#4a" data-toggle="tab">Interventores</a></li>
+						<li><a href="#5a" data-toggle="tab">Servicios</a></li>
+						<li><a href="#6a" data-toggle="tab">Facturas</a></li>
+					</ul>
+				</div>
+				<div class="tab-content clearfix">
+					<div class="tab-pane active" id="1a">
+						<h3>Infomacion Basica</h3>
+						<hr>
+						<table class="table">
+							<tr>
+								<td>ID INTERNO</td>
+								<td>{{ post.id }}</td>
+							</tr>
+							<tr>
+								<td>TIPO DE CLIENTE</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID INTERNO</td>
+											<td>{{ post.type.id }}</td>
+										</tr>
+										<tr>
+											<td>NOMBRE</td>
+											<td>{{ post.type.name }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>TIPO DE IDENTIFICACION</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID INTERNO</td>
+											<td>{{ post.identification_type.id }}</td>
+										</tr>
+										<tr>
+											<td>NOMBRE</td>
+											<td>{{ post.identification_type.name }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td># DE IDENTIFICACION</td>
+								<td>{{ post.identification_number }}</td>
+							</tr>
+							<tr>
+								<td>RASON SOCIAL</td>
+								<td>{{ post.social_reason }}</td>
+							</tr>
+							<tr>
+								<td>NOMBRE COMERCIAL</td>
+								<td>{{ post.tradename }}</td>
+							</tr>
+							<tr>
+								<td>TIPO DE SOCIEDAD</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID INTERNO</td>
+											<td>{{ post.society_type.id }}</td>
+										</tr>
+										<tr>
+											<td>TIPO DE SOCIEDAD</td>
+											<td>{{ post.society_type.name }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>DEPARTAMENTO</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID INTERNO</td>
+											<td>{{ post.department.id }}</td>
+										</tr>
+										<tr>
+											<td>TIPO DE SOCIEDAD</td>
+											<td>{{ post.department.name }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>CIUDAD</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>ID INTERNO</td>
+											<td>{{ post.city.id }}</td>
+										</tr>
+										<tr>
+											<td>TIPO DE SOCIEDAD</td>
+											<td>{{ post.city.name }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>DIRECCION DETALLADA</td>
+								<td>{{ post.address }}</td>
+							</tr>
+							<tr>
+								<td>DIRECCION NORMALIZADA</td>
+								<td>{{ post.geo_address }}</td>
+							</tr>
+							<tr>
+								<td>REPRESENTANTE LEGAL</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>NOMBRE COMPLETO</td>
+											<td>{{ post.legal_representative.first_name }} {{ post.legal_representative.second_name }} {{ post.legal_representative.surname }} {{ post.legal_representative.second_surname }}</td>
+										</tr>
+										<tr>
+											<td>TELEFONO FIJO</td>
+											<td>{{ post.legal_representative.phone }}</td>
+										</tr>
+										<tr>
+											<td>TELEFONO MOVIL</td>
+											<td>{{ post.legal_representative.phone_mobile }}</td>
+										</tr>
+										<tr>
+											<td>CORREO ELECTRONICO</td>
+											<td>{{ post.legal_representative.mail }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>CONTACTO PRINCIPAL</td>
+								<td>
+									<table class="table">
+										<tr>
+											<td>NOMBRE COMPLETO</td>
+											<td>{{ post.contact_principal.first_name }} {{ post.contact_principal.second_name }} {{ post.contact_principal.surname }} {{ post.contact_principal.second_surname }}</td>
+										</tr>
+										<tr>
+											<td>TELEFONO FIJO</td>
+											<td>{{ post.contact_principal.phone }}</td>
+										</tr>
+										<tr>
+											<td>TELEFONO MOVIL</td>
+											<td>{{ post.contact_principal.phone_mobile }}</td>
+										</tr>
+										<tr>
+											<td>CORREO ELECTRONICO</td>
+											<td>{{ post.contact_principal.mail }}</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>INTERVENTORIA HABILITADA</td>
+								<td v-if="post.enable_audit == 1">HABILITADA</td>
+								<td v-if="post.enable_audit == 0">NO HABILITADA</td>
+							</tr>
+						</table>
+					</div>
+					<div class="tab-pane " id="2a">	
+						<div class="row">
+							<h3>Contactos</h3>
+							<hr>
+							<div class="col-md-12">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>ID</td>
+											<td>Nombre Completo</td>
+											<td>Parentesco</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="item in crew_clients">
+											<td>{{ item.id }}</td>
+											<td>{{ item.contact.first_name }} {{ item.contact.second_name }} {{ item.contact.surname }} {{ item.contact.second_surname }}</td>
+											<td>{{ item.type_contact.name }}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane " id="3a">	
+						<div class="row">
+							<h3>Contratos (Radicados)</h3>
+							<hr>
+							<div class="col-md-12">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>ID</td>
+											<td>CONSECUTIVO</td>
+											<td>NOMBRE</td>
+											<td>FECHA DE INICIO</td>
+											<td>FECHA DE TERMINO</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="item in redicated_clients">
+											<td>{{ item.id }}</td>
+											<td>{{ item.consecutive }}</td>
+											<td>{{ item.name }}</td>
+											<td>{{ item.date_start }}</td>
+											<td>{{ item.date_end }}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane " id="4a">	
+						<div class="row">
+							<h3>Interventores</h3>
+							<hr>
+							<div class="col-md-12">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>ID</td>
+											<td># IDENTIFICACION</td>
+											<td>NOMBRE COMPLETO</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="item in auditors_clients">
+											<td>{{ item.id }}</td>
+											<td>{{ item.contact.identification_number }}</td>
+											<td>{{ item.contact.first_name }} {{ item.contact.second_name }} {{ item.contact.surname }} {{ item.contact.second_surname }}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane " id="5a">	
+						<div class="row">
+							<h3>Servicios</h3>
+							<hr>
+							<div class="col-md-12">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>ID</td>
+											<td>NOMBRE DEL SERVICIO</td>
+											<td>CANTIDAD</td>
+											<td>PRECIO</td>
+											<td>FECHA INICIO</td>
+											<td>FECHA TERMINO</td>
+											<td>ATRIBUTOS</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="item in services_clients">
+											<td>{{ item.id }}</td>
+											<td>{{ item.service.name }}</td>
+											<td>{{ item.quantity }}</td>
+											<td>{{ item.service.price }}</td>
+											<td>{{ item.date_start }}</td>
+											<td>{{ item.date_end }}</td>
+											<td>
+												<table class="table">
+													<tr>
+														<td>ID</td>
+														<td>ATRIBUTO</td>
+														<td>CANTIDAD</td>
+														<td>PRECIO</td>
+													</tr>
+													<tr v-for="attribute in item.attributes_services_clients">
+														<td>{{ attribute.id }}</td>
+														<td>{{ attribute.attribute.name }}</td>
+														<td>{{ attribute.quantity }}</td>
+														<td>{{ attribute.attribute.price }}</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane " id="6a">
+						<div class="row">
+							<h3>Facturas</h3>
+							<hr>
+						</div>
+					</div>
+					
+				</div>
+				<br/>
+				<span class="fa fa-arrow-left" aria-hidden="true"></span>
+				<router-link v-bind:to="{ name: 'Clients-List' }">Volver a la lista</router-link>
+			</div>		  
+		</template>
+		
+		<template id="add-Clients">
+			<div>
+				<h2>CLIENTES - Crear</h2>
+				<form v-on:submit="createClient">
+					<div class="form-group col-md-4">
+						<label for="add-content">TIPO DE CLIENTE</label>
+						<select class="form-control" v-model="post.type" id="add-content">
+							<option v-for="item in selectOptions.types_clients" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="add-content">TIPO DE IDENTIFICACION</label>
+						<select class="form-control" v-model="post.identification_type" id="add-content">
+							<option v-for="item in selectOptions.types_identifications" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="add-content"># DE IDENTIFICACION</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.identification_number" />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="add-content">RASON SOCIAL</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.social_reason" />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="add-content">NOMBRE COMERCIAL</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.tradename" />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="add-content">TIPO DE SOCIEDAD</label>
+						<select class="form-control" v-model="post.society_type" id="add-content">
+							<option v-for="item in selectOptions.types_societys" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="add-content">DEPARTAMENTO</label>
+						<select class="form-control" v-model="post.department" id="add-content" @change="loadCitys">
+							<option v-for="item in selectOptions.geo_departments" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="add-content">CIUDAD</label>
+						<select class="form-control" v-model="post.city" id="add-content">
+							<option v-for="item in selectOptions.geo_citys" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group col-md-8">
+						<label for="add-content">DIRECCION DETALLADA</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.address" />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="add-content">DIRECCION NORMALIZADA</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.geo_address" />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="add-content">REPRESENTANTE LEGAL</label>
+						<select class="form-control" v-model="post.legal_representative" id="add-content">
+							<option v-for="item in selectOptions.contacts" :value="item.id">{{ item.first_name }} {{ item.second_name }} {{ item.surname }} {{ item.second_surname }} </option>
+						</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="add-content">CONTACTO PRINCIPAL</label>
+						<select class="form-control" v-model="post.contact_principal" id="add-content">
+							<option v-for="item in selectOptions.contacts" :value="item.id">{{ item.first_name }} {{ item.second_name }} {{ item.surname }} {{ item.second_surname }} </option>
+						</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="add-content">HABILITAR INTERVENTORIA</label>
+						<select class="form-control" v-model="post.enable_audit" id="add-content">
+							<option value="0">NO HABILITADA</option>
+							<option value="1">HABILITADA</option>
+						</select>
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'Clients-List' }">Regresar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="edit-Clients">
+			<div>
+				<header class="page-header">
+					<div class="branding">	
+						<h2>CLIENTES - Modificar</h2>
+						<h1>CLIENTES - {{ post.identification_number }} - {{ post.social_reason }}</h1>
+					</div>
+				</header>
+				
+				<div id="exTab1">
+					<ul  class="nav nav-pills">
+						<li class="active"><a  href="#1a" data-toggle="tab">Infomacion Basica</a></li>
+						<li><a href="#2a" data-toggle="tab">Contactos</a></li>
+						<li><a href="#3a" data-toggle="tab">Contratos (Radicados)</a></li>
+						<li v-if="post.enable_audit == 1"><a href="#4a" data-toggle="tab">Interventores</a></li>
+						<li><a href="#5a" data-toggle="tab">Servicios</a></li>
+						<li><a href="#6a" data-toggle="tab">Facturas</a></li>
+					</ul>
+				</div>
+				<div class="tab-content clearfix">
+					<div class="tab-pane active" id="1a">
+						<h3>Infomacion Basica</h3>
+						<hr>
+						<form v-on:submit="updateClient">
+							<div class="form-group col-sm-4">
+								<label for="add-content">TIPO DE CLIENTE</label>
+								<select class="form-control" v-model="post.type" id="add-content">
+									<option v-for="item in selectOptions.types_clients" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<div class="form-group col-sm-4">
+								<label for="add-content">TIPO DE IDENTIFICACION</label>
+								<select class="form-control" v-model="post.identification_type" id="add-content">
+									<option v-for="item in selectOptions.types_identifications" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<div class="form-group col-sm-4">
+								<label for="add-content"># DE IDENTIFICACION</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.identification_number" />
+							</div>
+							<div class="form-group col-sm-4">
+								<label for="add-content">RASON SOCIAL</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.social_reason" />
+							</div>
+							<div class="form-group col-sm-4">
+								<label for="add-content">NOMBRE COMERCIAL</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.tradename" />
+							</div>
+							<div class="form-group col-sm-4">
+								<label for="add-content">TIPO DE SOCIEDAD</label>
+								<select class="form-control" v-model="post.society_type" id="add-content">
+									<option v-for="item in selectOptions.types_societys" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<div class="form-group col-sm-6">
+								<label for="add-content">DEPARTAMENTO</label>
+								<select class="form-control" v-model="post.department" id="add-content" @change="loadCitys">
+									<option v-for="item in selectOptions.geo_departments" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<div class="form-group col-sm-6">
+								<label for="add-content">CIUDAD</label>
+								<select class="form-control" v-model="post.city" id="add-content">
+									<option v-for="item in selectOptions.geo_citys" :value="item.id">{{ item.name }}</option>
+								</select>
+							</div>
+							<div class="form-group col-sm-8">
+								<label for="add-content">DIRECCION DETALLADA</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.address" />
+							</div>
+							<div class="form-group col-sm-4">
+								<label for="add-content">DIRECCION NORMALIZADA</label>
+								<input class="form-control" type="text" id="add-content" v-model="post.geo_address" />
+							</div>
+							<div class="form-group col-sm-4">
+								<label for="add-content">REPRESENTANTE LEGAL</label>
+								<select class="form-control" v-model="post.legal_representative" id="add-content">
+									<option v-for="item in selectOptions.contacts" :value="item.id">{{ item.first_name }} {{ item.second_name }} {{ item.surname }} {{ item.second_surname }} </option>
+								</select>
+							</div>
+							<div class="form-group col-sm-4">
+								<label for="add-content">CONTACTO PRINCIPAL</label>
+								<select class="form-control" v-model="post.contact_principal" id="add-content">
+									<option v-for="item in selectOptions.contacts" :value="item.id">{{ item.first_name }} {{ item.second_name }} {{ item.surname }} {{ item.second_surname }} </option>
+								</select>
+							</div>
+							<div class="form-group col-sm-4">
+								<label for="add-content">HABILITAR INTERVENTORIA</label>
+								<select class="form-control" v-model="post.enable_audit" id="add-content">
+									<option value="0">NO HABILITADA</option>
+									<option value="1">HABILITADA</option>
+								</select>
+							</div>
+							<button type="submit" class="btn btn-primary">Guardar</button>
+							<router-link class="btn btn-primary" v-bind:to="{ name: 'Clients-List' }">Regresar</router-link>
+						</form>
+					</div>
+					<div class="tab-pane " id="2a">	
+						<div class="row">
+							<h3>Contactos</h3>
+							<hr>
+							<div class="row">
+								<div class="form-group col-sm-12 text-right">
+									<div class="actions">
+										<button class="btn btn-primary" onclick="javascript: $('#includeContactClient-Fast').show();">
+											<span class="fa fa-plus"></span>
+											Agregar
+										</button>
+									</div>
+								</div>
+								<div class="col-md-12" id="includeContactClient-Fast">
+									<form class="row" v-on:submit="includeContactClient"> 
+										<div class="form-group col-md-6">
+											<label for="add-content">CONTACTO</label>
+											<select class="form-control" v-model="post_crew_clients.contact" id="add-content">
+												<option v-for="item in selectOptions.contacts" :value="item.id">{{ item.identification_number }} - {{ item.first_name }} {{ item.second_name }} {{ item.surname }} {{ item.second_surname }}</option>
+											</select>
+										</div>
+										<div class="form-group col-md-6">
+											<label for="edit-content">PARENTESCO</label>
+											<select class="form-control" v-model="post_crew_clients.type_contact" id="add-content">
+												<option v-for="item in selectOptions.types_contacts" :value="item.id">{{ item.name }}</option>
+											</select>
+										</div>
+										<button type="submit" class="btn btn-primary col-md-12">Agregar</button>
+									</form>
+									<hr>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>ID</td>
+											<td>Nombre Completo</td>
+											<td>Parentesco</td>
+											<td></td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="item in crew_clients">
+											<td>{{ item.id }}</td>
+											<td>{{ item.contact.first_name }} {{ item.contact.second_name }} {{ item.contact.surname }} {{ item.contact.second_surname }}</td>
+											<td>{{ item.type_contact.name }}</td>
+											<td>
+												<router-link class="btn btn-success btn-xs" target='_blank' v-bind:to="{name: 'Contacts-View', params: { contact_id: item.contact.id }}"><i class="fa fa-eye"></i> </router-link>
+												<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'ClientsContacts-Delete', params: { client_id: post.id, client_contact_id: item.id }}"><i class="fa fa-trash"></i> </router-link>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane " id="3a">	
+						<div class="row">
+							<h3>Contratos (Radicados)</h3>
+							<hr>
+							<div class="row">
+								<div class="form-group col-sm-12 text-right">
+									<div class="actions">
+										<button class="btn btn-primary" onclick="javascript: $('#includeRedicatedClient-Fast').show();">
+											<span class="fa fa-plus"></span>
+											Agregar
+										</button>
+									</div>
+								</div>
+								<div class="col-md-12" id="includeRedicatedClient-Fast">
+									<form class="row" v-on:submit="includeRedicatedClient">
+										<div class="form-group col-md-3">
+											<label for="add-content">CONSECUTIVO</label>
+											<input class="form-control" type="text" id="add-content" v-model="post_redicated_clients.consecutive" />
+										</div>
+										<div class="form-group col-md-3">
+											<label for="add-content">NOMBRE</label>
+											<input class="form-control" type="text" id="add-content" v-model="post_redicated_clients.name" />
+										</div>
+										<div class="form-group col-md-3">
+											<label for="add-content">OBJECTO DEL CONTRATO</label>
+											<textarea class="form-control" type="text" id="add-content" v-model="post_redicated_clients.object"></textarea>
+										</div>
+										<div class="form-group col-md-3">
+											<label for="add-content">DESCRIPCION DEL SERVICIO</label>
+											<textarea class="form-control" type="text" id="add-content" v-model="post_redicated_clients.description_service"></textarea>
+										</div>
+										<div class="form-group col-md-3">
+											<label for="add-content">FECHA INICIO</label>
+											<input class="form-control" type="date" id="add-content" v-model="post_redicated_clients.date_start" />
+										</div>
+										<div class="form-group col-md-3">
+											<label for="add-content">FECHA FIN</label>
+											<input class="form-control" type="date" id="add-content" v-model="post_redicated_clients.date_end" />
+										</div>
+										<div class="form-group col-md-3">
+											<label for="add-content">NOTAS ADICCIONALES</label>
+											<textarea class="form-control" type="text" id="add-content" v-model="post_redicated_clients.additional_notes"></textarea>
+										</div>
+										
+										<button type="submit" class="btn btn-primary col-md-12">Agregar</button>
+									</form>
+									<hr>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>ID</td>
+											<td>CONSECUTIVO</td>
+											<td>NOMBRE</td>
+											<td>FECHA DE INICIO</td>
+											<td>FECHA DE TERMINO</td>
+											<td></td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="item in redicated_clients">
+											<td>{{ item.id }}</td>
+											<td>{{ item.consecutive }}</td>
+											<td>{{ item.name }}</td>
+											<td>{{ item.date_start }}</td>
+											<td>{{ item.date_end }}</td>
+											<td><router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'RedicatedClients-Delete', params: { client_id: post.id, redicated_client_id: item.id }}"><i class="fa fa-trash"></i> </router-link></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane " id="4a">	
+						<div class="row">
+							<h3>Interventores</h3>
+							<hr>
+							<div class="row">
+								<div class="form-group col-sm-12 text-right">
+									<div class="actions">
+										<button class="btn btn-primary" onclick="javascript: $('#includeAuditorClient-Fast').show();">
+											<span class="fa fa-plus"></span>
+											Agregar
+										</button>
+									</div>
+								</div>
+								<div class="col-md-12" id="includeAuditorClient-Fast">
+									<form class="row" v-on:submit="includeAuditorClient"> 
+										<div class="form-group col-md-126">
+											<label for="add-content">CONTACTO</label>
+											<select class="form-control" v-model="post_auditors_clients.contact" id="add-content">
+												<option v-for="item in selectOptions.contacts" :value="item.id">{{ item.identification_number }} - {{ item.first_name }} {{ item.second_name }} {{ item.surname }} {{ item.second_surname }}</option>
+											</select>
+										</div>
+										<button type="submit" class="btn btn-primary col-md-12">Agregar</button>
+									</form>
+									<hr>
+								</div>
+							</div>
+							
+							<div class="col-md-12">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>ID</td>
+											<td># IDENTIFICACION</td>
+											<td>NOMBRE COMPLETO</td>
+											<td></td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="item in auditors_clients">
+											<td>{{ item.id }}</td>
+											<td>{{ item.contact.identification_number }}</td>
+											<td>{{ item.contact.first_name }} {{ item.contact.second_name }} {{ item.contact.surname }} {{ item.contact.second_surname }}</td>
+											<td>
+												<router-link class="btn btn-success btn-xs" target="_new" v-bind:to="{name: 'Contacts-View', params: { contact_id: item.contact.id }}"><i class="fa fa-eye"></i> </router-link>
+												<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'ClientsAuditors-Delete', params: { client_id: post.id, auditor_client_id: item.id }}"><i class="fa fa-trash"></i> </router-link>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane " id="5a">	
+						<div class="row">
+							<h3>Servicios</h3>
+							<hr>
+							<div class="col-md-12">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>ID</td>
+											<td>NOMBRE DEL SERVICIO</td>
+											<td>CANTIDAD</td>
+											<td>PRECIO</td>
+											<td>FECHA INICIO</td>
+											<td>FECHA TERMINO</td>
+											<td>ATRIBUTOS</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="item in services_clients">
+											<td>{{ item.id }}</td>
+											<td>{{ item.service.name }}</td>
+											<td>{{ item.quantity }}</td>
+											<td>{{ item.service.price }}</td>
+											<td>{{ item.date_start }}</td>
+											<td>{{ item.date_end }}</td>
+											<td>
+												<table class="table">
+													<tr>
+														<td>ID</td>
+														<td>ATRIBUTO</td>
+														<td>CANTIDAD</td>
+														<td>PRECIO</td>
+													</tr>
+													<tr v-for="attribute in item.attributes_services_clients">
+														<td>{{ attribute.id }}</td>
+														<td>{{ attribute.attribute.name }}</td>
+														<td>{{ attribute.quantity }}</td>
+														<td>{{ attribute.attribute.price }}</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane " id="6a">
+						<div class="row">
+							<h3>Facturas</h3>
+							<hr>
+						</div>
+					</div>
+					
+				</div>
+				<hr>
+				<router-link v-bind:to="{ name: 'Clients-List' }">Volver a la lista</router-link>
+			</div>
+		</template>
+		
+		<template id="delete-Clients">
+			<div>
+				<h2>CLIENTES - Eliminar</h2>
+				<form v-on:submit="deleteClient">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'Clients-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-ClientsContacts">
+			<div>
+				<h2>CONTACTOS - Eliminar</h2>
+				<form v-on:submit="deleteClientsContacts">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'Clients-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-RedicatedClients">
+			<div>
+				<h2>CONTACTOS - Eliminar</h2>
+				<form v-on:submit="deleteRedicatedClients">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'Clients-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="delete-ClientsAuditors">
+			<div>
+				<h2>CONTACTOS - Eliminar</h2>
+				<form v-on:submit="deleteClientsAuditors">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{ name: 'Clients-List' }">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ CLIENTES - FIN -------------------------------------  -->
 		
 		<!-- Bootstrap core JavaScript -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
