@@ -16,6 +16,7 @@
 		<link href="/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 		<!-- Custom styles for this template -->
 		<link href="/assets/css/jumbotron.css" rel="stylesheet">
+		<link href="/assets/css/dashboard.css" rel="stylesheet">
 		<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 		<!--[if lt IE 9]><script src="/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 		<script src="/assets/js/ie-emulation-modes-warning.js"></script>
@@ -140,7 +141,8 @@
 											<li><a href="#/Types/Vehicles"><i class="fa fa-truck"></i> Tipos de Vehiculos</a></li>
 											<li><a href="#/Types/Charges"><i class="fa fa-id-badge"></i> Tipos de Cargos</a></li>
 											<li><a href="#/Employees/Actions/Performances"><i class="fa fa-id-badge"></i> Acciones de Desempeño</a></li>
-											<li><a href="#/Attributes"><i class="fa fa-id-badge"></i> Conceptos</a></li>
+											<li><a href="#/Attributes"><i class="fa fa-id-badge"></i> Conceptos de Servios</a></li>
+											
 											<!-- <li role="separator" class="divider"></li> -->
 											<!-- <li><a href="#">Ver todas las notificaciones</a></li> -->
 									  </ul>
@@ -180,7 +182,7 @@
 
 		<template id="page-Home">
 			<div>
-				<!-- Main jumbotron for a primary marketing message or call to action -->
+				<!--
 				<div class="jumbotron">
 				  <div class="container">
 					<h1>Bienvenid@!</h1>
@@ -190,25 +192,147 @@
 					<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
 				  </div>
 				</div>
-				<!-- Example row of columns -->
+				
 				<div class="row">
 					<div class="col-md-4">
-					  <h2>Heading</h2>
+					  <h2>Clientes</h2>
 					  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
 					  <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
 					</div>
 					<div class="col-md-4">
-					  <h2>Heading</h2>
+					  <h2>Servicios</h2>
 					  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
 					  <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
 					</div>
 					<div class="col-md-4">
-					  <h2>Heading</h2>
+					  <h2>Empleados</h2>
 					  <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 					  <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
 					</div>
+				</div> -->
+				
+				<div class="jumbotron">
+					<div class="container">
+						<!-- <h1>Bienvenid@!</h1>
+						<p>Estas son las estadisticas actuales de la empresa.</p>-->
+						<h3>CMR Monteverde LTDA</h3>
+						<p>Estas son las estadisticas actuales de la empresa.</p>
+					</div>
 				</div>
-
+				<div class="row" >
+					<div class="col-sm-6">
+						<div class="circle-tile">
+							<a href="#">
+								<div class="circle-tile-heading dark-blue">
+									<i class="fa fa-users fa-fw fa-3x"></i>
+								</div>
+							</a>
+							<div class="circle-tile-content dark-blue">
+								<div class="circle-tile-description text-faded">
+									Users
+								</div>
+								<div class="circle-tile-number text-faded">
+									265
+									<span id="sparklineA"></span>
+								</div>
+								<a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="circle-tile">
+							<a href="#">
+								<div class="circle-tile-heading green">
+									<i class="fa fa-money fa-fw fa-3x"></i>
+								</div>
+							</a>
+							<div class="circle-tile-content green">
+								<div class="circle-tile-description text-faded">
+									Revenue
+								</div>
+								<div class="circle-tile-number text-faded">
+									$32,384
+								</div>
+								<a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="circle-tile">
+							<a href="#">
+								<div class="circle-tile-heading orange">
+									<i class="fa fa-bell fa-fw fa-3x"></i>
+								</div>
+							</a>
+							<div class="circle-tile-content orange">
+								<div class="circle-tile-description text-faded">
+									Alerts
+								</div>
+								<div class="circle-tile-number text-faded">
+									9 New
+								</div>
+								<a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="circle-tile">
+							<a href="#">
+								<div class="circle-tile-heading blue">
+									<i class="fa fa-tasks fa-fw fa-3x"></i>
+								</div>
+							</a>
+							<div class="circle-tile-content blue">
+								<div class="circle-tile-description text-faded">
+									Tasks
+								</div>
+								<div class="circle-tile-number text-faded">
+									10
+									<span id="sparklineB"></span>
+								</div>
+								<a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="circle-tile">
+							<a href="#">
+								<div class="circle-tile-heading red">
+									<i class="fa fa-shopping-cart fa-fw fa-3x"></i>
+								</div>
+							</a>
+							<div class="circle-tile-content red">
+								<div class="circle-tile-description text-faded">
+									Orders
+								</div>
+								<div class="circle-tile-number text-faded">
+									24
+									<span id="sparklineC"></span>
+								</div>
+								<a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="circle-tile">
+							<a href="#">
+								<div class="circle-tile-heading purple">
+									<i class="fa fa-comments fa-fw fa-3x"></i>
+								</div>
+							</a>
+							<div class="circle-tile-content purple">
+								<div class="circle-tile-description text-faded">
+									Mentions
+								</div>
+								<div class="circle-tile-number text-faded">
+									96
+									<span id="sparklineD"></span>
+								</div>
+								<a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</template>
 
@@ -236,7 +360,7 @@
 			<div>
 				<h2>Opciones</h2>
 				<hr>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr><td>Cambiar clave</td><td></td></tr>
 				</table>
 			</div>
@@ -246,7 +370,7 @@
 			<div>
 				<h2>Mi Perfil</h2>
 				<hr>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr><td>ID</td><td>{{ userData.id }}</td></tr>
 					<tr><td>Usuario</td><td>{{ userData.nick }}</td></tr>
 				</table>
@@ -258,7 +382,7 @@
 				<h2>Help</h2>
 				<hr>
 				
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr><td>Notificar un Problema</td><td></td></tr>
 				</table>
 			</div>
@@ -321,7 +445,7 @@
 						<h1>ARL - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -444,7 +568,7 @@
 						<h1>VH-Cats - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -557,7 +681,7 @@
 						<h1>EPS - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -682,7 +806,7 @@
 						<h1>FundsCompensation - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -807,7 +931,7 @@
 						<h1>FundsPension - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -932,7 +1056,7 @@
 						<h1>FundSeverances - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -1057,7 +1181,7 @@
 						<h1>GEO - DEPARTAMENTOS - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -1182,7 +1306,7 @@
 						<h1>GEO - CIUDADES - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -1190,7 +1314,7 @@
 					<tr>
 						<td>DEPARTAMENTO</td>
 						<td>
-							<table class="table">
+							<table class="table  table-responsive">
 								<tr>
 									<td>ID INTERNO</td>
 									<td>{{ post.department.id }}</td>
@@ -1324,7 +1448,7 @@
 						<h1>ESTADOS - EMPLEADOS - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -1438,7 +1562,7 @@
 						<h1>ESTADOS - SERVICIOS - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -1565,7 +1689,7 @@
 						<h1>ESTADOS - VEHICULOS - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -1676,7 +1800,7 @@
 						<h1>TIPOS - SANGRE - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -1787,7 +1911,7 @@
 						<h1>TIPOS - RH - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -1898,7 +2022,7 @@
 						<h1>TIPOS - CLIENTES - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -2010,7 +2134,7 @@
 						<h1>TIPOS - CONTACTOS - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -2121,7 +2245,7 @@
 						<h1>TIPOS - COMBUSTIBLES - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -2232,7 +2356,7 @@
 						<h1>TIPOS - IDENTIFICACIONES - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -2345,7 +2469,7 @@
 						<h1>TIPOS - MEDICIONES - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -2468,7 +2592,7 @@
 						<h1>TIPOS - SOCIEDADES - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -2580,7 +2704,7 @@
 						<h1>TIPOS - VEHICULOS - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -2691,7 +2815,7 @@
 						<h1>TIPOS - CARGOS - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -2802,7 +2926,7 @@
 						<h1>ACCIONES DE DESEMPEÑO - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -2919,7 +3043,7 @@
 						<h1>CONCEPTOS - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -2927,6 +3051,33 @@
 					<tr>
 						<td>NOMBRE</td>
 						<td>{{ post.name }}</td>
+					</tr>
+					<tr>
+						<td>DESCRIPCION</td>
+						<td>{{ post.description }}</td>
+					</tr>
+					<tr>
+						<td>TIPO DE MEDICION</td>
+						<td>
+							<table class="table  table-responsive">
+								<tr>
+									<td>ID INTERNO</td>
+									<td>{{ post.type_medition.id }}</td>
+								</tr>
+								<tr>
+									<td>NOMBRE</td>
+									<td>{{ post.type_medition.name }}</td>
+								</tr>
+								<tr>
+									<td>CODIGO</td>
+									<td>{{ post.type_medition.code }}</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>PRECIO</td>
+						<td>{{ post.price }}</td>
 					</tr>
 				</table>
 				<br/>
@@ -2943,6 +3094,20 @@
 						<label for="add-content">NOMBRE</label>
 						<input class="form-control" type="text" id="add-content" v-model="post.name" />
 					</div>
+					<div class="form-group">
+						<label for="add-content">DESCRIPCION</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.description" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">TIPO DE MEDICION</label>
+						<select class="form-control" v-model="post.type_medition" id="add-content">
+							<option v-for="item in selectOptions.types_meditions" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content">PRECIO</label>
+						<input class="form-control" type="number" id="add-content" v-model="post.price" step="0.01" />
+					</div>
 					<button type="submit" class="btn btn-primary">Crear</button>
 					<router-link class="btn btn-primary" v-bind:to="{ name: 'Attributes-List' }">Regresar</router-link>
 				</form>
@@ -2956,6 +3121,20 @@
 					<div class="form-group">
 						<label for="edit-content">Nombre</label>
 						<input class="form-control" id="edit-content" v-model="post.name" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">DESCRIPCION</label>
+						<input class="form-control" type="text" id="add-content" v-model="post.description" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">TIPO DE MEDICION</label>
+						<select class="form-control" v-model="post.type_medition" id="add-content">
+							<option v-for="item in selectOptions.types_meditions" :value="item.id">{{ item.name }}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content">PRECIO</label>
+						<input class="form-control" type="number" id="add-content" v-model="post.price" step="0.01" />
 					</div>
 					<button type="submit" class="btn btn-primary">Guardar</button>
 					<router-link class="btn btn-primary" v-bind:to="{ name: 'Attributes-List' }">Regresar</router-link>
@@ -3034,7 +3213,7 @@
 						<h1>SERVICIOS - {{ post.name }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -3054,7 +3233,7 @@
 					<tr>
 						<td>TIPO DE MEDICION</td>
 						<td>
-							<table class="table">
+							<table class="table  table-responsive">
 								<tr>
 									<td>ID INTERNO</td>
 									<td>{{ post.type_medition.id }}</td>
@@ -3212,7 +3391,7 @@
 				</div>
 				<div class="tab-content clearfix">
 					<div class="tab-pane active" id="1a">
-						<table class="table">
+						<table class="table  table-responsive">
 							<tr>
 								<td>ID INTERNO</td>
 								<td>{{ post.id }}</td>
@@ -3228,7 +3407,7 @@
 							<tr>
 								<td>TIPO DE VEHICULO</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID</td>
 											<td>{{ post.type_vehicle.id }}</td>
@@ -3247,7 +3426,7 @@
 							<tr>
 								<td>TIPO DE COMBUSTIBLE</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID</td>
 											<td>{{ post.type_fuel.id }}</td>
@@ -3266,7 +3445,7 @@
 							<tr>
 								<td>TITULAR</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>NOMBRE COMPLETO</td>
 											<td>{{ post.holder.first_name }} {{ post.holder.second_name }} {{ post.holder.surname }} {{ post.holder.second_surname }}</td>
@@ -3289,7 +3468,7 @@
 							<tr>
 								<td>PROPIETARIO</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>NOMBRE COMPLETO</td>
 											<td>{{ post.propietary.first_name }} {{ post.propietary.second_name }} {{ post.propietary.surname }} {{ post.propietary.second_surname }}</td>
@@ -3352,7 +3531,7 @@
 							<tr>
 								<td>ESTADO</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID</td>
 											<td>{{ post.status.id }}</td>
@@ -3371,7 +3550,7 @@
 							<h3>Tripulantes</h3>
 							<hr>
 							<div class="col-md-12">
-								<table class="table">
+								<table class="table  table-responsive">
 									<thead>
 										<tr>
 											<td>ID</td>
@@ -3659,7 +3838,7 @@
 								<hr>
 							</div>
 							<div class="col-md-12">
-								<table class="table">
+								<table class="table  table-responsive">
 									<thead>
 										<tr>
 											<td>ID</td>
@@ -3836,7 +4015,7 @@
 						<h1>CONTACTOS - [{{ post.identification_number }}] {{ post.first_name }} {{ post.second_name }} {{ post.surname }} {{ post.second_surname }}</h1>
 					</div>
 				</header>
-				<table class="table">
+				<table class="table  table-responsive">
 					<tr>
 						<td>ID INTERNO</td>
 						<td>{{ post.id }}</td>
@@ -3844,7 +4023,7 @@
 					<tr>
 						<td>TIPO DE IDENTIFICACION</td>
 						<td>
-							<table class="table">
+							<table class="table  table-responsive">
 								<tr>
 									<td>ID INTERNO</td>
 									<td>{{ post.identification_type.id }}</td>
@@ -3891,7 +4070,7 @@
 					<tr>
 						<td>DEPARTAMENTO</td>
 						<td>
-							<table class="table">
+							<table class="table  table-responsive">
 								<tr>
 									<td>ID INTERNO</td>
 									<td>{{ post.department.id }}</td>
@@ -3906,7 +4085,7 @@
 					<tr>
 						<td>CIUDAD</td>
 						<td>
-							<table class="table">
+							<table class="table  table-responsive">
 								<tr>
 									<td>ID INTERNO</td>
 									<td>{{ post.city.id }}</td>
@@ -4133,7 +4312,7 @@
 					<div class="tab-pane active" id="1a">
 						<h3>Infomacion Basica</h3>
 						<hr>
-						<table class="table">
+						<table class="table  table-responsive">
 							<tr>
 								<td>ID INTERNO</td>
 								<td>{{ post.id }}</td>
@@ -4157,7 +4336,7 @@
 							<tr>
 								<td>TIPO DE IDENTIFICACION</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID INTERNO</td>
 											<td>{{ post.identification_type.id }}</td>
@@ -4184,7 +4363,7 @@
 							<tr>
 								<td>TIPO DE SANGRE</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID INTERNO</td>
 											<td>{{ post.blood_type.id }}</td>
@@ -4199,7 +4378,7 @@
 							<tr>
 								<td>TIPO DE RH</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID INTERNO</td>
 											<td>{{ post.blood_rh.id }}</td>
@@ -4250,7 +4429,7 @@
 							<tr>
 								<td>ESTADO</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID INTERNO</td>
 											<td>{{ post.status.id }}</td>
@@ -4265,7 +4444,7 @@
 							<tr>
 								<td>EPS</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID INTERNO</td>
 											<td>{{ post.eps.id }}</td>
@@ -4284,7 +4463,7 @@
 							<tr>
 								<td>ARL</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID INTERNO</td>
 											<td>{{ post.arl.id }}</td>
@@ -4303,7 +4482,7 @@
 							<tr>
 								<td>FONDO DE PENSION</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID INTERNO</td>
 											<td>{{ post.pension_fund.id }}</td>
@@ -4322,7 +4501,7 @@
 							<tr>
 								<td>CAJA DE COMPENSACION</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID INTERNO</td>
 											<td>{{ post.compensation_fund.id }}</td>
@@ -4341,7 +4520,7 @@
 							<tr>
 								<td>FONDO DE CESANTIAS</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID INTERNO</td>
 											<td>{{ post.severance_fund.id }}</td>
@@ -4360,7 +4539,7 @@
 							<tr>
 								<td>DEPARTAMENTO</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID INTERNO</td>
 											<td>{{ post.department.id }}</td>
@@ -4375,7 +4554,7 @@
 							<tr>
 								<td>CIUDAD</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID INTERNO</td>
 											<td>{{ post.city.id }}</td>
@@ -4410,7 +4589,7 @@
 							<h3>Contactos</h3>
 							<hr>
 							<div class="col-md-12">
-								<table class="table">
+								<table class="table  table-responsive">
 									<thead>
 										<tr>
 											<td>ID</td>
@@ -4434,7 +4613,7 @@
 							<h3>Contratos</h3>
 							<hr>
 							<div class="col-md-12">
-								<table class="table">
+								<table class="table  table-responsive">
 									<thead>
 										<tr>
 											<td>ID</td>
@@ -4470,7 +4649,7 @@
 							<hr>
 							
 							<div class="col-md-12">
-								<table class="table">
+								<table class="table  table-responsive">
 									<thead>
 										<tr>
 											<td>ID</td>
@@ -4849,7 +5028,7 @@
 							</div>
 							
 							<div class="col-md-12">
-								<table class="table">
+								<table class="table  table-responsive">
 									<thead>
 										<tr>
 											<td>ID</td>
@@ -4915,7 +5094,7 @@
 							</div>
 							
 							<div class="col-md-12">
-								<table class="table">
+								<table class="table  table-responsive">
 									<thead>
 										<tr>
 											<td>ID</td>
@@ -4993,7 +5172,7 @@
 							
 							
 							<div class="col-md-12">
-								<table class="table">
+								<table class="table  table-responsive">
 									<thead>
 										<tr>
 											<td>ID</td>
@@ -5131,7 +5310,7 @@
 						<li class="active"><a  href="#1a" data-toggle="tab">Infomacion Basica</a></li>
 						<li><a href="#2a" data-toggle="tab">Contactos</a></li>
 						<li><a href="#3a" data-toggle="tab">Contratos (Radicados)</a></li>
-						<li><a href="#4a" data-toggle="tab">Interventores</a></li>
+						<li v-if="post.enable_audit == 1"><a href="#4a" data-toggle="tab">Interventores</a></li>
 						<li><a href="#5a" data-toggle="tab">Servicios</a></li>
 						<li><a href="#6a" data-toggle="tab">Facturas</a></li>
 					</ul>
@@ -5140,7 +5319,7 @@
 					<div class="tab-pane active" id="1a">
 						<h3>Infomacion Basica</h3>
 						<hr>
-						<table class="table">
+						<table class="table  table-responsive">
 							<tr>
 								<td>ID INTERNO</td>
 								<td>{{ post.id }}</td>
@@ -5148,7 +5327,7 @@
 							<tr>
 								<td>TIPO DE CLIENTE</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID INTERNO</td>
 											<td>{{ post.type.id }}</td>
@@ -5163,7 +5342,7 @@
 							<tr>
 								<td>TIPO DE IDENTIFICACION</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID INTERNO</td>
 											<td>{{ post.identification_type.id }}</td>
@@ -5190,7 +5369,7 @@
 							<tr>
 								<td>TIPO DE SOCIEDAD</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID INTERNO</td>
 											<td>{{ post.society_type.id }}</td>
@@ -5205,7 +5384,7 @@
 							<tr>
 								<td>DEPARTAMENTO</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID INTERNO</td>
 											<td>{{ post.department.id }}</td>
@@ -5220,7 +5399,7 @@
 							<tr>
 								<td>CIUDAD</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>ID INTERNO</td>
 											<td>{{ post.city.id }}</td>
@@ -5243,7 +5422,7 @@
 							<tr>
 								<td>REPRESENTANTE LEGAL</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>NOMBRE COMPLETO</td>
 											<td>{{ post.legal_representative.first_name }} {{ post.legal_representative.second_name }} {{ post.legal_representative.surname }} {{ post.legal_representative.second_surname }}</td>
@@ -5266,7 +5445,7 @@
 							<tr>
 								<td>CONTACTO PRINCIPAL</td>
 								<td>
-									<table class="table">
+									<table class="table  table-responsive">
 										<tr>
 											<td>NOMBRE COMPLETO</td>
 											<td>{{ post.contact_principal.first_name }} {{ post.contact_principal.second_name }} {{ post.contact_principal.surname }} {{ post.contact_principal.second_surname }}</td>
@@ -5298,7 +5477,7 @@
 							<h3>Contactos</h3>
 							<hr>
 							<div class="col-md-12">
-								<table class="table">
+								<table class="table  table-responsive">
 									<thead>
 										<tr>
 											<td>ID</td>
@@ -5322,7 +5501,7 @@
 							<h3>Contratos (Radicados)</h3>
 							<hr>
 							<div class="col-md-12">
-								<table class="table">
+								<table class="table  table-responsive">
 									<thead>
 										<tr>
 											<td>ID</td>
@@ -5350,7 +5529,7 @@
 							<h3>Interventores</h3>
 							<hr>
 							<div class="col-md-12">
-								<table class="table">
+								<table class="table  table-responsive">
 									<thead>
 										<tr>
 											<td>ID</td>
@@ -5374,7 +5553,7 @@
 							<h3>Servicios</h3>
 							<hr>
 							<div class="col-md-12">
-								<table class="table">
+								<table class="table  table-responsive">
 									<thead>
 										<tr>
 											<td>ID</td>
@@ -5395,7 +5574,7 @@
 											<td>{{ item.date_start }}</td>
 											<td>{{ item.date_end }}</td>
 											<td>
-												<table class="table">
+												<table class="table  table-responsive">
 													<tr>
 														<td>ID</td>
 														<td>ATRIBUTO</td>
@@ -5639,7 +5818,7 @@
 								</div>
 							</div>
 							<div class="col-md-12">
-								<table class="table">
+								<table class="table  table-responsive">
 									<thead>
 										<tr>
 											<td>ID</td>
@@ -5654,8 +5833,9 @@
 											<td>{{ item.contact.first_name }} {{ item.contact.second_name }} {{ item.contact.surname }} {{ item.contact.second_surname }}</td>
 											<td>{{ item.type_contact.name }}</td>
 											<td>
-												<router-link class="btn btn-success btn-xs" target='_blank' v-bind:to="{name: 'Contacts-View', params: { contact_id: item.contact.id }}"><i class="fa fa-eye"></i> </router-link>
+												<router-link target="_new" class="btn btn-success btn-xs" target='_blank' v-bind:to="{name: 'Contacts-View', params: { contact_id: item.contact.id }}"><i class="fa fa-eye"></i> </router-link>
 												<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'ClientsContacts-Delete', params: { client_id: post.id, client_contact_id: item.id }}"><i class="fa fa-trash"></i> </router-link>
+												
 											</td>
 										</tr>
 									</tbody>
@@ -5713,15 +5893,18 @@
 								</div>
 							</div>
 							<div class="col-md-12">
-								<table class="table">
+								<table class="table  table-responsive">
 									<thead>
 										<tr>
-											<td>ID</td>
-											<td>CONSECUTIVO</td>
-											<td>NOMBRE</td>
-											<td>FECHA DE INICIO</td>
-											<td>FECHA DE TERMINO</td>
-											<td></td>
+											<th>ID</th>
+											<th>CONSECUTIVO</th>
+											<th>NOMBRE</th>
+											<th>OBJECTO DEL CONTRATO</th>
+											<th>DESCRIPCION DEL SERVICIO</th>
+											<th>FECHA DE INICIO</th>
+											<th>FECHA DE TERMINO</th>
+											<th>NOTAS ADICCIONALES</th>
+											<th></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -5729,8 +5912,11 @@
 											<td>{{ item.id }}</td>
 											<td>{{ item.consecutive }}</td>
 											<td>{{ item.name }}</td>
+											<td>{{ item.object }}</td>
+											<td>{{ item.description_service }}</td>
 											<td>{{ item.date_start }}</td>
 											<td>{{ item.date_end }}</td>
+											<td>{{ item.additional_notes }}</td>
 											<td><router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'RedicatedClients-Delete', params: { client_id: post.id, redicated_client_id: item.id }}"><i class="fa fa-trash"></i> </router-link></td>
 										</tr>
 									</tbody>
@@ -5766,7 +5952,7 @@
 							</div>
 							
 							<div class="col-md-12">
-								<table class="table">
+								<table class="table  table-responsive">
 									<thead>
 										<tr>
 											<td>ID</td>
@@ -5793,46 +5979,79 @@
 					<div class="tab-pane " id="5a">	
 						<div class="row">
 							<h3>Servicios</h3>
+							<router-link class="btn btn-success btn-xs" v-bind:to="{name: 'ServicesClients-Add', params: { client_id: post.id }}">
+								<i class="fa fa-plus"></i>
+							</router-link>
 							<hr>
 							<div class="col-md-12">
-								<table class="table">
+								<table class="table  table-responsive">
 									<thead>
 										<tr>
-											<td>ID</td>
-											<td>NOMBRE DEL SERVICIO</td>
-											<td>CANTIDAD</td>
-											<td>PRECIO</td>
-											<td>FECHA INICIO</td>
-											<td>FECHA TERMINO</td>
-											<td>ATRIBUTOS</td>
+											<th>ID</th>
+											<th>NOMBRE DEL SERVICIO</th>
+											<th>CANTIDAD</th>
+											<th>PRECIO</th>
+											<th>SUBTOTAL</th>
+											<th>FECHA INICIO</th>
+											<th>FECHA TERMINO</th>
+											<th>REPETICION</th>
+											<th>CONCEPTOS EXTRAS</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr v-for="item in services_clients">
 											<td>{{ item.id }}</td>
 											<td>{{ item.service.name }}</td>
+											<td>{{ item.description }}</td>
 											<td>{{ item.quantity }}</td>
-											<td>{{ item.service.price }}</td>
+											<td>{{ formatMoney(item.service.price) }}</td>
+											<td>{{ formatMoney(item.service.price * item.quantity) }}</td>
 											<td>{{ item.date_start }}</td>
 											<td>{{ item.date_end }}</td>
+											<td>{{ item.repeat.code }} - {{ item.repeat.name }}</td>
 											<td>
-												<table class="table">
+												<table class="table table-responsive">
 													<tr>
-														<td>ID</td>
-														<td>ATRIBUTO</td>
-														<td>CANTIDAD</td>
-														<td>PRECIO</td>
+														<th>ID</th>
+														<th>ATRIBUTO</th>
+														<th>CANTIDAD</th>
+														<th>PRECIO</th>
+														<th>SUBTOTAL</th>
+														<th>
+															<router-link class="btn btn-success btn-xs" v-bind:to="{name: 'AttributesServicesClients-Add', params: { client_id: post.id, client_service_id: item.id }}">
+																<i class="fa fa-plus"></i>
+															</router-link>
+														</th>
 													</tr>
 													<tr v-for="attribute in item.attributes_services_clients">
 														<td>{{ attribute.id }}</td>
 														<td>{{ attribute.attribute.name }}</td>
 														<td>{{ attribute.quantity }}</td>
-														<td>{{ attribute.attribute.price }}</td>
+														<td>{{ formatMoney(attribute.attribute.price) }}</td>
+														<td>{{ formatMoney(attribute.attribute.price * attribute.quantity) }}</td>
+														<td>
+															<router-link class="btn btn-danger btn-xs" v-bind:to="{name: 'AttributesServicesClients-Delete', params: { client_id: post.id, client_attribute_service_id: attribute.id }}">
+																<i class="fa fa-trash"></i>
+															</router-link>
+														</td>
 													</tr>
 												</table>
 											</td>
 										</tr>
 									</tbody>
+									<tfoot>
+										<tr>
+											<th></th>
+											<th></th>
+											<th></th>
+											<th></th>
+											<th>Subtotal Servicios</th>
+											<th>{{ formatMoney(calc.subService) }}</th>
+											<th></th>
+											<th>Subtotal Extras</th>
+											<th>{{ formatMoney(calc.subTotalAttributes) }}</th>
+										</tr>
+									</tfoot>
 								</table>
 							</div>
 						</div>
@@ -5895,6 +6114,85 @@
 		</template>
 		<!-- // ------------ CLIENTES - FIN -------------------------------------  -->
 		
+		<!-- // ------------ SERVICIO CLIENTE - INICIO ------------ // -->		
+		<template id="delete-AttributesServicesClients">
+			<div>
+				<h2>ATRIBUTOS DEL SERVICIO - Eliminar</h2>
+				<form v-on:submit="deleteClientsAttributesServices">
+					<p>The action cannot be undone.</p>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+					<router-link class="btn btn-primary" v-bind:to="{name: 'Clients-Edit', params: { client_id: $route.params.client_id }}">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="add-AttributesServicesClients">
+			<div>
+				<h2>ATRRIBUTOS DE SERVICIO - Crear</h2>
+				<form v-on:submit="createAttributesServicesClients">
+					<div class="form-group">
+						<label for="add-content">ATRIBUTO</label>
+						<select class="form-control" v-model="post.attribute" id="add-content">
+							<option v-for="item in selectOptions.attributes" :value="item.id">{{ item.id }} - {{ item.name }} - {{ formatMoney(item.price) }} </option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content">CANTIDAD</label>
+						<input class="form-control" type="number" id="add-content" v-model="post.quantity" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">FECHA DE INICIO</label>
+						<input class="form-control" type="date" id="add-content" v-model="post.date_start" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">FECHA DE FIN</label>
+						<input class="form-control" type="date" id="add-content" v-model="post.date_end" />
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{name: 'Clients-Edit', params: { client_id: $route.params.client_id }}">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		
+		<template id="add-ServicesClients">
+			<div>
+				<h2>SERVICIO - Crear</h2>
+				<form v-on:submit="createServicesClients">
+					<div class="form-group">
+						<label for="add-content">SERVICIO</label>
+						<select class="form-control" v-model="post.service" id="add-content">
+							<option v-for="item in selectOptions.services" :value="item.id">{{ item.type_medition.code }} - {{ item.name }} - {{ formatMoney(item.price) }} </option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content">CANTIDAD</label>
+						<input class="form-control" type="number" id="add-content" v-model="post.quantity" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">FECHA DE INICIO</label>
+						<input class="form-control" type="date" id="add-content" v-model="post.date_start" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">FECHA DE FIN</label>
+						<input class="form-control" type="date" id="add-content" v-model="post.date_end" />
+					</div>
+					<div class="form-group">
+						<label for="add-content">REPETICION</label>
+						<select class="form-control" v-model="post.repeat" id="add-content">
+							<option v-for="item in selectOptions.types_repeats_services_clients" :value="item.id">{{ item.code }} - {{ item.name }} </option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="add-content">DESCRIPCION DEL SERVICIO</label>
+						<textarea class="form-control" id="add-content" v-model="post.description"></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<router-link class="btn btn-primary" v-bind:to="{name: 'Clients-Edit', params: { client_id: $route.params.client_id }}">Cancelar</router-link>
+				</form>
+			</div>
+		</template>
+		<!-- // ------------ SERVICIO CLIENTE - FIN ------------ // -->
+		
 		<!-- Bootstrap core JavaScript -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
@@ -5911,3 +6209,4 @@
 		<script src="/assets/js/main.js"></script>
 	</body>
 </html>
+

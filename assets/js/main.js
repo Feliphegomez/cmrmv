@@ -1,3 +1,14 @@
+function formatMoneyGlobal(n, c, d, t) {
+  var c = isNaN(c = Math.abs(c)) ? 2 : c,
+    d = d == undefined ? "." : d,
+    t = t == undefined ? "," : t,
+    s = n < 0 ? "-" : "",
+    i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))),
+    j = (j = i.length) > 3 ? j % 3 : 0;
+
+  return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+};
+/* ---------------------------------------------------------------------------------- */
 var apiMV = axios.create({
 	baseURL: '/api/api.php/records',
 });
@@ -84,7 +95,7 @@ var ARL_List = Vue.extend({
     apiMV.get('/arl').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -128,7 +139,7 @@ var ARL_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/ARL');
 			});
 		}
@@ -151,10 +162,10 @@ var ARL_Add = Vue.extend({
 			var post = this.post;
 			apiMV.post('/arl', post).then(function (response) {
 				post.id = response.data;
+				router.push('/ARL');
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
-			router.push('/ARL');
 		}
 	}
 });
@@ -180,7 +191,7 @@ var ARL_Edit = Vue.extend({
 			apiMV.put('/arl/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/ARL');
 		},
@@ -200,7 +211,7 @@ var ARL_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/ARL');
 			});
 		}
@@ -229,7 +240,7 @@ var ARL_Delete = Vue.extend({
 			apiMV.delete('/arl/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/ARL');
 			location.reload();
@@ -248,7 +259,7 @@ var ARL_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/ARL');
 			});
 		}
@@ -270,7 +281,7 @@ var VH_Cats_List = Vue.extend({
     apiMV.get('/categorys_vehicles').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -311,7 +322,7 @@ var VH_Cats_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Vehicles/Categories');
 			});
 		}
@@ -332,10 +343,10 @@ var VH_Cats_Add = Vue.extend({
 			var post = this.post;
 			apiMV.post('/categorys_vehicles', post).then(function (response) {
 				post.id = response.data;
+				router.push('/Vehicles/Categories');
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
-			router.push('/Vehicles/Categories');
 		}
 	}
 });
@@ -360,7 +371,7 @@ var VH_Cats_Edit = Vue.extend({
 			apiMV.put('/categorys_vehicles/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Vehicles/Categories');
 		},
@@ -378,7 +389,7 @@ var VH_Cats_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Vehicles/Categories');
 			});
 		}
@@ -406,7 +417,7 @@ var VH_Cats_Delete = Vue.extend({
 			apiMV.delete('/categorys_vehicles/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Vehicles/Categories');
 			location.reload();
@@ -425,7 +436,7 @@ var VH_Cats_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Vehicles/Categories');
 			});
 		}
@@ -447,7 +458,7 @@ var EPS_List = Vue.extend({
     apiMV.get('/eps').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -489,7 +500,7 @@ var EPS_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/EPS');
 			});
 		}
@@ -512,10 +523,10 @@ var EPS_Add = Vue.extend({
 			var post = this.post;
 			apiMV.post('/eps', post).then(function (response) {
 				post.id = response.data;
+				router.push('/EPS');
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
-			router.push('/EPS');
 		}
 	}
 });
@@ -541,7 +552,7 @@ var EPS_Edit = Vue.extend({
 			apiMV.put('/eps/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/EPS');
 		},
@@ -559,7 +570,7 @@ var EPS_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/EPS');
 			});
 		}
@@ -588,7 +599,7 @@ var EPS_Delete = Vue.extend({
 			apiMV.delete('/eps/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/EPS');
 			location.reload();
@@ -607,7 +618,7 @@ var EPS_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/EPS');
 			});
 		}
@@ -629,7 +640,7 @@ var FundsCompensation_List = Vue.extend({
 		apiMV.get('/funds_compensations').then(function (response) {
 			self.posts = response.data.records;
 		}).catch(function (error) {
-			console.log(error);
+			console.log(error.response);
 		});
 	},
 	computed: {
@@ -671,7 +682,7 @@ var FundsCompensation_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Funds/Compensations');
 			});
 		}
@@ -694,10 +705,10 @@ var FundsCompensation_Add = Vue.extend({
 			var post = this.post;
 			apiMV.post('/funds_compensations', post).then(function (response) {
 				post.id = response.data;
+				router.push('/Funds/Compensations');
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
-			router.push('/Funds/Compensations');
 		}
 	}
 });
@@ -723,7 +734,7 @@ var FundsCompensation_Edit = Vue.extend({
 			apiMV.put('/funds_compensations/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Funds/Compensations');
 		},
@@ -741,7 +752,7 @@ var FundsCompensation_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Funds/Compensations');
 			});
 		}
@@ -770,7 +781,7 @@ var FundsCompensation_Delete = Vue.extend({
 			apiMV.delete('/funds_compensations/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Funds/Compensations');
 			location.reload();
@@ -789,7 +800,7 @@ var FundsCompensation_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Funds/Compensations');
 			});
 		}
@@ -811,7 +822,7 @@ var FundsPension_List = Vue.extend({
 		apiMV.get('/funds_pensions').then(function (response) {
 			self.posts = response.data.records;
 		}).catch(function (error) {
-			console.log(error);
+			console.log(error.response);
 		});
 	},
 	computed: {
@@ -853,7 +864,7 @@ var FundsPension_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Funds/Pension');
 			});
 		}
@@ -876,10 +887,10 @@ var FundsPension_Add = Vue.extend({
 			var post = this.post;
 			apiMV.post('/funds_pensions', post).then(function (response) {
 				post.id = response.data;
+				router.push('/Funds/Pension');
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
-			router.push('/Funds/Pension');
 		}
 	}
 });
@@ -905,7 +916,7 @@ var FundsPension_Edit = Vue.extend({
 			apiMV.put('/funds_pensions/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Funds/Pension');
 		},
@@ -923,7 +934,7 @@ var FundsPension_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Funds/Pension');
 			});
 		}
@@ -952,7 +963,7 @@ var FundsPension_Delete = Vue.extend({
 			apiMV.delete('/funds_pensions/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Funds/Pension');
 			location.reload();
@@ -971,7 +982,7 @@ var FundsPension_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Funds/Pension');
 			});
 		}
@@ -993,7 +1004,7 @@ var FundsSeverances_List = Vue.extend({
 		apiMV.get('/funds_severances').then(function (response) {
 			self.posts = response.data.records;
 		}).catch(function (error) {
-			console.log(error);
+			console.log(error.response);
 		});
 	},
 	computed: {
@@ -1035,7 +1046,7 @@ var FundsSeverances_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Funds/Severances');
 			});
 		}
@@ -1058,10 +1069,11 @@ var FundsSeverances_Add = Vue.extend({
 			var post = this.post;
 			apiMV.post('/funds_severances', post).then(function (response) {
 				post.id = response.data;
+				router.push('/Funds/Severances');
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
-			router.push('/Funds/Severances');
+			
 		}
 	}
 });
@@ -1087,7 +1099,7 @@ var FundsSeverances_Edit = Vue.extend({
 			apiMV.put('/funds_severances/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Funds/Severances');
 		},
@@ -1105,7 +1117,7 @@ var FundsSeverances_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Funds/Severances');
 			});
 		}
@@ -1134,7 +1146,7 @@ var FundsSeverances_Delete = Vue.extend({
 			apiMV.delete('/funds_severances/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Funds/Severances');
 			location.reload();
@@ -1153,7 +1165,7 @@ var FundsSeverances_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Funds/Severances');
 			});
 		}
@@ -1175,7 +1187,7 @@ var GEO_Departments_List = Vue.extend({
     apiMV.get('/geo_departments').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -1216,7 +1228,7 @@ var GEO_Departments_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/GEO/Departments');
 			});
 		}
@@ -1237,10 +1249,10 @@ var GEO_Departments_Add = Vue.extend({
 			var post = this.post;
 			apiMV.post('/geo_departments', post).then(function (response) {
 				post.id = response.data;
+				router.push('/GEO/Departments');
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
-			router.push('/GEO/Departments');
 		}
 	}
 });
@@ -1265,7 +1277,7 @@ var GEO_Departments_Edit = Vue.extend({
 			apiMV.put('/geo_departments/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/GEO/Departments');
 		},
@@ -1283,7 +1295,7 @@ var GEO_Departments_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/GEO/Departments');
 			});
 		}
@@ -1311,7 +1323,7 @@ var GEO_Departments_Delete = Vue.extend({
 			apiMV.delete('/geo_departments/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/GEO/Departments');
 			location.reload();
@@ -1330,7 +1342,7 @@ var GEO_Departments_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/GEO/Departments');
 			});
 		}
@@ -1356,7 +1368,7 @@ var GEO_Citys_List = Vue.extend({
 	}).then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -1402,7 +1414,7 @@ var GEO_Citys_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/GEO/Citys');
 			});
 		}
@@ -1436,17 +1448,17 @@ var GEO_Citys_Add = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.departments = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		},
 		createDepartmentGEO: function() {
 			var post = this.post;
 			apiMV.post('/geo_citys', post).then(function (response) {
 				post.id = response.data;
+				router.push('/GEO/Citys');
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
-			router.push('/GEO/Citys');
 		}
 	}
 });
@@ -1480,7 +1492,7 @@ var GEO_Citys_Edit = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.departments = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		},
 		updateCityGEO: function () {
@@ -1488,7 +1500,7 @@ var GEO_Citys_Edit = Vue.extend({
 			apiMV.put('/geo_citys/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/GEO/Citys');
 		},
@@ -1506,7 +1518,7 @@ var GEO_Citys_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/GEO/Citys');
 			});
 		}
@@ -1535,7 +1547,7 @@ var GEO_Citys_Delete = Vue.extend({
 			apiMV.delete('/geo_citys/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/GEO/Citys');
 			location.reload();
@@ -1554,7 +1566,7 @@ var GEO_Citys_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/GEO/Citys');
 			});
 		}
@@ -1576,7 +1588,7 @@ var Status_Employees_List = Vue.extend({
     apiMV.get('/status_employees').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -1617,7 +1629,7 @@ var Status_Employees_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Status/Employees');
 			});
 		}
@@ -1638,10 +1650,10 @@ var Status_Employees_Add = Vue.extend({
 			var post = this.post;
 			apiMV.post('/status_employees', post).then(function (response) {
 				post.id = response.data;
+				router.push('/Status/Employees');
 			}).catch(function (error) {
-				console.log(error);
-			});
-			router.push('/Status/Employees');
+				console.log(error.response);
+			});			
 		}
 	}
 });
@@ -1666,7 +1678,7 @@ var Status_Employees_Edit = Vue.extend({
 			apiMV.put('/status_employees/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Status/Employees');
 		},
@@ -1684,7 +1696,7 @@ var Status_Employees_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Status/Employees');
 			});
 		}
@@ -1712,7 +1724,7 @@ var Status_Employees_Delete = Vue.extend({
 			apiMV.delete('/status_employees/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Status/Employees');
 			location.reload();
@@ -1731,7 +1743,7 @@ var Status_Employees_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Status/Employees');
 			});
 		}
@@ -1753,7 +1765,7 @@ var Status_Services_List = Vue.extend({
     apiMV.get('/status_services').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -1794,7 +1806,7 @@ var Status_Services_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Status/Services');
 			});
 		}
@@ -1815,10 +1827,10 @@ var Status_Services_Add = Vue.extend({
 			var post = this.post;
 			apiMV.post('/status_services', post).then(function (response) {
 				post.id = response.data;
+				router.push('/Status/Services');
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
-			router.push('/Status/Services');
 		}
 	}
 });
@@ -1843,7 +1855,7 @@ var Status_Services_Edit = Vue.extend({
 			apiMV.put('/status_services/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Status/Services');
 		},
@@ -1861,7 +1873,7 @@ var Status_Services_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Status/Services');
 			});
 		}
@@ -1889,7 +1901,7 @@ var Status_Services_Delete = Vue.extend({
 			apiMV.delete('/status_services/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Status/Services');
 			location.reload();
@@ -1908,7 +1920,7 @@ var Status_Services_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Status/Services');
 			});
 		}
@@ -1930,7 +1942,7 @@ var Status_Vehicles_List = Vue.extend({
     apiMV.get('/status_vehicles').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -1971,7 +1983,7 @@ var Status_Vehicles_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Status/Vehicles');
 			});
 		}
@@ -1992,10 +2004,10 @@ var Status_Vehicles_Add = Vue.extend({
 			var post = this.post;
 			apiMV.post('/status_vehicles', post).then(function (response) {
 				post.id = response.data;
+				router.push('/Status/Vehicles');
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
-			router.push('/Status/Vehicles');
 		}
 	}
 });
@@ -2020,7 +2032,7 @@ var Status_Vehicles_Edit = Vue.extend({
 			apiMV.put('/status_vehicles/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Status/Vehicles');
 		},
@@ -2038,7 +2050,7 @@ var Status_Vehicles_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Status/Vehicles');
 			});
 		}
@@ -2066,7 +2078,7 @@ var Status_Vehicles_Delete = Vue.extend({
 			apiMV.delete('/status_vehicles/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Status/Vehicles');
 			location.reload();
@@ -2085,7 +2097,7 @@ var Status_Vehicles_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Status/Vehicles');
 			});
 		}
@@ -2107,7 +2119,7 @@ var Types_Bloods_List = Vue.extend({
     apiMV.get('/types_bloods').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -2148,7 +2160,7 @@ var Types_Bloods_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Bloods');
 			});
 		}
@@ -2169,10 +2181,10 @@ var Types_Bloods_Add = Vue.extend({
 			var post = this.post;
 			apiMV.post('/types_bloods', post).then(function (response) {
 				post.id = response.data;
+				router.push('/Types/Bloods');
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
-			router.push('/Types/Bloods');
 		}
 	}
 });
@@ -2197,7 +2209,7 @@ var Types_Bloods_Edit = Vue.extend({
 			apiMV.put('/types_bloods/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Bloods');
 		},
@@ -2215,7 +2227,7 @@ var Types_Bloods_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Bloods');
 			});
 		}
@@ -2243,7 +2255,7 @@ var Types_Bloods_Delete = Vue.extend({
 			apiMV.delete('/types_bloods/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Bloods');
 			location.reload();
@@ -2262,7 +2274,7 @@ var Types_Bloods_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Bloods');
 			});
 		}
@@ -2284,7 +2296,7 @@ var Types_BloodsRH_List = Vue.extend({
     apiMV.get('/types_bloods_rhs').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -2325,7 +2337,7 @@ var Types_BloodsRH_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/BloodsRH');
 			});
 		}
@@ -2346,10 +2358,10 @@ var Types_BloodsRH_Add = Vue.extend({
 			var post = this.post;
 			apiMV.post('/types_bloods_rhs', post).then(function (response) {
 				post.id = response.data;
+				router.push('/Types/BloodsRH');
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
-			router.push('/Types/BloodsRH');
 		}
 	}
 });
@@ -2374,7 +2386,7 @@ var Types_BloodsRH_Edit = Vue.extend({
 			apiMV.put('/types_bloods_rhs/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/BloodsRH');
 		},
@@ -2392,7 +2404,7 @@ var Types_BloodsRH_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/BloodsRH');
 			});
 		}
@@ -2420,7 +2432,7 @@ var Types_BloodsRH_Delete = Vue.extend({
 			apiMV.delete('/types_bloods_rhs/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/BloodsRH');
 			location.reload();
@@ -2439,7 +2451,7 @@ var Types_BloodsRH_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/BloodsRH');
 			});
 		}
@@ -2461,7 +2473,7 @@ var Types_Clients_List = Vue.extend({
     apiMV.get('/types_clients').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -2502,7 +2514,7 @@ var Types_Clients_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Clients');
 			});
 		}
@@ -2523,10 +2535,10 @@ var Types_Clients_Add = Vue.extend({
 			var post = this.post;
 			apiMV.post('/types_clients', post).then(function (response) {
 				post.id = response.data;
+				router.push('/Types/Clients');
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
-			router.push('/Types/Clients');
 		}
 	}
 });
@@ -2551,7 +2563,7 @@ var Types_Clients_Edit = Vue.extend({
 			apiMV.put('/types_clients/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Clients');
 		},
@@ -2569,7 +2581,7 @@ var Types_Clients_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Clients');
 			});
 		}
@@ -2597,7 +2609,7 @@ var Types_Clients_Delete = Vue.extend({
 			apiMV.delete('/types_clients/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Clients');
 			location.reload();
@@ -2616,7 +2628,7 @@ var Types_Clients_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Clients');
 			});
 		}
@@ -2638,7 +2650,7 @@ var Types_Contacts_List = Vue.extend({
     apiMV.get('/types_contacts').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -2679,7 +2691,7 @@ var Types_Contacts_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Contacts');
 			});
 		}
@@ -2700,10 +2712,10 @@ var Types_Contacts_Add = Vue.extend({
 			var post = this.post;
 			apiMV.post('/types_contacts', post).then(function (response) {
 				post.id = response.data;
+				router.push('/Types/Contacts');
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
-			router.push('/Types/Contacts');
 		}
 	}
 });
@@ -2728,7 +2740,7 @@ var Types_Contacts_Edit = Vue.extend({
 			apiMV.put('/types_contacts/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Contacts');
 		},
@@ -2746,7 +2758,7 @@ var Types_Contacts_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Contacts');
 			});
 		}
@@ -2774,7 +2786,7 @@ var Types_Contacts_Delete = Vue.extend({
 			apiMV.delete('/types_contacts/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Contacts');
 			location.reload();
@@ -2793,7 +2805,7 @@ var Types_Contacts_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Contacts');
 			});
 		}
@@ -2815,7 +2827,7 @@ var Types_Fuels_List = Vue.extend({
     apiMV.get('/types_fuels').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -2856,7 +2868,7 @@ var Types_Fuels_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Fuels');
 			});
 		}
@@ -2877,10 +2889,10 @@ var Types_Fuels_Add = Vue.extend({
 			var post = this.post;
 			apiMV.post('/types_fuels', post).then(function (response) {
 				post.id = response.data;
+				router.push('/Types/Fuels');
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
-			router.push('/Types/Fuels');
 		}
 	}
 });
@@ -2905,7 +2917,7 @@ var Types_Fuels_Edit = Vue.extend({
 			apiMV.put('/types_fuels/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Fuels');
 		},
@@ -2923,7 +2935,7 @@ var Types_Fuels_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Fuels');
 			});
 		}
@@ -2951,7 +2963,7 @@ var Types_Fuels_Delete = Vue.extend({
 			apiMV.delete('/types_fuels/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Fuels');
 			location.reload();
@@ -2970,7 +2982,7 @@ var Types_Fuels_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Fuels');
 			});
 		}
@@ -2992,7 +3004,7 @@ var Types_Identifications_List = Vue.extend({
     apiMV.get('/types_identifications').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -3033,7 +3045,7 @@ var Types_Identifications_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Identifications');
 			});
 		}
@@ -3054,10 +3066,10 @@ var Types_Identifications_Add = Vue.extend({
 			var post = this.post;
 			apiMV.post('/types_identifications', post).then(function (response) {
 				post.id = response.data;
+				router.push('/Types/Identifications');
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
-			router.push('/Types/Identifications');
 		}
 	}
 });
@@ -3082,7 +3094,7 @@ var Types_Identifications_Edit = Vue.extend({
 			apiMV.put('/types_identifications/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Identifications');
 		},
@@ -3100,7 +3112,7 @@ var Types_Identifications_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Identifications');
 			});
 		}
@@ -3128,7 +3140,7 @@ var Types_Identifications_Delete = Vue.extend({
 			apiMV.delete('/types_identifications/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Identifications');
 			location.reload();
@@ -3147,7 +3159,7 @@ var Types_Identifications_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Identifications');
 			});
 		}
@@ -3169,7 +3181,7 @@ var Types_Meditions_List = Vue.extend({
     apiMV.get('/types_meditions').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -3211,7 +3223,7 @@ var Types_Meditions_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Meditions');
 			});
 		}
@@ -3234,7 +3246,7 @@ var Types_Meditions_Add = Vue.extend({
 			apiMV.post('/types_meditions', post).then(function (response) {
 				post.id = response.data;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Meditions');
 		}
@@ -3262,7 +3274,7 @@ var Types_Meditions_Edit = Vue.extend({
 			apiMV.put('/types_meditions/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Meditions');
 		},
@@ -3280,7 +3292,7 @@ var Types_Meditions_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Meditions');
 			});
 		}
@@ -3309,7 +3321,7 @@ var Types_Meditions_Delete = Vue.extend({
 			apiMV.delete('/types_meditions/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Meditions');
 			location.reload();
@@ -3328,7 +3340,7 @@ var Types_Meditions_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Meditions');
 			});
 		}
@@ -3350,7 +3362,7 @@ var Types_Societys_List = Vue.extend({
     apiMV.get('/types_societys').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -3391,7 +3403,7 @@ var Types_Societys_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Societys');
 			});
 		}
@@ -3413,7 +3425,7 @@ var Types_Societys_Add = Vue.extend({
 			apiMV.post('/types_societys', post).then(function (response) {
 				post.id = response.data;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Societys');
 		}
@@ -3440,7 +3452,7 @@ var Types_Societys_Edit = Vue.extend({
 			apiMV.put('/types_societys/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Societys');
 		},
@@ -3458,7 +3470,7 @@ var Types_Societys_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Societys');
 			});
 		}
@@ -3486,7 +3498,7 @@ var Types_Societys_Delete = Vue.extend({
 			apiMV.delete('/types_societys/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Societys');
 			location.reload();
@@ -3505,7 +3517,7 @@ var Types_Societys_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Societys');
 			});
 		}
@@ -3527,7 +3539,7 @@ var Types_Vehicles_List = Vue.extend({
     apiMV.get('/types_vehicles').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -3568,7 +3580,7 @@ var Types_Vehicles_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Vehicles');
 			});
 		}
@@ -3590,7 +3602,7 @@ var Types_Vehicles_Add = Vue.extend({
 			apiMV.post('/types_vehicles', post).then(function (response) {
 				post.id = response.data;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Vehicles');
 		}
@@ -3617,7 +3629,7 @@ var Types_Vehicles_Edit = Vue.extend({
 			apiMV.put('/types_vehicles/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Vehicles');
 		},
@@ -3635,7 +3647,7 @@ var Types_Vehicles_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Vehicles');
 			});
 		}
@@ -3663,7 +3675,7 @@ var Types_Vehicles_Delete = Vue.extend({
 			apiMV.delete('/types_vehicles/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Vehicles');
 			location.reload();
@@ -3682,7 +3694,7 @@ var Types_Vehicles_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Vehicles');
 			});
 		}
@@ -3704,7 +3716,7 @@ var Types_Charges_List = Vue.extend({
     apiMV.get('/types_charges').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -3745,7 +3757,7 @@ var Types_Charges_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Charges');
 			});
 		}
@@ -3767,7 +3779,7 @@ var Types_Charges_Add = Vue.extend({
 			apiMV.post('/types_charges', post).then(function (response) {
 				post.id = response.data;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Charges');
 		}
@@ -3794,7 +3806,7 @@ var Types_Charges_Edit = Vue.extend({
 			apiMV.put('/types_charges/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Charges');
 		},
@@ -3812,7 +3824,7 @@ var Types_Charges_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Charges');
 			});
 		}
@@ -3840,7 +3852,7 @@ var Types_Charges_Delete = Vue.extend({
 			apiMV.delete('/types_charges/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Types/Charges');
 			location.reload();
@@ -3859,7 +3871,7 @@ var Types_Charges_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Types/Charges');
 			});
 		}
@@ -3881,7 +3893,7 @@ var Actions_Performance_Employees_List = Vue.extend({
 		apiMV.get('/actions_performances_employees').then(function (response) {
 			self.posts = response.data.records;
 		}).catch(function (error) {
-			console.log(error);
+			console.log(error.response);
 		});
 	},
 	computed: {
@@ -3922,7 +3934,7 @@ var Actions_Performance_Employees_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Employees/Actions/Performances/');
 			});
 		}
@@ -3945,7 +3957,7 @@ var Actions_Performance_Employees_Add = Vue.extend({
 			apiMV.post('/actions_performances_employees', post).then(function (response) {
 				post.id = response.data;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Employees/Actions/Performances/');
 		}
@@ -3972,7 +3984,7 @@ var Actions_Performance_Employees_Edit = Vue.extend({
 			apiMV.put('/actions_performances_employees/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Employees/Actions/Performances/');
 		},
@@ -3990,7 +4002,7 @@ var Actions_Performance_Employees_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Employees/Actions/Performances/');
 			});
 		}
@@ -4018,7 +4030,7 @@ var Actions_Performance_Employees_Delete = Vue.extend({
 			apiMV.delete('/actions_performances_employees/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Employees/Actions/Performances/');
 			location.reload();
@@ -4037,7 +4049,7 @@ var Actions_Performance_Employees_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Employees/Actions/Performances/');
 			});
 		}
@@ -4065,7 +4077,7 @@ var Services_List = Vue.extend({
     }).then(function (response) {
       self.posts = response.data.records;
     }).catch(function (error) {
-      console.log(error);
+      console.log(error.response);
     });
     
   },
@@ -4118,7 +4130,7 @@ var Services_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Services');
 			});
 		}
@@ -4154,7 +4166,7 @@ var Services_Add = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.types_meditions = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		},
 		createService: function() {
@@ -4162,7 +4174,7 @@ var Services_Add = Vue.extend({
 			apiMV.post('/services', post).then(function (response) {
 				post.id = response.data;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Services');
 		}
@@ -4200,7 +4212,7 @@ var Services_Edit = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.types_meditions = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		},
 		updateService: function () {
@@ -4208,7 +4220,7 @@ var Services_Edit = Vue.extend({
 			apiMV.put('/services/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Services');
 		},
@@ -4226,7 +4238,7 @@ var Services_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Services');
 			});
 		}
@@ -4257,7 +4269,7 @@ var Services_Delete = Vue.extend({
 			apiMV.delete('/services/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Services');
 			location.reload();
@@ -4276,7 +4288,7 @@ var Services_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Services');
 			});
 		}
@@ -4307,7 +4319,7 @@ var Vehicles_List = Vue.extend({
 	}).then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -4405,7 +4417,7 @@ var Vehicles_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Vehicles');
 			});
 			
@@ -4422,7 +4434,7 @@ var Vehicles_View = Vue.extend({
 			}).then(function (response) {
 				self.crew = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/galery_vehicles', {
@@ -4437,7 +4449,7 @@ var Vehicles_View = Vue.extend({
 			}).then(function (response) {
 				self.galery_vehicles = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 		}
@@ -4492,7 +4504,7 @@ var Vehicles_Add = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.types_vehicles = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/types_fuels', {
@@ -4502,7 +4514,7 @@ var Vehicles_Add = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.types_fuels = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/contacts', {
@@ -4512,7 +4524,7 @@ var Vehicles_Add = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.contacts = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/status_vehicles', {
@@ -4522,7 +4534,7 @@ var Vehicles_Add = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.status_vehicles = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		},
 		createVehicle: function() {
@@ -4530,7 +4542,7 @@ var Vehicles_Add = Vue.extend({
 			apiMV.post('/vehicles', post).then(function (response) {
 				post.id = response.data;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Vehicles');
 		}
@@ -4602,7 +4614,7 @@ var Vehicles_Edit = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.types_vehicles = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/types_fuels', {
@@ -4612,7 +4624,7 @@ var Vehicles_Edit = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.types_fuels = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/types_charges', {
@@ -4622,7 +4634,7 @@ var Vehicles_Edit = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.types_charges = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/contacts', {
@@ -4632,7 +4644,7 @@ var Vehicles_Edit = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.contacts = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/employees', {
@@ -4642,7 +4654,7 @@ var Vehicles_Edit = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.employees = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/status_vehicles', {
@@ -4652,7 +4664,7 @@ var Vehicles_Edit = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.status_vehicles = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		},
 		updateVehicle: function () {
@@ -4660,7 +4672,7 @@ var Vehicles_Edit = Vue.extend({
 			apiMV.put('/vehicles/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Vehicles');
 		},
@@ -4675,7 +4687,7 @@ var Vehicles_Edit = Vue.extend({
 				self.post_crew.employee = 0;
 				self.findVehicle();
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				console.log(error.response);
 			});
 			
@@ -4695,7 +4707,7 @@ var Vehicles_Edit = Vue.extend({
 					self.post_crew.vehicle = response.data.id;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Vehicles');
 			});
 			
@@ -4712,7 +4724,7 @@ var Vehicles_Edit = Vue.extend({
 			}).then(function (response) {
 				self.crew = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/galery_vehicles', {
@@ -4727,7 +4739,7 @@ var Vehicles_Edit = Vue.extend({
 			}).then(function (response) {
 				self.galery_vehicles = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		},
 		changeImage: function(e){
@@ -4794,7 +4806,7 @@ var Vehicles_Delete = Vue.extend({
 			apiMV.delete('/vehicles/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Vehicles');
 			location.reload();
@@ -4813,7 +4825,7 @@ var Vehicles_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Vehicles');
 			});
 		}
@@ -4845,7 +4857,7 @@ var Crew_Vehicle_Delete = Vue.extend({
 			apiMV.delete('/crew_vehicles/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 				router.push('/Vehicles/' + idCrewVehicles + '/edit');
 		},
@@ -4863,7 +4875,7 @@ var Crew_Vehicle_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Vehicles/' + idCrewVehicles + '/edit');
 			});
 		}
@@ -4929,7 +4941,7 @@ var Contacts_List = Vue.extend({
     apiMV.get('/contacts').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -5000,7 +5012,7 @@ var Contacts_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				console.log(error.response);
 				//router.push('/Contacts');
 			});
@@ -5055,7 +5067,7 @@ var Contacts_Add = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.types_identifications = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/geo_departments', {
@@ -5065,7 +5077,7 @@ var Contacts_Add = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.geo_departments = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 		},
@@ -5081,7 +5093,7 @@ var Contacts_Add = Vue.extend({
 				self.selectOptions.geo_citys = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		},
 		createContact: function() {
@@ -5089,7 +5101,7 @@ var Contacts_Add = Vue.extend({
 			apiMV.post('/contacts', post).then(function (response) {
 				post.id = response.data;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Contacts');
 		}
@@ -5139,7 +5151,7 @@ var Contacts_Edit = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.types_identifications = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/geo_departments', {
@@ -5149,7 +5161,7 @@ var Contacts_Edit = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.geo_departments = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/geo_citys', {
@@ -5159,7 +5171,7 @@ var Contacts_Edit = Vue.extend({
 			}).then(function (response) {
 				self.selectOptions.geo_citys = response.data.records;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 		},
@@ -5175,7 +5187,7 @@ var Contacts_Edit = Vue.extend({
 				self.selectOptions.geo_citys = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		},
 		updateContact: function () {
@@ -5183,7 +5195,7 @@ var Contacts_Edit = Vue.extend({
 			apiMV.put('/contacts/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Contacts');
 		},
@@ -5201,7 +5213,7 @@ var Contacts_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Contacts');
 			});
 		}
@@ -5241,7 +5253,7 @@ var Contacts_Delete = Vue.extend({
 			apiMV.delete('/contacts/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Contacts');
 			location.reload();
@@ -5260,7 +5272,7 @@ var Contacts_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Contacts');
 			});
 		}
@@ -5282,7 +5294,7 @@ var Employees_List = Vue.extend({
     apiMV.get('/employees').then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -5404,7 +5416,7 @@ var Employees_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Employees');
 			});
 			
@@ -5420,7 +5432,7 @@ var Employees_View = Vue.extend({
 				self.post_contacts = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/contracted_staff', {
@@ -5436,7 +5448,7 @@ var Employees_View = Vue.extend({
 				self.contracted_staff = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/performances_employees', {
@@ -5451,7 +5463,7 @@ var Employees_View = Vue.extend({
 				self.performances_employees = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		}
 	}
@@ -5515,7 +5527,7 @@ var Employees_Add = Vue.extend({
 			apiMV.post('/employees', post).then(function (response) {
 				post.id = response.data;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Employees');
 		},
@@ -5524,44 +5536,44 @@ var Employees_Add = Vue.extend({
 			
 			apiMV.get('/types_identifications', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.types_identifications = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 				
 			apiMV.get('/types_bloods', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.types_bloods = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/types_bloods_rhs', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.types_bloods_rhs = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/status_employees', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.status_employees = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/eps', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.eps = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/arl', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.arl = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/funds_pensions', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.funds_pensions = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 				
 			apiMV.get('/funds_compensations', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.funds_compensations = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/funds_severances', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.funds_severances = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			
 			apiMV.get('/geo_departments', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.geo_departments = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 		},
 		loadCitys: function(){
@@ -5576,7 +5588,7 @@ var Employees_Add = Vue.extend({
 				self.selectOptions.geo_citys = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		},
 	},
@@ -5659,7 +5671,7 @@ var Employees_Edit = Vue.extend({
 				self.contract_employee.date_end = '';
 				self.contract_employee.contract_employee = 0;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				console.log(error.response);
 			});
 			
@@ -5673,7 +5685,7 @@ var Employees_Edit = Vue.extend({
 				self.post_crew.contact = 0;
 				self.findEmployee();
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				console.log(error.response);
 			});
 			
@@ -5683,7 +5695,7 @@ var Employees_Edit = Vue.extend({
 			apiMV.put('/employees/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Employees');
 		},
@@ -5701,7 +5713,7 @@ var Employees_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Employees');
 			});
 			
@@ -5717,7 +5729,7 @@ var Employees_Edit = Vue.extend({
 				self.post_contacts = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/contracted_staff', {
@@ -5733,7 +5745,7 @@ var Employees_Edit = Vue.extend({
 				self.contracted_staff = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/performances_employees', {
@@ -5748,7 +5760,7 @@ var Employees_Edit = Vue.extend({
 				self.performances_employees = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			$('#includeCrewEmployee-Fast').hide();
@@ -5760,75 +5772,75 @@ var Employees_Edit = Vue.extend({
 			
 			apiMV.get('/types_identifications', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.types_identifications = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 				
 			apiMV.get('/types_bloods', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.types_bloods = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/types_bloods_rhs', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.types_bloods_rhs = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/status_employees', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.status_employees = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/eps', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.eps = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/arl', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.arl = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/funds_pensions', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.funds_pensions = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 				
 			apiMV.get('/funds_compensations', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.funds_compensations = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/funds_severances', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.funds_severances = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 						
 			apiMV.get('/geo_departments', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.geo_departments = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/geo_citys', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.geo_citys = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/contacts', { params: { order: 'identification_number,asc', } })
 				.then(function (response) { self.selectOptions.contacts = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/types_contacts', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.types_contacts = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/contracted_staff', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.contracted_staff = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/types_charges', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.types_charges = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/contracts_employees', { params: { order: 'name,asc', join: 'terms_contrats_employees' } })
 				.then(function (response) { self.selectOptions.contracts_employees = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/reasons_performances_employees', { params: { order: 'name,asc', join: 'terms_contrats_employees' } })
 				.then(function (response) { self.selectOptions.reasons_performances_employees = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 			apiMV.get('/actions_performances_employees', { params: { order: 'name,asc', join: 'terms_contrats_employees' } })
 				.then(function (response) { self.selectOptions.actions_performances_employees = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 			
 		},
 		loadCitys: function(){
@@ -5843,7 +5855,7 @@ var Employees_Edit = Vue.extend({
 				self.selectOptions.geo_citys = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		},
 		includePerformancesEmployee: function () {
@@ -5862,7 +5874,7 @@ var Employees_Edit = Vue.extend({
 				self.post_performances_employees.date_end = '';
 				self.post_performances_employees.notes = '';
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				console.log(error.response);
 			});
 			
@@ -5891,7 +5903,7 @@ var Employees_Delete = Vue.extend({
 			apiMV.delete('/employees/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Employees');
 			location.reload();
@@ -5910,7 +5922,7 @@ var Employees_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Employees');
 			});
 		}
@@ -5940,7 +5952,7 @@ var Employees_Contacts_Delete = Vue.extend({
 			apiMV.delete('/crew_employees/' + self.$route.params.employee_contact_id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Employees/' + self.$route.params.employee_id + '/Edit');
 		},
@@ -5957,7 +5969,7 @@ var Employees_Contacts_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		}
 	}
@@ -5989,7 +6001,7 @@ var ContractedStaff_Delete = Vue.extend({
 			apiMV.delete('/contracted_staff/' + self.$route.params.contracted_staff_id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Employees/' + self.$route.params.employee_id + '/Edit');
 		},
@@ -6006,7 +6018,7 @@ var ContractedStaff_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		}
 	}
@@ -6034,7 +6046,7 @@ var Clients_List = Vue.extend({
 	}).then(function (response) {
 		self.posts = response.data.records;
     }).catch(function (error) {
-		console.log(error);
+		console.log(error.response);
     });
   },
   computed: {
@@ -6135,7 +6147,7 @@ var Clients_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Clients');
 			});
 			
@@ -6151,7 +6163,7 @@ var Clients_View = Vue.extend({
 				self.crew_clients = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/redicated_clients', {
@@ -6162,7 +6174,7 @@ var Clients_View = Vue.extend({
 				self.redicated_clients = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/auditors_clients', {
@@ -6176,7 +6188,7 @@ var Clients_View = Vue.extend({
 				self.auditors_clients = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/services_clients', {
@@ -6192,7 +6204,7 @@ var Clients_View = Vue.extend({
 				self.services_clients = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		}
 	}
@@ -6238,23 +6250,23 @@ var Clients_Add = Vue.extend({
 			
 			apiMV.get('/types_clients', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.types_clients = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 				
 			apiMV.get('/types_identifications', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.types_identifications = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 				
 			apiMV.get('/types_societys', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.types_societys = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 				
 			apiMV.get('/geo_departments', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.geo_departments = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 				
 			apiMV.get('/contacts', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.contacts = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 				
 		},
 		loadCitys: function(){
@@ -6269,7 +6281,7 @@ var Clients_Add = Vue.extend({
 				self.selectOptions.geo_citys = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		},
 		createClient: function() {
@@ -6277,7 +6289,7 @@ var Clients_Add = Vue.extend({
 			apiMV.post('/clients', post).then(function (response) {
 				post.id = response.data;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Clients');
 		}
@@ -6296,6 +6308,7 @@ var Clients_Edit = Vue.extend({
 				geo_citys: [],
 				contacts: [],
 				types_contacts: [],
+				types_repeats_services_clients: [],
 			},
 			post: {
 				id: 0,
@@ -6337,6 +6350,10 @@ var Clients_Edit = Vue.extend({
 				contact: 0,
 				client: this.$route.params.client_id,
 			},
+			calc: {
+				subService: 0,
+				subTotalAttributes: 0,
+			}
 		};
 	},
 	mounted: function () {
@@ -6345,36 +6362,74 @@ var Clients_Edit = Vue.extend({
 		self.findClients();
 	},
 	methods: {
+		formatMoney: function(n, c, d, t){
+			var c = isNaN(c = Math.abs(c)) ? 2 : c,
+				d = d == undefined ? "." : d,
+				t = t == undefined ? "," : t,
+				s = n < 0 ? "-" : "",
+				i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))),
+				j = (j = i.length) > 3 ? j % 3 : 0;
+
+			return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+		},
+		sumarTodo: function(number){
+			var self = this;
+			
+			
+			self.services_clients.forEach(function(element) {
+				var priceService = element.service.price;
+				var quantityService = element.quantity;
+				var subtotalService = priceService * quantityService;
+				var attributesService = element.attributes_services_clients;
+				
+				self.calc.subService = self.calc.subService + subtotalService;
+				
+				attributesService.forEach(function(element2) {
+					var priceAttribute = element2.attribute.price;
+					var quantityAttribute = element2.quantity;
+					var subtotalAttribute = priceAttribute * quantityAttribute;
+					
+					self.calc.subTotalAttributes = self.calc.subTotalAttributes + subtotalAttribute;
+				});
+			});
+
+			
+		},
+		sumaServicio: function(number){
+			var self = this;
+			self.calc.subService = self.calc.subService + number;			
+			self.calc.subTotal = self.calc.subService + self.calc.subTotalAttributes;
+		},
 		loadSelects: function(){
 			var self = this;
 			
 			apiMV.get('/types_clients', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.types_clients = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 				
 			apiMV.get('/types_identifications', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.types_identifications = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 				
 			apiMV.get('/types_societys', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.types_societys = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 				
 			apiMV.get('/geo_departments', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.geo_departments = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 				
 			apiMV.get('/geo_citys', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.geo_citys = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 				
 			apiMV.get('/contacts', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.contacts = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 				
 			apiMV.get('/types_contacts', { params: { order: 'name,asc', } })
 				.then(function (response) { self.selectOptions.types_contacts = response.data.records; })
-				.catch(function (error) { console.log(error); });
+				.catch(function (error) { console.log(error.response); });
 				
 		},
 		loadCitys: function(){
@@ -6389,7 +6444,7 @@ var Clients_Edit = Vue.extend({
 				self.selectOptions.geo_citys = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		},
 		updateClient: function () {
@@ -6397,7 +6452,7 @@ var Clients_Edit = Vue.extend({
 			apiMV.put('/clients/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Clients');
 		},
@@ -6415,7 +6470,7 @@ var Clients_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Clients');
 			});
 			
@@ -6431,7 +6486,7 @@ var Clients_Edit = Vue.extend({
 				self.crew_clients = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/redicated_clients', {
@@ -6442,7 +6497,7 @@ var Clients_Edit = Vue.extend({
 				self.redicated_clients = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/auditors_clients', {
@@ -6456,7 +6511,7 @@ var Clients_Edit = Vue.extend({
 				self.auditors_clients = response.data.records;
 				
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			apiMV.get('/services_clients', {
@@ -6466,13 +6521,14 @@ var Clients_Edit = Vue.extend({
 						'services',
 						'attributes_services_clients',
 						'attributes_services_clients,attributes',
+						'types_repeats_services_clients',
 					],
 				}
 			}).then(function (response) {
 				self.services_clients = response.data.records;
-				
+				self.sumarTodo();
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			
 			$("#includeContactClient-Fast").hide();
@@ -6489,7 +6545,7 @@ var Clients_Edit = Vue.extend({
 				self.post_crew_clients.contact = 0;
 				self.post_crew_clients.type_contact = 0;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				console.log(error.response);
 			});
 		},
@@ -6508,7 +6564,7 @@ var Clients_Edit = Vue.extend({
 				self.post_redicated_clients.date_end = '';
 				self.post_redicated_clients.additional_notes = '';
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				console.log(error.response);
 			});
 		},
@@ -6521,7 +6577,7 @@ var Clients_Edit = Vue.extend({
 				self.findClients();
 				self.post_auditors_clients.contact = 0;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				console.log(error.response);
 			});
 		},
@@ -6549,7 +6605,7 @@ var Clients_Delete = Vue.extend({
 			apiMV.delete('/clients/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Clients');
 			location.reload();
@@ -6568,7 +6624,7 @@ var Clients_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Clients');
 			});
 		}
@@ -6598,7 +6654,7 @@ var Clients_Contacts_Delete = Vue.extend({
 			apiMV.delete('/crew_clients/' + self.$route.params.client_contact_id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Clients/' + self.$route.params.client_id + '/Edit');
 		},
@@ -6615,7 +6671,7 @@ var Clients_Contacts_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		}
 	}
@@ -6650,7 +6706,7 @@ var Clients_Redicated_Delete = Vue.extend({
 			apiMV.delete('/redicated_clients/' + self.$route.params.redicated_client_id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Clients/' + self.$route.params.client_id + '/Edit');
 		},
@@ -6667,7 +6723,7 @@ var Clients_Redicated_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 		}
 	}
@@ -6696,7 +6752,7 @@ var Clients_Auditors_Delete = Vue.extend({
 			apiMV.delete('/auditors_clients/' + self.$route.params.auditor_client_id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Clients/' + self.$route.params.client_id + '/Edit');
 		},
@@ -6713,7 +6769,191 @@ var Clients_Auditors_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
+			});
+		}
+	}
+});
+
+var Clients_Attributes_Services_Delete = Vue.extend({
+	template: '#delete-AttributesServicesClients',
+	data: function () {
+		return {
+			post: {
+				id: 0,
+				service_client: 0,
+				attribute: 0,
+				quantity: 0,
+				date_start: '',
+				date_end: '',
+			}
+		};
+	},
+	mounted: function () {
+		var self = this;
+		self.findClientsAttributesServices();
+	},
+	methods: {
+		deleteClientsAttributesServices: function () {
+			var self = this;
+			var post = this.post;
+			
+			apiMV.delete('/attributes_services_clients/' + self.$route.params.client_attribute_service_id).then(function (response) {
+				console.log(response.data);
+			}).catch(function (error) {
+				console.log(error.response);
+			});
+			router.push('/Clients/' + self.$route.params.client_id + '/Edit');
+		},
+		findClientsAttributesServices: function(){
+			var self = this;
+			var idClientsAttributesServices = self.$route.params.client_attribute_service_id;
+			
+			apiMV.get('/attributes_services_clients/' + idClientsAttributesServices).then(function (response) {
+				if(!response.data.id)
+				{
+				}
+				else
+				{
+					self.post = response.data;
+				}
+			}).catch(function (error) {
+				console.log(error.response);
+			});
+		}
+	}
+});
+
+var Clients_Attributes_Services_Add = Vue.extend({
+	template: '#add-AttributesServicesClients',
+	data: function () {
+		return {
+			selectOptions: {
+				attributes: [],
+			},
+			post: {
+				service_client: this.$route.params.client_service_id,
+				attribute: 0,
+				quantity: 0,
+				date_start: '',
+				date_end: '',
+			},
+		}
+	},
+	mounted: function(){
+		var self = this;
+		
+		self.loadSelects();
+	},
+	methods: {
+		formatMoney: function(n, c, d, t){
+			var c = isNaN(c = Math.abs(c)) ? 2 : c,
+				d = d == undefined ? "." : d,
+				t = t == undefined ? "," : t,
+				s = n < 0 ? "-" : "",
+				i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))),
+				j = (j = i.length) > 3 ? j % 3 : 0;
+
+			return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+		},
+		calulator_result: function(){
+			var self = this;
+			
+			select.total;
+		},
+		loadSelects: function(){
+			var self = this;
+			
+			apiMV.get('/attributes', { params: { order: 'name,asc', } })
+				.then(function (response) { self.selectOptions.attributes = response.data.records; })
+				.catch(function (error) { console.log(error.response); });
+		},
+		createAttributesServicesClients: function() {
+			var self = this;
+			var post = this.post;
+			
+			if(post.date_start == '' || post.date_start == 0){ delete post.date_start; };
+			if(post.date_end == '' || post.date_end == 0){ delete post.date_end; };
+			
+			apiMV.post('/attributes_services_clients', post).then(function (response) {
+				post.id = response.data;
+			}).catch(function (error) {
+				console.log(error.response);
+			});
+			router.push('/Clients/' + self.$route.params.client_id + '/Edit');
+		}
+	}
+});
+
+var Clients_Services_Add = Vue.extend({
+	template: '#add-ServicesClients',
+	data: function () {
+		return {
+			selectOptions: {
+				services: [],
+				types_repeats_services_clients: [],
+			},
+			post: {
+				client: this.$route.params.client_id,
+				service: 0,
+				quantity: 0,
+				date_start: '',
+				date_end: '',
+			},
+		}
+	},
+	mounted: function(){
+		var self = this;
+		self.loadSelects();
+	},
+	methods: {
+		formatMoney: function(n, c, d, t){
+			var c = isNaN(c = Math.abs(c)) ? 2 : c,
+				d = d == undefined ? "." : d,
+				t = t == undefined ? "," : t,
+				s = n < 0 ? "-" : "",
+				i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))),
+				j = (j = i.length) > 3 ? j % 3 : 0;
+
+			return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+		},
+		loadSelects: function(){
+			var self = this;
+			
+			apiMV.get('/services', {
+				params: {
+					join: [
+						'types_meditions'
+					],
+					order: 'name,asc',
+				}
+			})
+				.then(function (response) { self.selectOptions.services = response.data.records; })
+				.catch(function (error) { console.log(error.response); });
+			
+			apiMV.get('/types_repeats_services_clients', {
+				params: {
+					join: [
+					],
+					order: 'name,asc',
+				}
+			})
+				.then(function (response) { self.selectOptions.types_repeats_services_clients = response.data.records; })
+				.catch(function (error) { console.log(error.response); });
+		},
+		createServicesClients: function() {
+			var self = this;
+			var post = this.post;
+			
+			if(post.date_start == '' || post.date_start == 0){ delete post.date_start; };
+			if(post.date_end == '' || post.date_end == 0){ delete post.date_end; };
+			
+			apiMV.post('/services_clients', post).then(function (response) {
+				post.id = response.data;
+				
+				router.push('/Clients/' + self.$route.params.client_id + '/Edit');
+			}).catch(function (error) {
+				console.log(error.response);
 			});
 		}
 	}
@@ -6740,7 +6980,7 @@ var Attributes_List = Vue.extend({
 			}).then(function (response) {
 			self.posts = response.data.records;
 		}).catch(function (error) {
-			console.log(error);
+			console.log(error.response);
 		});
 	},
 	computed: {
@@ -6778,7 +7018,13 @@ var Attributes_View = Vue.extend({
 			var self = this;
 			var idAttribute = self.$route.params.attribute_id;
 			
-			apiMV.get('/attributes/' + idAttribute).then(function (response) {
+			apiMV.get('/attributes/' + idAttribute, {
+				params: {
+					join: [
+						'types_meditions',
+					]
+				}
+			}).then(function (response) {
 				if(!response.data.id || !response.data.name)
 				{
 					router.push('/Attributes');
@@ -6788,7 +7034,7 @@ var Attributes_View = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Attributes');
 			});
 		}
@@ -6799,19 +7045,42 @@ var Attributes_Add = Vue.extend({
 	template: '#add-Attributes',
 	data: function () {
 		return {
+			selectOptions: {
+				types_meditions: [],
+			},
 			post: {
 				id: 0,
-				name: ''
+				name: '',
+				description: '',
+				type_medition: 0,
+				price: 0,
 			}
 		}
 	},
+	mounted: function(){
+		var self = this;
+		
+		self.loadSelects();
+	},
 	methods: {
+		loadSelects: function(){
+			var self = this;
+			apiMV.get('/types_meditions', {
+				params: {
+					order: 'name,asc',
+				}
+			}).then(function (response) {
+				self.selectOptions.types_meditions = response.data.records;
+			}).catch(function (error) {
+				console.log(error.response);
+			});
+		},
 		createAttribute: function() {
 			var post = this.post;
 			apiMV.post('/attributes', post).then(function (response) {
 				post.id = response.data;
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Attributes');
 		}
@@ -6822,23 +7091,42 @@ var Attributes_Edit = Vue.extend({
 	template: '#edit-Attributes',
 	data: function () {
 		return {
+			selectOptions: {
+				types_meditions: [],
+			},
 			post: {
 				id: 0,
-				name: ''
+				name: '',
+				description: '',
+				type_medition: 0,
+				price: 0,
 			}
 		};
 	},
 	mounted: function () {
 		var self = this;
+		self.loadSelects();
 		self.findAttribute();
 	},
 	methods: {
+		loadSelects: function(){
+			var self = this;
+			apiMV.get('/types_meditions', {
+				params: {
+					order: 'name,asc',
+				}
+			}).then(function (response) {
+				self.selectOptions.types_meditions = response.data.records;
+			}).catch(function (error) {
+				console.log(error.response);
+			});
+		},
 		updateAttribute: function () {
 			var post = this.post;
 			apiMV.put('/attributes/' + post.id, post).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Attributes');
 		},
@@ -6856,7 +7144,7 @@ var Attributes_Edit = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Attributes');
 			});
 		}
@@ -6884,7 +7172,7 @@ var Attributes_Delete = Vue.extend({
 			apiMV.delete('/attributes/' + post.id).then(function (response) {
 				console.log(response.data);
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 			router.push('/Attributes');
 			location.reload();
@@ -6903,7 +7191,7 @@ var Attributes_Delete = Vue.extend({
 					self.post = response.data;
 				}
 			}).catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 				router.push('/Attributes');
 			});
 		}
@@ -7080,6 +7368,9 @@ var router = new VueRouter({routes:[
 	{ path: '/Clients/:client_id/Contact/:client_contact_id/delete', component: Clients_Contacts_Delete, name: 'ClientsContacts-Delete'},
 	{ path: '/Clients/:client_id/Redicated/:redicated_client_id/delete', component: Clients_Redicated_Delete, name: 'RedicatedClients-Delete'},
 	{ path: '/Clients/:client_id/Auditors/:auditor_client_id/delete', component: Clients_Auditors_Delete, name: 'ClientsAuditors-Delete'},
+	{ path: '/Clients/:client_id/AttributesServices/:client_attribute_service_id/delete', component: Clients_Attributes_Services_Delete, name: 'AttributesServicesClients-Delete'},
+	{ path: '/Clients/:client_id/AttributesServices/:client_service_id/add', component: Clients_Attributes_Services_Add, name: 'AttributesServicesClients-Add'},
+	{ path: '/Clients/:client_id/Services/add', component: Clients_Services_Add, name: 'ServicesClients-Add'},
 	
 	{ path: '/Employees/Actions/Performances/', component: Actions_Performance_Employees_List, name: 'Actions_Performance_Employees-List'},
 	{ path: '/Employees/Actions/Performances/:action_performance_employee_id', component: Actions_Performance_Employees_View, name: 'Actions_Performance_Employees-View'},
@@ -7161,7 +7452,7 @@ var appRender = new Vue({
 						self.saveSession(userData);
 					}
 				}).catch(function (error) {
-				  console.log(error);
+				  console.log(error.response);
 				});
 			}
 			else
